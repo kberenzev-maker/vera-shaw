@@ -1193,23 +1193,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Кнопка «Изменить ответы ↑» в шапке персонального разбора
+  // Кнопка «Изменить ответы ↑» в шапке персонального разбора и в футере
+  const handleResetQuiz = () => {
+    isResultUnlocked = false;
+    if (quizSection) {
+      quizSection.hidden = false;
+    }
+    if (personalizedResultFlow) {
+      personalizedResultFlow.classList.add("is-hidden-until-quiz");
+    }
+    if (headerNav) {
+      headerNav.classList.remove("is-unlocked");
+    }
+    showQuizStep(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   if (resetQuizBtn) {
-    resetQuizBtn.addEventListener("click", () => {
-      isResultUnlocked = false;
-      if (quizSection) {
-        quizSection.hidden = false;
-      }
-      if (personalizedResultFlow) {
-        personalizedResultFlow.classList.add("is-hidden-until-quiz");
-      }
-      if (headerNav) {
-        headerNav.classList.remove("is-unlocked");
-      }
-      showQuizStep(0);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    resetQuizBtn.addEventListener("click", handleResetQuiz);
   }
+  document.querySelectorAll("[data-reset-quiz]").forEach((btn) => {
+    btn.addEventListener("click", handleResetQuiz);
+  });
 
   // Кнопка «Сразу к записи» в шапке
   document.querySelectorAll("[data-skip-to-booking]").forEach((btn) => {
