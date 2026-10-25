@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вера Шоу — Отношения, доверие, внутреннее состояние и опора</title>
+  <meta name="description" content="Бережная работа с психологом Верой Шоу: вернуть доверие в близких отношениях, перестать убегать в контроль, работу или траты и обрести внутреннюю опору.">
+  <meta name="theme-color" content="#F7F8F5">
+  <link rel="preload" href="assets/fonts/onest-cyrillic-v11.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-cyrillic-600-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231B3B2B'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-style='italic' font-weight='600' font-size='26'%3EВШ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=28">
+</head>
+<body>
+
+  <!-- МИНИМАЛИСТИЧНАЯ ШАПКА -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">Вера Шоу</span>
+        <span class="brand-role">· психолог</span>
+      </a>
+
+      <div class="header-right-actions">
+        <nav class="header-nav" aria-label="Навигация по разбору">
+          <a href="#personal-mirror">Разбор</a>
+          <a href="#therapy-stages">Путь работы</a>
+          <a href="#about-vera">Обо мне</a>
+        </nav>
+
+        <button type="button" class="btn-header-quiet" data-skip-to-booking>
+          Сразу к записи
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ЧАСТЬ 1: УМНЫЙ ДИАЛОГ СО СТОРОНЫ КЛИЕНТА (3 ЛЁГКИХ ШАГА ПО 3–4 КАРТОЧКИ НА ЭКРАН) -->
+    <section class="quiz-entry-section" id="quizSection" aria-label="Диалог в 3 шага">
+      <div class="site-container">
+
+        <!-- ШАГ 1 ИЗ 3: ВЫБОР ЖИЗНЕННОЙ СФЕРЫ (ЕСТЕСТВЕННАЯ СЕГМЕНТАЦИЯ БЕЗ МАРКЕТИНГОВЫХ ЯРЛЫКОВ) -->
+        <div class="quiz-step is-active" data-quiz-step="0" id="quizStep0">
+          <div class="hero-care-grid">
+            <div class="hero-dialogue-col">
+              <div>
+                <div class="quiz-step-counter">ШАГ 1 ИЗ 3 · С ЧЕГО НАЧНЁМ</div>
+                <h1 class="hero-care-title">
+                  В какой сфере сейчас <span class="serif-italic">тяжелее всего?</span>
+                </h1>
+                <p class="hero-care-sub">
+                  Отметьте то, с чем связано ваше напряжение — на следующем шаге вы увидите точные состояния и получите персональный разбор ситуации:
+                </p>
+              </div>
+
+              <div class="sphere-choices-grid" role="radiogroup" aria-label="В какой сфере сейчас тяжелее всего">
+                <button
+                  type="button"
+                  class="sphere-choice-btn"
+                  data-sphere-key="pleasers"
+                  data-sphere-title="Отношения и личные границы"
+                >
+                  <span class="choice-num" aria-hidden="true">01</span>
+                  <span class="choice-body">
+                    <strong class="sphere-choice-title">Отношения и личные границы</strong>
+                    <span class="sphere-choice-desc">Одиночество вдвоём при «нормальной картинке», недоверие к партнёру или привычка соглашаться со всеми в ущерб себе.</span>
+                  </span>
+                  <span class="choice-arrow" aria-hidden="true">→</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="sphere-choice-btn"
+                  data-sphere-key="achievers"
+                  data-sphere-title="Работа, деньги и моё состояние"
+                >
+                  <span class="choice-num" aria-hidden="true">02</span>
+                  <span class="choice-body">
+                    <strong class="sphere-choice-title">Работа, деньги и моё состояние</strong>
+                    <span class="sphere-choice-desc">Внешне есть результаты и доход, но внутри — пустота, вечный режим «туши пожар» или внезапные приступы тревоги и паники.</span>
+                  </span>
+                  <span class="choice-arrow" aria-hidden="true">→</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="sphere-choice-btn"
+                  data-sphere-key="past_hostages"
+                  data-sphere-title="Тяжёлые мысли, прошлое и сон"
+                >
+                  <span class="choice-num" aria-hidden="true">03</span>
+                  <span class="choice-body">
+                    <strong class="sphere-choice-title">Тяжёлые мысли, прошлое и сон</strong>
+                    <span class="sphere-choice-desc">Ночная «мысленная жвачка» перед сном, чувство вины за прошлые ошибки или состояние, когда нет сил даже после 10 часов сна.</span>
+                  </span>
+                  <span class="choice-arrow" aria-hidden="true">→</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="sphere-choice-btn"
+                  data-sphere-key="experts"
+                  data-sphere-title="Профессиональная проявленность и чек"
+                >
+                  <span class="choice-num" aria-hidden="true">04</span>
+                  <span class="choice-body">
+                    <strong class="sphere-choice-title">Профессиональная проявленность и чек</strong>
+                    <span class="sphere-choice-desc">У вас сильный опыт и образование (психолог, эксперт, руководитель), но страшно вести блог, заявлять о себе и поднимать цену.</span>
+                  </span>
+                  <span class="choice-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ШАГ 2 ИЗ 3: ТОЧНЫЕ ЦИТАТЫ ВНУТРИ ВЫБРАННОЙ СФЕРЫ -->
+        <div class="quiz-step" data-quiz-step="1" id="quizStep1" hidden>
+          <div class="quiz-step2-clean-wrap">
+            <div class="step2-top-nav">
+              <button type="button" class="quiz-back-btn" id="quizBackToStep0">
+                ← Выбрать другую сферу
+              </button>
+              <span class="step2-segment-badge" id="step1SphereBadge">
+                Отношения и личные границы
+              </span>
+            </div>
+
+            <div>
+              <div class="quiz-step-counter">ШАГ 2 ИЗ 3 · ТОЧНОЕ СОСТОЯНИЕ</div>
+              <h2 class="quiz-main-question">
+                Какая из этих мыслей <span class="serif-italic">ближе всего</span> к тому, что вы чувствуете?
+              </h2>
+            </div>
+
+            <div class="state-choices-list state-choices-list--single-col" role="radiogroup" aria-label="Какая из этих мыслей ближе всего к вам">
+              <!-- Сфера 2: Отношения и личные границы -->
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="pleasers"
+                data-state-key="trust"
+                data-state-text="Со стороны у нас нормальные отношения, но внутри — холод, недоверие и одиночество вдвоём"
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Одиночество вдвоём при «нормальной картинке»</span>
+                  <span class="choice-quote-text">«Со стороны у нас хорошая семья и нормальный партнёр, поэтому мне стыдно жаловаться. Но внутри — холод, недоверие и одиночество: будто я просто удобная функция и играю роль в чужом спектакле»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="pleasers"
+                data-state-key="pleaser"
+                data-state-text="Мне проще согласиться в ущерб себе, чем выдержать чужую обиду — внутри копится злость, что на мне все ездят"
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Не умею отказывать и соглашаюсь в ущерб себе</span>
+                  <span class="choice-quote-text">«Мне проще промолчать и согласиться в ущерб себе, чем выдержать чужую обиду или недовольный тон. Я для всех удобный и безотказный человек — но внутри кипит злость, что на мне все ездят»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="pleasers"
+                data-state-key="exhausted"
+                data-state-text="Привык(ла) тянуть чужие проблемы, а на себя сил не осталось — внутри села батарейка и не понимаю, чего хочу"
+              >
+                <span class="choice-num" aria-hidden="true">03</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Хватает на всех, кроме себя — «села батарейка»</span>
+                  <span class="choice-quote-text">«Я привык(ла) заботиться о других и решать чужие проблемы, а на свою жизнь сил не осталось. Внутри села батарейка: я уже не понимаю, чего хочу на самом деле, и мечтаю просто, чтобы меня никто не трогал»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <!-- Сфера 1: Работа, деньги и состояние -->
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="achievers"
+                data-state-key="empty"
+                data-state-text="Есть доход и результаты, но внутри пустота — даже большие суммы и закрытые цели больше не радуют"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Деньги и результаты есть, а радости — ноль</span>
+                  <span class="choice-quote-text">«У меня есть доход, статус и всё, к чему я шёл(а), но внутри — пустота. Большие суммы и закрытые цели больше не радуют: я живу только головой, а тело просто носит меня со встречи на встречу»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="achievers"
+                data-state-key="control"
+                data-state-text="Живу в вечном режиме «туши пожар» — боюсь ослабить контроль даже в выходные, иначе всё рухнет"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Тащу всё на себе и не могу выключить контроль</span>
+                  <span class="choice-quote-text">«Я живу в вечном режиме „туши пожар“: работа и семья держатся на мне. Даже в выходные не могу убрать телефон и расслабиться — кажется, если я ослаблю хватку, всё тут же рухнет»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="achievers"
+                data-state-key="panic"
+                data-state-text="От перегрузок сбоит тело: накрывает тревога, спазмы или паника в моменты, когда нельзя показать слабость"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">03</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Тело сдаёт от перегрузок: тревога, спазмы, паника</span>
+                  <span class="choice-quote-text">«От постоянного напряжения начинает сбоить тело: среди дня или перед важной встречей вдруг перехватывает дыхание, колотится сердце и накрывает волна паники — а показать слабость нельзя»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <!-- Сфера 3: Тяжёлые мысли, прошлое и сон -->
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="past_hostages"
+                data-state-key="past"
+                data-state-text="Ложусь спать — и включается ночная «мысленная жвачка»: мозг часами прокручивает старые диалоги и не даёт уснуть"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Ночная «мысленная жвачка» и тревога перед сном</span>
+                  <span class="choice-quote-text">«Как только я ложусь спать, в голове включается бесконечная „мысленная жвачка“. Мозг часами прокручивает старые разговоры, обиды и сценарии — я не могу выключить этот поток и нормально уснуть»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="past_hostages"
+                data-state-key="past_guilt"
+                data-state-text="Тяжёлая история из прошлого давно позади, но я до сих пор грызу себя за ошибки и боюсь начинать новое"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Чувство вины и тяжёлый опыт прошлого не отпускают</span>
+                  <span class="choice-quote-text">«Тяжёлая история или ошибка из прошлого давно позади, но внутри она до сих пор болит. Я постоянно грызу себя за то, что тогда не поступил(а) иначе, и из-за этого боюсь начинать новое сегодня»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="past_hostages"
+                data-state-key="escape"
+                data-state-text="Просыпаюсь уже уставшим, весь день функционирую на автомате, а вечером глушу тревогу работой, покупками или бокалом"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">03</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Жизнь на автомате, усталость с утра и вечерний «допинг»</span>
+                  <span class="choice-quote-text">«Я просыпаюсь уже уставшим даже после 10 часов сна и весь день просто функционирую на автомате. А вечером, чтобы хоть как-то заглушить тревогу и пустоту, ухожу в работу до ночи, шопинг или бокал вина»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <!-- Сфера 4: Профессиональная проявленность и чек -->
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="experts"
+                data-state-key="expert"
+                data-state-text="У меня сильный опыт и результаты, но при выходе в блог или публичное поле включает ступор и страх осуждения коллег"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Страшно проявляться, вести блог и говорить вслух</span>
+                  <span class="choice-quote-text">«У меня сильный опыт и твёрдые результаты в работе, но как только нужно выйти в публичное поле или написать пост — включается ступор: кажется, что это банально и коллеги меня оценят или осудят»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="state-choice-btn"
+                data-segment="experts"
+                data-state-key="expert"
+                data-state-text="Люди слабее меня давно растут в доходе, а мне всё кажется, что нужен ещё один диплом, и стыдно поднять свой чек"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Синдром самозванца, «вечная учёба» и страх поднять чек</span>
+                  <span class="choice-quote-text">«Люди слабее меня давно уверенно продают и растут в доходе, а мне всё кажется, что нужно получить ещё один диплом — и стыдно называть достойную цену за свою работу»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ШАГ 3 ИЗ 3: ЖЕЛАЕМЫЙ РЕЗУЛЬТАТ ПО ВЫБРАННОЙ СФЕРЕ -->
+        <div class="quiz-step" data-quiz-step="2" id="quizStep2" hidden>
+          <div class="quiz-step2-clean-wrap">
+            <div class="step2-top-nav">
+              <button type="button" class="quiz-back-btn" id="quizBackToStep1">
+                ← Назад к выбору состояния
+              </button>
+              <span class="step2-segment-badge" id="step2SegmentBadge">
+                Отношения и личные границы
+              </span>
+            </div>
+
+            <div class="expectation-block">
+              <div class="quiz-step-counter">ШАГ 3 ИЗ 3 · ОРИЕНТИР РАБОТЫ</div>
+              <h2 class="quiz-main-question">К какому <span class="serif-italic">результату</span> вы хотите прийти?</h2>
+            </div>
+
+            <div class="expectation-pills" role="radiogroup" aria-label="К какому результату вы хотите прийти">
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="pleasers"
+                data-expect-key="trust_rel"
+                data-expect-text="Убрать холод и недоверие в паре — разобраться в своих желаниях и прийти к честной, живой близости"
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Выйти из одиночества вдвоём к честной близости</span>
+                  <span class="choice-quote-text">«Хочу разобраться в своих настоящих чувствах, убрать фоновое недоверие и холод в паре и открыто говорить с партнёром о том, что мне важно, без страха разрыва»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="pleasers"
+                data-expect-key="boundaries_no_guilt"
+                data-expect-text="Перестать быть безотказной и удобной для всех — спокойно говорить «нет» и без вины вкладывать время и деньги в себя"
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Научиться говорить «нет» без вины и спазма в теле</span>
+                  <span class="choice-quote-text">«Хочу перестать быть безотказным и удобным для всех человеком — спокойно отстаивать свои границы, выдерживать чужое недовольство и без вины тратить время и деньги на себя»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="achievers"
+                data-expect-key="inner_core"
+                data-expect-text="Снова искренне радоваться деньгам и закрытым целям — и спокойно отдыхать в выходные без вины, не теряя деловой хватки"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Вернуть вкус к жизни и радость от результатов</span>
+                  <span class="choice-quote-text">«Хочу снова искренне радоваться деньгам, покупкам и закрытым целям — и спокойно отдыхать в выходные без чувства вины, не теряя деловой хватки»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="achievers"
+                data-expect-key="body_control"
+                data-expect-text="Выйти из режима «туши пожар»: спокойно делегировать, высыпаться и проводить важные встречи без спазмов и паники"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Снять гиперконтроль и вернуть спокойствие телу</span>
+                  <span class="choice-quote-text">«Хочу выйти из режима вечного пожарного: спокойно делегировать задачи, высыпаться и уверенно проводить сложные встречи без внутренних спазмов и тревоги»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="past_hostages"
+                data-expect-key="calm_sleep"
+                data-expect-text="Остановить ночную «мысленную жвачку», отпустить прошлые ошибки и просыпаться по утрам с ясной головой и силами"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Выключить «мысленную жвачку» и спокойно спать</span>
+                  <span class="choice-quote-text">«Хочу остановить бесконечную прокрутку прошлого в голове перед сном, простить себе старые ошибки и наконец просыпаться по утрам с ясной головой и силами»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="past_hostages"
+                data-expect-key="stop_escape"
+                data-expect-text="Выйти из жизни на автомате и убрать тягу глушить вечернюю тревогу работой до ночи, покупками или алкоголем"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">02</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Вернуть живую энергию без вечернего «допинга»</span>
+                  <span class="choice-quote-text">«Хочу выйти из состояния жизни на автомате и убрать тягу глушить вечернюю тревогу работой до ночи, импульсивными покупками или бокалом»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-for-segment="experts"
+                data-expect-key="expert_voice"
+                data-expect-text="Убрать синдром самозванца и страх осуждения коллег — свободно проявляться и уверенно называть достойный чек"
+                hidden
+              >
+                <span class="choice-num" aria-hidden="true">01</span>
+                <span class="choice-body">
+                  <span class="choice-segment-badge">Свободно вести блог и уверенно называть достойный чек</span>
+                  <span class="choice-quote-text">«Хочу убрать внутреннего экзаменатора и самозванца — легко проявляться в публичном поле без страха осуждения коллег и спокойно называть высокую цену за свой труд»</span>
+                </span>
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button
+                type="button"
+                class="expect-pill"
+                data-custom-expect="true"
+              >
+                <span class="choice-num" aria-hidden="true">✎</span>
+                <span>Сформулировать своими словами</span>
+                <span class="choice-arrow" aria-hidden="true">↓</span>
+              </button>
+            </div>
+
+            <div class="custom-expect-box" id="customExpectBox">
+              <div class="custom-expect-row">
+                <input
+                  type="text"
+                  id="customExpectInput"
+                  class="custom-expect-input"
+                  placeholder="Напишите коротко своими словами..."
+                >
+                <button type="button" class="btn btn-forest" id="openResultFromCustomBtn" style="min-height: 44px; padding: 10px 20px; font-size: 14px;">
+                  Открыть разбор →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ЧАСТЬ 2: ПЕРСОНАЛЬНЫЙ РАЗБОР (V14) -->
+    <div id="personalizedResultFlow" class="result-flow is-hidden-until-quiz">
+
+      <!-- ТОНКАЯ СТРОКА ВЫБРАННОГО ЗАПРОСА -->
+      <div class="personal-result-bar">
+        <div class="site-container personal-result-bar-inner">
+          <div class="personal-result-summary">
+            <span id="resultBarStateText">«Я не доверяю мужу и постоянно жду подвоха»</span>
+            <span class="result-arrow-sep">→</span>
+            <span id="resultBarExpectText">«Хочу счастливые отношения, где можно доверять»</span>
+          </div>
+          <button type="button" class="result-reset-btn" id="resetQuizBtn">
+            Изменить ответы ↑
+          </button>
+        </div>
+      </div>
+
+      <!-- БЛОК 1 (#personal-mirror) — КОРОТКИЙ ЗАГОЛОВОК + 2 ПРЕДЛОЖЕНИЯ + СЮЖЕТНАЯ ИЛЛЮСТРАЦИЯ -->
+      <section class="personal-mirror-section" id="personal-mirror">
+        <div class="site-container">
+          <div class="editorial-section-kicker">// 01 · ЧТО ПРОИСХОДИТ НА САМОМ ДЕЛЕ</div>
+          <div class="mirror-grid">
+            <div class="mirror-copy-col">
+              <h2 class="section-title" id="mirrorTitle">
+                Почему близкому человеку <span class="serif-italic">трудно доверять</span>
+              </h2>
+              <p class="personal-route-lead" id="mirrorProblem">
+                Вы можете любить партнёра, но внутри постоянно ждать подвоха и проверять каждую мелочь. Так работает старая защита: психика заранее готовится к боли, чтобы не пережить её снова.
+              </p>
+            </div>
+
+            <div class="mirror-visual-col">
+              <img
+                src="assets/img/illus-mirror.jpg"
+                alt="Что с вами происходит на самом деле"
+                class="editorial-spot-illus"
+                width="680"
+                height="680"
+              >
+            </div>
+          </div>
+
+          <!-- ОТВЕТ НА ВОПРОС «ПОЧЕМУ»: 3 ВОЗМОЖНЫХ МЕХАНИЗМА ИЗ ИССЛЕДОВАНИЙ + ПОДВОДКА К СЕССИИ -->
+          <div class="mirror-reasons-block" id="mirrorReasonsBlock">
+            <div class="mirror-reasons-kicker">
+              ПОЧЕМУ ТАК ПРОИСХОДИТ · 3 ВОЗМОЖНЫЕ ПРИЧИНЫ ВАШЕГО СОСТОЯНИЯ
+            </div>
+
+            <div class="mirror-reasons-grid">
+              <article class="mirror-reason-card">
+                <span class="mirror-reason-num">Вариант 01</span>
+                <h3 id="reason1Title">Функциональный союз вместо близости</h3>
+                <p id="reason1Desc">
+                  Вы взяли на себя роль «безупречного сервиса» и удобного партнёра, где ваш комфорт потребляют, не давая взамен живого эмоционального тепла.
+                </p>
+              </article>
+
+              <article class="mirror-reason-card">
+                <span class="mirror-reason-num">Вариант 02</span>
+                <h3 id="reason2Title">Защитный сценарий «ожидания удара»</h3>
+                <p id="reason2Desc">
+                  Если в прошлом близость сопровождалась холодом или предательством, нервная система маркирует спокойствие как ловушку и держит тело в броне.
+                </p>
+              </article>
+
+              <article class="mirror-reason-card">
+                <span class="mirror-reason-num">Вариант 03</span>
+                <h3 id="reason3Title">Подавление своих чувств и злости</h3>
+                <p id="reason3Desc">
+                  Годы сглаживания углов и страха расстроить близкого человека приводят к эмоциональному онемению — вместе с конфликтами исчезает и живая чувствительность.
+                </p>
+              </article>
+            </div>
+
+            <div class="mirror-session-bridge">
+              <div class="mirror-session-bridge-copy">
+                <span class="mirror-bridge-badge">ПОЧЕМУ ВАЖНО РАЗОБРАТЬ ЭТО В ЛИЧНОЙ РАБОТЕ</span>
+                <p id="mirrorBridgeText">
+                  Снаружи все три причины выглядят одинаково, но работа с ними строится по-разному. Первая встреча у нас всегда установочная — мы спокойно знакомимся, устанавливаем контакт и без спешки намечаем вектор работы с вашей ситуацией.
+                </p>
+              </div>
+              <a href="#booking" class="btn btn-forest mirror-bridge-cta">
+                Записаться на первую сессию →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 2 (#therapy-stages) — «ЧЕРЕЗ ЧТО МЫ ПРОЙДЁМ ВМЕСТЕ» (БЕЗ ПРИВЯЗКИ К НОМЕРАМ СЕССИЙ) -->
+      <section class="therapy-stages-section" id="therapy-stages">
+        <div class="site-container">
+          <div class="editorial-section-kicker">// 02 · МАРШРУТ И ЭТАПЫ ТЕРАПИИ</div>
+          <h2 class="section-title">
+            Через что мы пройдём <span class="serif-italic">вместе</span>
+          </h2>
+          <p class="stages-individual-note">
+            Первая встреча — установочная: она нужна для знакомства, безопасного контакта и прояснения вашего запроса. Продолжительность дальнейшей терапии и темп движения всегда строго индивидуальны.
+          </p>
+
+          <div class="stages-vertical-stack">
+            <!-- Шаг 01 -->
+            <article class="stage-card-row">
+              <div class="stage-card-copy">
+                <span class="stage-num">01 // Понимание механизма и корня реакции</span>
+                <h3 id="stage1Title">Находим корень недоверия</h3>
+                <p id="stage1Text">
+                  Мы не тратим время на пересказ бытовых ссор. Вместо этого бережно находим момент в прошлом, где психика решила, что доверять опасно.
+                </p>
+                <blockquote class="stage-inline-quote" id="stage1Quote">
+                  «Посмотрим, откуда на самом деле взялось это ожидание удара — и где ещё в жизни повторяется этот же сценарий.»
+                </blockquote>
+              </div>
+              <div class="stage-card-illus">
+                <img
+                  src="assets/img/illus-stage-1.jpg"
+                  alt="Понимание корня реакции"
+                  class="stage-spot-illus"
+                  width="560"
+                  height="560"
+                  loading="lazy"
+                >
+              </div>
+            </article>
+
+            <!-- Шаг 02 (зеркальный порядок на десктопе) -->
+            <article class="stage-card-row stage-card-row--reverse">
+              <div class="stage-card-copy">
+                <span class="stage-num">02 // Бережная работа с телом и эмоциями</span>
+                <h3 id="stage2Title">Снимаем спазм тревоги в теле</h3>
+                <p id="stage2Text">
+                  Когда срабатывает триггер, тело сжимается быстрее мыслей. Мы мягко убираем накопленный страх, чтобы пауза в переписке перестала вызывать панику.
+                </p>
+              </div>
+              <div class="stage-card-illus">
+                <img
+                  src="assets/img/illus-stage-2.jpg"
+                  alt="Бережная работа с телом и эмоциями"
+                  class="stage-spot-illus"
+                  width="560"
+                  height="560"
+                  loading="lazy"
+                >
+              </div>
+            </article>
+
+            <!-- Шаг 03 -->
+            <article class="stage-card-row">
+              <div class="stage-card-copy">
+                <span class="stage-num">03 // Устойчивые изменения в жизни</span>
+                <h3 id="stage3Title">Возвращаем спокойную близость</h3>
+                <p id="stage3Text">
+                  Вы начинаете видеть реального партнёра рядом с собой, а не тени прошлых обид. В результате вы приходите к своей цели — строить тёплые отношения, где можно спокойно доверять без проверок и страха.
+                </p>
+              </div>
+              <div class="stage-card-illus">
+                <img
+                  src="assets/img/illus-stage-3.jpg"
+                  alt="Устойчивые изменения в жизни"
+                  class="stage-spot-illus"
+                  width="560"
+                  height="560"
+                  loading="lazy"
+                >
+              </div>
+            </article>
+          </div>
+
+          <!-- КОНКРЕТНЫЕ РЕЗУЛЬТАТЫ В ПОВСЕДНЕВНОЙ ЖИЗНИ -->
+          <div class="research-outcomes-box" id="researchOutcomesBox">
+            <div class="research-outcomes-head">
+              <div>
+                <div class="research-outcomes-kicker" id="outcomesSegmentKicker">
+                  ОРИЕНТИРЫ РЕЗУЛЬТАТА · КАК ЭТО ПРОЯВИТСЯ В ЖИЗНИ
+                </div>
+                <h3 class="research-outcomes-title">
+                  Что конкретно изменится в вашей повседневной жизни
+                </h3>
+              </div>
+            </div>
+            <div class="research-outcomes-grid">
+              <div class="research-outcome-item">
+                <span class="research-outcome-num">01</span>
+                <h4 id="outcome1Title">Контроль над телом и состоянием</h4>
+                <p id="outcome1Desc">Способность уверенно проводить сложные встречи и переговоры без страха вегетативного срыва и потери опоры.</p>
+              </div>
+              <div class="research-outcome-item">
+                <span class="research-outcome-num">02</span>
+                <h4 id="outcome2Title">Разморозка эмоций и желаний</h4>
+                <p id="outcome2Desc">Возвращение живого отклика от достижений и денег, появление спонтанных желаний за пределами работы.</p>
+              </div>
+              <div class="research-outcome-item">
+                <span class="research-outcome-num">03</span>
+                <h4 id="outcome3Title">Отдых и границы без вины</h4>
+                <p id="outcome3Desc">Умение провести выходной без мониторинга рабочих чатов и спокойно говорить «нет» без разрушающего чувства вины.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 3 (#about-vera) — РАЗДЕЛЁН НА 2 ПРОСТЫХ ОДНОФОКУСНЫХ ЭКРАНА БЕЗ ПЕРЕГРУЗА -->
+      <section class="about-vera-section" id="about-vera">
+        <div class="site-container">
+          <div class="editorial-section-kicker">// 03 · КТО БУДЕТ РЯДОМ С ВАМИ</div>
+
+          <!-- Экран 3.1: Только портрет Веры и её короткая личная история (0 кнопок, 0 плашек) -->
+          <div class="vera-story-split">
+            <div class="vera-story-photo">
+              <img
+                src="assets/img/vera-split-portrait.jpg"
+                alt="Вера Шоу — психолог, магистр психологии НИУ ВШЭ и МГУ"
+                width="1080"
+                height="1152"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="vera-story-copy">
+              <div class="vera-about-kicker">ВЕРА ШОУ · ЛИЧНЫЙ И ПРОФЕССИОНАЛЬНЫЙ ПУТЬ</div>
+              <h2 class="vera-about-heading">Почему я понимаю, зачем вы здесь</h2>
+              <div class="vera-about-bio">
+                <p>
+                  Я знаю состояние, когда тело — просто «такси для головы», которое чувствуешь только через боль или износ. Позади тяжёлое детство, 20 лет работы в крупном бизнесе рядом с первыми лицами (ВТБ-Лизинг, Ямал СПГ, Штокман), переподготовка в МГУ и очная магистратура НИУ ВШЭ.
+                </p>
+                <p>
+                  <strong>Я сама прошла эту трансформацию через 8 лет личной терапии — и я понимаю, зачем вы здесь.</strong> Меня невозможно шокировать вашей историей, стыдом или страхом потерять контроль.
+                </p>
+              </div>
+              <blockquote class="vera-story-quote">
+                «Я бережно покажу свет в конце туннеля — и это точно не будет свет идущего навстречу поезда».
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Экран 3.2: Отдельный чистый блок «Образование и методы» (без табов-переключателей, 1 кнопка) -->
+          <div class="vera-credentials-clean">
+            <div class="vera-stats-row">
+              <div class="vera-stat-item">
+                <span class="vera-stat-val">20 лет</span>
+                <span class="vera-stat-label">опыта в крупном бизнесе и психологии</span>
+              </div>
+              <div class="vera-stat-item">
+                <span class="vera-stat-val">8 лет</span>
+                <span class="vera-stat-label">собственной личной терапии и супервизии</span>
+              </div>
+              <div class="vera-stat-item">
+                <span class="vera-stat-val">МГУ и ВШЭ</span>
+                <span class="vera-stat-label">академическое образование и диссертация по кПТСР</span>
+              </div>
+              <div class="vera-stat-item">
+                <span class="vera-stat-val">22 диплома</span>
+                <span class="vera-stat-label">профильной переподготовки и сертификации</span>
+              </div>
+            </div>
+
+            <div class="swiss-clean-grid">
+              <div class="swiss-clean-col">
+                <span class="swiss-clean-num">// 01</span>
+                <strong>Фундаментальное образование</strong>
+                <span>Факультет психологии МГУ им. Ломоносова и очная магистратура НИУ ВШЭ.</span>
+                <a href="https://disk.yandex.ru/i/t_R7Ep5gbyI77g" target="_blank" rel="noopener" class="swiss-inline-link">
+                  Магистерская диссертация ВШЭ по кПТСР ↗
+                </a>
+              </div>
+
+              <div class="swiss-clean-col">
+                <span class="swiss-clean-num">// 02</span>
+                <strong>Методы без «воды» и эзотерики</strong>
+                <span>Транзактный анализ (ЕАТА / СОТА), ДПДГ (EMDR), протокол FLASH и Somatic Experiencing.</span>
+              </div>
+
+              <div class="swiss-clean-col">
+                <span class="swiss-clean-num">// 03</span>
+                <strong>Супервизия и безопасность</strong>
+                <span>Практика под постоянной супервизией д.м.н., врача-психиатра Т.В. Агибаловой. Психиатры передают мне сложных клиентов «из рук в руки».</span>
+              </div>
+            </div>
+
+            <div class="swiss-clean-footer">
+              <button type="button" class="inline-diplomas-btn" data-open-diplomas>
+                Смотреть оригиналы дипломов и сертификатов (22) →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- БЛОК ПЕРЕД ЗАПИСЬЮ (#instagram-bridge): ОБОСНОВАНИЕ ВЫБОРА СПЕЦИАЛИСТА И ПЕРЕХОД НА СТРАНИЦУ ВЕРЫ ШОУ -->
+      <section class="pre-booking-instagram-section" id="instagram-bridge">
+        <div class="site-container">
+          <div class="ilyakhov-warm-bridge">
+            <div class="warm-bridge-copy">
+              <span class="warm-bridge-tag">// ДЛЯ ТЕХ, КОМУ ВАЖНО УВИДЕТЬ И УСЛЫШАТЬ ПСИХОЛОГА ВЖИВУЮ ДО ЗАПИСИ</span>
+              <h3>В терапии половина результата зависит от личного контакта. Посмотрите, какая я в жизни — без глянца и «образа эксперта»</h3>
+              <p>
+                Дипломы подтверждают квалификацию, но доверие возникает, когда вы слышите живой голос, интонацию и чувство юмора человека. Я практикующий психолог, а не профессиональный блогер: на моей странице в Instagram нет вылизанных сценариев и поучительных лекций — только живая речь, прямые мысли про контроль в кризис, отношения, деньги и честный рассказ о себе.
+              </p>
+            </div>
+
+            <div class="warm-bridge-reasons-grid">
+              <div class="warm-bridge-reason-item">
+                <strong>Понять за 2 минуты, «ваш» ли я человек</strong>
+                <span>Посмотрите закреплённое видео-знакомство и пару коротких роликов, чтобы почувствовать мой темп речи, прямоту и подачу до того, как идти в сессию.</span>
+              </div>
+              <div class="warm-bridge-reason-item">
+                <strong>Услышать, как я говорю на острые темы</strong>
+                <span>В профиле я называю вещи своими именами — без «сюсюканья» и эзотерики говорю про потерю контроля в кризис, доверие в паре, работу на износ и отдых.</span>
+              </div>
+              <div class="warm-bridge-reason-item">
+                <strong>Заглянуть в «Хайлайтс» и не потерять контакт</strong>
+                <span>В закреплённых сторис собраны разделы «Обо мне», «Образование», «Психика и $» и отзывы коллег. Подпишитесь сейчас, если хотите присмотреться и прийти позже.</span>
+              </div>
+            </div>
+
+            <div class="warm-bridge-actions">
+              <a href="https://www.instagram.com/psy_vera_shaw/" target="_blank" rel="noopener" class="btn btn-forest warm-bridge-btn">
+                Перейти на страницу @psy_vera_shaw ↗
+              </a>
+              <a href="#booking" class="warm-bridge-ready-link">
+                Уже готовы начать работу? <strong>Выберите свободное окно в расписании ниже ↓</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК 4 (#booking): ГОТОВЫЙ ВИДЖЕТ БРОНИРОВАНИЯ В СТИЛЕ «ЯСНО» / ПЛАНЁРКА / CAL.COM -->
+      <section class="booking-section" id="booking">
+        <div class="site-container">
+          <div class="booking-card">
+            <div class="editorial-section-kicker" style="margin-bottom: 12px;">// 04 · ВЫБОР СВОБОДНОГО ОКНА В РАСПИСАНИИ</div>
+
+            <!-- Контейнер для прямого встраивания готового сервиса (Planerka.app или Cal.com) -->
+            <div id="externalBookingEmbedContainer" hidden></div>
+
+            <!-- Двухшаговый виджет расписания по образцу «Ясно» / Cal.com (Шаг 1 = только выбор слота, без полей ввода) -->
+            <div id="yasnoScheduleWidget">
+              <div class="yasno-widget-header">
+                <div class="yasno-expert-mini">
+                  <img
+                    src="assets/img/vera-portrait-warm.jpg"
+                    alt="Вера Шоу"
+                    class="yasno-expert-avatar"
+                    width="104"
+                    height="104"
+                  >
+                  <div class="yasno-expert-info">
+                    <h2>Сессия с Верой Шоу</h2>
+                    <div class="yasno-expert-meta">
+                      <span>60 минут</span>
+                      <span>·</span>
+                      <span id="yasnoFormatMetaText">Видеосвязь Zoom</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="yasno-price-pill">10 000 ₽</div>
+              </div>
+
+              <!-- ШАГ 1 ВИДЖЕТА: ПОЛНОЦЕННЫЙ ВИДЖЕТ БРОНИРОВАНИЯ В СТИЛЕ CAL.COM (ФОРМАТ + МЕСЯЧНЫЙ КАЛЕНДАРЬ + ВРЕМЯ) -->
+              <div id="yasnoStep1Schedule">
+                <div class="cal-booking-layout">
+                  <!-- КОЛОНКА 1: ВЫБОР ФОРМАТА ВСТРЕЧИ (ОНЛАЙН ИЛИ ОЧНО В МОСКВЕ) -->
+                  <div class="cal-col-format">
+                    <div class="cal-step-kicker">1. Формат встречи</div>
+                    <div class="cal-format-cards" role="radiogroup" aria-label="Выберите формат встречи">
+                      <button
+                        type="button"
+                        class="cal-format-card is-active"
+                        data-format-choice="online"
+                        role="radio"
+                        aria-checked="true"
+                      >
+                        <span class="cal-radio-circle" aria-hidden="true"></span>
+                        <span class="cal-format-card-body">
+                          <span class="cal-format-card-title">Онлайн · Видеосвязь Zoom</span>
+                          <span class="cal-format-card-desc">Из любой точки мира. Ссылка сформируется автоматически.</span>
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        class="cal-format-card"
+                        data-format-choice="moscow"
+                        role="radio"
+                        aria-checked="false"
+                      >
+                        <span class="cal-radio-circle" aria-hidden="true"></span>
+                        <span class="cal-format-card-body">
+                          <span class="cal-format-card-title">Очно в Москве</span>
+                          <span class="cal-format-card-desc">Личная встреча в тихом кабинете в центре Москвы.</span>
+                        </span>
+                      </button>
+                    </div>
+
+                    <div class="cal-selection-summary" aria-live="polite">
+                      <div class="cal-summary-row">
+                        <span>Формат:</span>
+                        <strong id="calSummaryFormat">Онлайн (Zoom)</strong>
+                      </div>
+                      <div class="cal-summary-row">
+                        <span>Дата:</span>
+                        <strong id="calSummaryDate">Пн, 26 окт</strong>
+                      </div>
+                      <div class="cal-summary-row">
+                        <span>Время (МСК):</span>
+                        <strong id="calSummaryTime">14:00 – 15:00</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- КОЛОНКА 2: НАСТОЯЩИЙ МЕСЯЧНЫЙ КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ...) -->
+                  <div class="cal-col-month">
+                    <div class="cal-step-kicker">2. Выберите день в календаре</div>
+                    <div class="cal-month-bar">
+                      <span class="cal-month-title" id="calMonthTitle">Октябрь 2026</span>
+                      <div class="cal-month-nav-btns">
+                        <button type="button" class="cal-month-arrow" id="calPrevMonthBtn" aria-label="Предыдущий месяц">‹</button>
+                        <button type="button" class="cal-month-arrow" id="calNextMonthBtn" aria-label="Следующий месяц">›</button>
+                      </div>
+                    </div>
+
+                    <div class="cal-weekdays-row" aria-hidden="true">
+                      <span>Пн</span>
+                      <span>Вт</span>
+                      <span>Ср</span>
+                      <span>Чт</span>
+                      <span>Пт</span>
+                      <span>Сб</span>
+                      <span>Вс</span>
+                    </div>
+
+                    <div class="cal-month-grid" id="bookingDateSlots" role="grid" aria-label="Календарь доступных дней">
+                      <!-- Сетка чисел месяца генерируется в app.js -->
+                    </div>
+                  </div>
+
+                  <!-- КОЛОНКА 3: СВОБОДНЫЕ ОКНА ВРЕМЕНИ И КНОПКА ЗАПИСИ -->
+                  <div class="cal-col-times">
+                    <div class="cal-step-kicker">3. Доступное время</div>
+                    <div class="cal-selected-date-head">
+                      <span class="cal-selected-date-title" id="calSelectedDateHeading">Пн, 26 октября</span>
+                      <span class="cal-tz-badge">МСК (GMT+3)</span>
+                    </div>
+
+                    <div class="time-slots-grid" id="bookingTimeSlots" role="radiogroup" aria-label="Доступное время">
+                      <button type="button" class="time-slot-btn" data-time-slot="11:00">11:00</button>
+                      <button type="button" class="time-slot-btn" data-time-slot="13:00">13:00</button>
+                      <button type="button" class="time-slot-btn is-selected" data-time-slot="14:00">14:00</button>
+                      <button type="button" class="time-slot-btn" data-time-slot="16:00">16:00</button>
+                      <button type="button" class="time-slot-btn" data-time-slot="17:00">17:00</button>
+                      <button type="button" class="time-slot-btn" data-time-slot="19:00">19:00</button>
+                    </div>
+
+                    <button type="button" id="yasnoProceedToConfirmBtn" class="btn btn-forest primary-submit-btn cal-confirm-cta">
+                      Продолжить →
+                    </button>
+                  </div>
+                </div>
+
+                <div class="yasno-widget-footnote" id="yasnoWidgetFootnote">
+                  После выбора времени откроется подтверждение и автоматически сформируется ссылка на Zoom
+                </div>
+              </div>
+
+              <!-- ШАГ 2 ВИДЖЕТА: ПОДТВЕРЖДЕНИЕ ВЫБРАННОГО СЛОТА (ОТКРЫВАЕТСЯ ТОЛЬКО ПОСЛЕ ВЫБОРА ВРЕМЕНИ) -->
+              <form id="bookingPaymentForm" novalidate hidden>
+                <input type="hidden" name="sessionFormat" id="sessionFormatHiddenInput" value="online">
+
+                <div class="yasno-Chosen-bar">
+                  <span class="yasno-chosen-text" id="yasnoChosenSlotSummary">Выбранный слот: 14:00 (МСК)</span>
+                  <button type="button" class="yasno-back-link" id="yasnoBackToSlotsBtn">← Изменить время</button>
+                </div>
+
+                <div class="single-input-wrap">
+                  <input
+                    type="text"
+                    name="clientContact"
+                    id="bookingContactInput"
+                    class="input-field"
+                    placeholder="Куда прислать ссылку на Zoom: @Telegram, телефон или Email *"
+                    required
+                  >
+                </div>
+
+                <button type="submit" data-submit-mode="pay" id="primaryBookingBtn" class="btn btn-forest primary-submit-btn">
+                  Подтвердить слот и получить ссылку Zoom →
+                </button>
+
+                <div class="legal-checks" style="margin-top: 12px;">
+                  <label class="check-row">
+                    <input type="checkbox" name="consentPersonalData" required checked>
+                    <span>
+                      Даю <button type="button" data-legal="consent">Согласие на обработку ПД</button> и принимаю <button type="button" data-legal="policy">Политику конфиденциальности</button>.
+                    </span>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="site-container">
+          <div class="footer-inner">
+            <div>
+              <strong style="color: var(--ink);">ИП Шоу Вера Александровна</strong> · ИНН 621102823501 · ОГРНИП 324508100137880<br>
+              <a href="mailto:Smirnova.vera@gmail.com">Smirnova.vera@gmail.com</a> · <a href="tel:+79856463870">+7 985 646-38-70</a> · <a href="https://www.instagram.com/psy_vera_shaw/" target="_blank" rel="noopener">instagram.com/psy_vera_shaw</a>
+            </div>
+
+            <div class="footer-links">
+              <a href="index.html">Главная</a>
+              <a href="ptsd.html">Работа с травмой и ПТСР</a>
+              <button type="button" data-open-diplomas>Все дипломы (22)</button>
+              <button type="button" data-legal="policy">Политика конфиденциальности</button>
+              <button type="button" data-legal="consent">Согласие на обработку ПД</button>
+            </div>
+          </div>
+          <div class="footer-signature-mark" aria-hidden="true">ВЕРА ШОУ</div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- МОДАЛЬНОЕ ОКНО КАТАЛОГА ДИПЛОМОВ И СЕРТИФИКАТОВ (22) -->
+  <dialog class="modal modal-wide" id="diplomasModal" aria-labelledby="diplomasModalTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="diplomasModalTitle" style="font-size: 20px;">Оригиналы дипломов и сертификатов (22)</h3>
+        <div style="font-size: 13px; color: var(--muted);">Нажмите на любую карточку, чтобы открыть сканы документов</div>
+      </div>
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="diploma-filters" role="tablist" aria-label="Фильтр документов">
+        <button type="button" class="filter-btn is-active" data-filter="all">Все документы (22)</button>
+        <button type="button" class="filter-btn" data-filter="academic">МГУ и магистратура НИУ ВШЭ (8)</button>
+        <button type="button" class="filter-btn" data-filter="ta">Транзактный анализ ЕАТА / СОТА (4)</button>
+        <button type="button" class="filter-btn" data-filter="trauma">Работа с травмой: ДПДГ, FLASH, SE (6)</button>
+        <button type="button" class="filter-btn" data-filter="special">Зависимости, Деньги, Стыд, МИ (4)</button>
+      </div>
+
+      <div class="diplomas-grid">
+        <article class="diploma-card" data-category="academic" data-diploma-group="msu">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/msu_diploma.jpg" alt="Диплом МГУ им. М.В. Ломоносова" loading="lazy">
+            <span class="diploma-pill-count">4 страницы</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">МГУ имени М.В. Ломоносова · 702 часа</div>
+            <h3>Психологическое консультирование и психодиагностика</h3>
+            <p class="diploma-note">Диплом ПП МГУ № 013558 и приложение с 21 дисциплиной на «отлично».</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="academic" data-diploma-group="hse">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/hse_master_1.jpg" alt="Диплом магистра НИУ ВШЭ" loading="lazy">
+            <span class="diploma-pill-count">4 страницы</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">НИУ ВШЭ · Очная магистратура</div>
+            <h3>Магистр психологии — Персонология и ТА</h3>
+            <p class="diploma-note">Диплом магистра (1106 ак. ч.). Диссертация по КПТСР на «отлично».</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="ta" data-diploma-group="ta">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/sita_eata_year2.jpg" alt="Сертификаты ЕАТА и СОТА" loading="lazy">
+            <span class="diploma-pill-count">4 сертификата</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">ЕАТА / СОТА</div>
+            <h3>Транзактный анализ в психотерапии</h3>
+            <p class="diploma-note">EATA TA 101 и 4-летняя Европейская программа (супервизор д.м.н. Т.В. Агибалова).</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="trauma" data-diploma-group="trauma">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/solwi_emdr_50h.jpg" alt="Сертификаты ДПДГ и Somatic Experiencing" loading="lazy">
+            <span class="diploma-pill-count">6 сертификатов</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">SOLWI и Serebrenick-Hai · 245 часов</div>
+            <h3>ДПДГ (EMDR), Метод FLASH и Somatic Experiencing</h3>
+            <p class="diploma-note">Бережная переработка травмы и 160 часов соматической терапии.</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="special" data-diploma-group="addictions">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/mir_ta_addictions_40h.jpg" alt="Диплом МИР-ТА" loading="lazy">
+            <span class="diploma-pill-count">1 диплом</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">МИР-ТА · д.м.н. Д.И. Шустов, Т.В. Агибалова</div>
+            <h3>Психотерапия зависимостей и созависимости</h3>
+            <p class="diploma-note">Диплом № Д-НК-00464: работа с зависимостями и созависимыми сценариями.</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="special" data-diploma-group="mi">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/motivational_interviewing_36h.jpg" alt="Сертификат Мотивационное интервью" loading="lazy">
+            <span class="diploma-pill-count">1 сертификат</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">Доказательная психотерапия · 36 ак. ч.</div>
+            <h3>Основы мотивационного интервью</h3>
+            <p class="diploma-note">Преодоление внутреннего саботажа и сомнений при принятии решений.</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="special" data-diploma-group="money">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/money_requests_33h.jpg" alt="Сертификат Психотерапия денежных запросов" loading="lazy">
+            <span class="diploma-pill-count">1 сертификат</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">ЕАТА / СОТА · 33 часа</div>
+            <h3>Психотерапия денежных запросов</h3>
+            <p class="diploma-note">Работа с финансовой тревогой, импульсивными тратами и самооценкой.</p>
+          </div>
+        </article>
+
+        <article class="diploma-card" data-category="special" data-diploma-group="shame">
+          <div class="diploma-thumb">
+            <img src="assets/diplomas/shame_therapy_18h.jpg" alt="Сертификат Психотерапия стыда" loading="lazy">
+            <span class="diploma-pill-count">1 сертификат</span>
+          </div>
+          <div class="diploma-body">
+            <div class="diploma-inst">ЕАТА / СОТА · 18 часов</div>
+            <h3>Психотерапия токсического стыда</h3>
+            <p class="diploma-note">Работа с перфекционизмом, страхом осуждения и уязвимостью.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- МОДАЛЬНОЕ ОКНО ПРОСМОТРА СКАНОВ ДИПЛОМОВ -->
+  <dialog class="modal" id="diplomaModal" aria-labelledby="lightboxTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="lightboxTitle" style="font-size: 17px;">Документ об образовании</h3>
+        <div id="lightboxCounter" style="font-size: 12.5px; color: var(--muted);">Документ 1 из 4</div>
+      </div>
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="lightbox-stage">
+        <img id="lightboxImg" src="assets/diplomas/msu_diploma.jpg" alt="Скан диплома">
+      </div>
+      <p id="lightboxCaption" style="font-size: 14px; color: var(--ink); margin-bottom: 14px;"></p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-outline" id="lightboxPrev" style="min-height: 38px; padding: 8px 16px; font-size: 13.5px;">← Предыдущий</button>
+          <button type="button" class="btn btn-outline" id="lightboxNext" style="min-height: 38px; padding: 8px 16px; font-size: 13.5px;">Следующий →</button>
+        </div>
+        <a id="lightboxFullLink" href="assets/diplomas/msu_diploma.jpg" target="_blank" rel="noopener" class="inline-arrow-link" style="font-size: 13.5px;">
+          Открыть в полном размере ↗
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="legalModal" aria-labelledby="legalModalTitle">
+    <div class="modal-header">
+      <h3 id="legalModalTitle" style="font-size: 18px;">Документ</h3>
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body" id="legalModalBody"></div>
+  </dialog>
+
+  <dialog class="modal" id="paymentModal" aria-label="Запись на сессию">
+    <div class="modal-header">
+      <h3 style="font-size: 18px;">Ваша запись</h3>
+      <button type="button" class="modal-close" data-close-modal aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body" id="paymentSummaryContent"></div>
+  </dialog>
+
+  <script src="app.js?v=28"></script>
+</body>
+</html>
