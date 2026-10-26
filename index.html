@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вера Шоу — Частная психологическая практика</title>
   <meta name="description" content="Бережная работа с психологом Верой Шоу: отметьте состояние, в котором вы узнаёте себя, и получите персональный разбор вашей ситуации.">
-  <meta name="theme-color" content="#F7F8F5">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F7F8F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111614" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/onest-cyrillic-v11.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-cyrillic-600-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231B3B2B'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-style='italic' font-weight='600' font-size='26'%3EВШ%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=29">
+  <link rel="stylesheet" href="styles.css?v=30">
 </head>
 <body>
 
@@ -27,6 +29,17 @@
           <a href="#therapy-stages">Путь работы</a>
           <a href="#about-vera">Обо мне</a>
         </nav>
+
+        <button
+          type="button"
+          class="theme-toggle-btn"
+          id="themeToggleBtn"
+          aria-label="Переключить тему оформления"
+          title="Переключить светлую / тёмную тему"
+        >
+          <span class="theme-icon-dark" aria-hidden="true">☾</span>
+          <span class="theme-icon-light" aria-hidden="true">☀</span>
+        </button>
 
         <button type="button" class="btn-header-quiet" data-skip-to-booking>
           Сразу к записи
@@ -483,14 +496,23 @@
       <!-- ТОНКАЯ СТРОКА ВЫБРАННОГО ЗАПРОСА -->
       <div class="personal-result-bar">
         <div class="site-container personal-result-bar-inner">
-          <div class="personal-result-summary">
-            <span id="resultBarStateText">«Я не доверяю мужу и постоянно жду подвоха»</span>
-            <span class="result-arrow-sep">→</span>
-            <span id="resultBarExpectText">«Хочу счастливые отношения, где можно доверять»</span>
+          <div class="result-bar-top-row">
+            <span class="result-bar-kicker">Персональный разбор</span>
+            <button type="button" class="result-reset-btn" id="resetQuizBtn">
+              ← Изменить ответы
+            </button>
           </div>
-          <button type="button" class="result-reset-btn" id="resetQuizBtn">
-            Изменить ответы ↑
-          </button>
+          <div class="personal-result-summary">
+            <div class="result-pill-item">
+              <span class="result-pill-label">Ситуация:</span>
+              <span class="result-pill-text" id="resultBarStateText">«Я не доверяю мужу и постоянно жду подвоха»</span>
+            </div>
+            <span class="result-arrow-sep" aria-hidden="true">→</span>
+            <div class="result-pill-item">
+              <span class="result-pill-label">Цель:</span>
+              <span class="result-pill-text" id="resultBarExpectText">«Хочу счастливые отношения, где можно доверять»</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -509,13 +531,15 @@
             </div>
 
             <div class="mirror-visual-col">
-              <img
-                src="assets/img/illus-mirror.jpg"
-                alt="Что с вами происходит на самом деле"
-                class="editorial-spot-illus"
-                width="680"
-                height="680"
-              >
+              <div class="illus-editorial-frame">
+                <img
+                  src="assets/img/illus-mirror-warm.jpg"
+                  alt="Что с вами происходит на самом деле"
+                  class="editorial-spot-illus"
+                  width="680"
+                  height="680"
+                >
+              </div>
             </div>
           </div>
 
@@ -591,14 +615,16 @@
                 </blockquote>
               </div>
               <div class="stage-card-illus">
-                <img
-                  src="assets/img/illus-stage-1.jpg"
-                  alt="Понимание корня реакции"
-                  class="stage-spot-illus"
-                  width="560"
-                  height="560"
-                  loading="lazy"
-                >
+                <div class="illus-editorial-frame illus-editorial-frame--stage">
+                  <img
+                    src="assets/img/illus-stage-1-warm.jpg"
+                    alt="Понимание корня реакции"
+                    class="stage-spot-illus"
+                    width="560"
+                    height="560"
+                    loading="lazy"
+                  >
+                </div>
               </div>
             </article>
 
@@ -612,14 +638,16 @@
                 </p>
               </div>
               <div class="stage-card-illus">
-                <img
-                  src="assets/img/illus-stage-2.jpg"
-                  alt="Бережная работа с телом и эмоциями"
-                  class="stage-spot-illus"
-                  width="560"
-                  height="560"
-                  loading="lazy"
-                >
+                <div class="illus-editorial-frame illus-editorial-frame--stage">
+                  <img
+                    src="assets/img/illus-stage-2-warm.jpg"
+                    alt="Бережная работа с телом и эмоциями"
+                    class="stage-spot-illus"
+                    width="560"
+                    height="560"
+                    loading="lazy"
+                  >
+                </div>
               </div>
             </article>
 
@@ -633,14 +661,16 @@
                 </p>
               </div>
               <div class="stage-card-illus">
-                <img
-                  src="assets/img/illus-stage-3.jpg"
-                  alt="Устойчивые изменения в жизни"
-                  class="stage-spot-illus"
-                  width="560"
-                  height="560"
-                  loading="lazy"
-                >
+                <div class="illus-editorial-frame illus-editorial-frame--stage">
+                  <img
+                    src="assets/img/illus-stage-3-warm.jpg"
+                    alt="Устойчивые изменения в жизни"
+                    class="stage-spot-illus"
+                    width="560"
+                    height="560"
+                    loading="lazy"
+                  >
+                </div>
               </div>
             </article>
           </div>
@@ -1162,6 +1192,6 @@
     <div class="modal-body" id="paymentSummaryContent"></div>
   </dialog>
 
-  <script src="app.js?v=29"></script>
+  <script src="app.js?v=30"></script>
 </body>
 </html>

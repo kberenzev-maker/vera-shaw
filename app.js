@@ -709,7 +709,71 @@ const LEGAL_DOCUMENTS = {
   }
 };
 
+(function initEarlyTheme() {
+  try {
+    const saved = localStorage.getItem("vera_theme");
+    if (saved === "dark" || saved === "light") {
+      document.documentElement.setAttribute("data-theme", saved);
+    } else if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  } catch (_) {}
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+  };
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      const currentAttr = document.documentElement.getAttribute("data-theme");
+      const isCurrentlyDark =
+        currentAttr === "dark" ||
+        (!currentAttr &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const nextTheme = isCurrentlyDark ? "light" : "dark";
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem("vera_theme", nextTheme);
+      } catch (_) {}
+    });
+  }
+
+  if (window.matchMedia) {
+    const darkMq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onMqChange = (e) => {
+      try {
+        if (!localStorage.getItem("vera_theme")) {
+          applyTheme(e.matches ? "dark" : "light");
+        }
+      } catch (_) {}
+    };
+    if (darkMq.addEventListener) {
+      darkMq.addEventListener("change", onMqChange);
+    }
+  }
+
+  // Защита от принудительной ночной темы мобильных браузеров (Яндекс Браузер / Android Force Dark)
+  setTimeout(() => {
+    try {
+      if (localStorage.getItem("vera_theme")) return;
+      const bg = window.getComputedStyle(document.body).backgroundColor;
+      const m = bg && bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      if (m) {
+        const lum = Number(m[1]) * 0.299 + Number(m[2]) * 0.587 + Number(m[3]) * 0.114;
+        if (lum < 90) {
+          applyTheme("dark");
+        }
+      }
+    } catch (_) {}
+  }, 120);
+
   const quizSection = document.getElementById("quizSection");
   const quizStep0 = document.getElementById("quizStep0");
   const quizStep1 = document.getElementById("quizStep1");
