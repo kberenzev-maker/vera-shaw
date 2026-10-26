@@ -892,100 +892,341 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderPersonalizedRoute() {
     const route = PERSONALIZED_ROUTES[chosenStateKey] || PERSONALIZED_ROUTES.empty || PERSONALIZED_ROUTES.trust;
-    if (mirrorTitle) mirrorTitle.innerHTML = route.titleHtml;
-    if (mirrorProblem) mirrorProblem.textContent = route.lead;
 
-    if (stage1Title) stage1Title.textContent = route.stage1Title;
-    if (stage1Text) stage1Text.textContent = route.stage1Text;
-    if (stage1Quote) stage1Quote.textContent = route.stage1Quote;
+    const VISUAL_SCENES = {
+      empty: {
+        poleOut: "Доход, масштаб и статус",
+        poleIn: "Пустота и жизнь на автомате",
+        titleHtml: 'Почему при доходе внутри пусто, а тело — <span class="serif-italic">«такси для головы»</span>',
+        lead: "Психика тратит все силы на удержание контроля и блокирует живой отклик.",
+        reasons: [
+          { title: "Гонка без присвоения побед", desc: "Любой успех считывается как «норма» перед следующей целью." },
+          { title: "Запрет на «хочу» и спонтанность", desc: "Когда всё подчинено слову «надо», замораживается вкус к жизни." },
+          { title: "Отключённый контакт с телом", desc: "Привычка терпеть перегрузки выключает способность чувствовать радость." }
+        ],
+        s1Tag: "Снимаем запрет на радость",
+        s1Title: "Выходим из вечной гонки",
+        s1Text: "Находим, где слово «надо» вытеснило живые желания.",
+        s2Tag: "Возвращаем контакт с телом",
+        s2Title: "Разжимаем мышечный панцирь",
+        s2Text: "Возвращаем чувствительность телу без работы на износ.",
+        s3Tag: "Масштаб + живой вкус к жизни",
+        s3Title: "Радость от денег без вины",
+        s3Text: "Сохраняете доход и возвращаете удовольствие от жизни.",
+        outcomes: [
+          { title: "Живой отклик от денег и целей", desc: "Искренняя радость от побед, покупок и закрытых сделок." },
+          { title: "Отдых в выходные без вины", desc: "Спокойное восстановление без проверки рабочих чатов." },
+          { title: "Устойчивая энергия без износа", desc: "Сохранение масштаба без выгорания и апатии." }
+        ]
+      },
+      control: {
+        poleOut: "Всё держится на мне",
+        poleIn: "Вечная тревога и износ",
+        titleHtml: 'Почему вы живёте в режиме <span class="serif-italic">«туши пожар»</span> без пауз',
+        lead: "Психика считает, что ослабить хватку — значит допустить катастрофу.",
+        reasons: [
+          { title: "Установка «никому нельзя верить»", desc: "Кажется, что без вашего вмешательства люди и процессы подведут." },
+          { title: "Опора через незаменимость", desc: "Роль «спасателя» даёт временную иллюзию безопасности и контроля." },
+          { title: "Защита от тишины и пустоты", desc: "Операционная гонка заглушает фоновую тревогу и усталость." }
+        ],
+        s1Tag: "Разбираем корень контроля",
+        s1Title: "Снимаем режим выживания",
+        s1Text: "Убираем страх, что без вашего контроля всё рухнет.",
+        s2Tag: "Выключаем боевую готовность",
+        s2Title: "Убираем зажим в теле",
+        s2Text: "Снимаем тревогу, чтобы пауза в делах не пугала.",
+        s3Tag: "Спокойное управление и опора",
+        s3Title: "Делегирование без переделок",
+        s3Text: "Выходите из режима пожарного и опираетесь на команду.",
+        outcomes: [
+          { title: "Свобода от режима «туши пожар»", desc: "Спокойное делегирование задач без тревоги и микроменеджмента." },
+          { title: "Включённость дома и в делах", desc: "Возвращение живых эмоций вместо жизни на автопилоте." },
+          { title: "Глубокий сон и восстановление", desc: "Нервная система переключается из мобилизации в отдых." }
+        ]
+      },
+      panic: {
+        poleOut: "Нельзя показать слабость",
+        poleIn: "Спазмы, тахикардия и паника",
+        titleHtml: 'Почему тело сбоит в моменты, когда <span class="serif-italic">нельзя потерять лицо</span>',
+        lead: "Когда усталость и злость годами блокируются, тело сбрасывает их через приступ.",
+        reasons: [
+          { title: "Запрет на слабость и усталость", desc: "Подавленное напряжение прорывается через вегетативный сбой." },
+          { title: "Ловушка двойного контроля", desc: "Страх «лишь бы никто не заметил» мгновенно разгоняет адреналин." },
+          { title: "Истощение нервной системы", desc: "Острая реакция тела — попытка организма принудительно остановить вас." }
+        ],
+        s1Tag: "Берём симптом под контроль",
+        s1Title: "Снимаем страх на встречах",
+        s1Text: "Даём быстрый алгоритм снятия спазма прямо на месте.",
+        s2Tag: "Разряжаем накопленный стресс",
+        s2Title: "Убираем причину сбоя",
+        s2Text: "Освобождаем тело от зажатых эмоций, вызывавших панику.",
+        s3Tag: "Полное спокойствие тела",
+        s3Title: "Уверенность на переговорах",
+        s3Text: "Исчезает страх нового приступа в поездках и на встречах.",
+        outcomes: [
+          { title: "Спокойные переговоры и эфиры", desc: "Уверенность на сложных встречах без страха телесного срыва." },
+          { title: "Свобода поездок и перелётов", desc: "Передвижение без фоновой тревоги ожидания паники." },
+          { title: "Своевременный контакт с телом", desc: "Умение вовремя снимать напряжение до перегрузки." }
+        ]
+      },
+      trust: {
+        poleOut: "Картинка «нормальной семьи»",
+        poleIn: "Холод, проверки и одиночество",
+        titleHtml: 'Почему в паре трудно доверять, а внутри — <span class="serif-italic">одиночество вдвоём</span>',
+        lead: "Старая защита заставляет ждать подвоха и прятать свои настоящие чувства.",
+        reasons: [
+          { title: "Жизнь за удобным фасадом", desc: "Из страха конфликта вы прячете желания и чувствуете себя невидимой." },
+          { title: "Сценарий «ожидания удара»", desc: "Прошлый опыт холода или обмана держит психику в круговой обороне." },
+          { title: "Роль удобной функции", desc: "Вашу заботу принимают как должное без живого тепла в ответ." }
+        ],
+        s1Tag: "Выходим из чужого спектакля",
+        s1Title: "Находим корень холода",
+        s1Text: "Отделяем старые страхи от нарушения границ в паре.",
+        s2Tag: "Убираем страх конфликта",
+        s2Title: "Право на свои чувства",
+        s2Text: "Снимаем зажим, чтобы открыто говорить о своих желаниях.",
+        s3Tag: "Честная, тёплая близость",
+        s3Title: "Отношения без проверок",
+        s3Text: "Строите живой диалог без страха отвержения и потерь.",
+        outcomes: [
+          { title: "Ясность в своих чувствах", desc: "Свобода от навязанной вины и сомнений в себе." },
+          { title: "Прямой диалог без страха", desc: "Умение спокойно обсуждать сложные темы в паре." },
+          { title: "Взаимность вместо прислуги", desc: "Переход от удобной роли к живому теплу и уважению." }
+        ]
+      },
+      pleaser: {
+        poleOut: "Безотказная и удобная для всех",
+        poleIn: "Спазм в теле и злость на себя",
+        titleHtml: 'Почему проще согласиться в ущерб себе, чем выдержать <span class="serif-italic">чужую обиду</span>',
+        lead: "Недовольный тон считывается телом как угроза — оно уступает быстрее мыслей.",
+        reasons: [
+          { title: "Телесный рефлекс уступки", desc: "Страх отвержения заставляет сказать «да» раньше, чем включится логика." },
+          { title: "Удобство как цена принятия", desc: "Привычка угадывать чужое настроение и ставить себя на последнее место." },
+          { title: "Вина за выбор в свою пользу", desc: "Внутренний критик называет любую заботу о себе «эгоизмом»." }
+        ],
+        s1Tag: "Убираем роль «удобной»",
+        s1Title: "Снимаем страх обидеть",
+        s1Text: "Находим корень связки, где отказ кажется опасным.",
+        s2Tag: "Снимаем спазм при слове «нет»",
+        s2Title: "Спокойствие без вины",
+        s2Text: "Тренируем паузу перед ответом и устойчивость тела.",
+        s3Tag: "Твёрдые личные границы",
+        s3Title: "Выбираете себя спокойно",
+        s3Text: "Перестаёте тащить чужие задачи и бережёте свой ресурс.",
+        outcomes: [
+          { title: "Пауза перед автоматическим «да»", desc: "Спокойный выбор вместо мгновенной уступки из страха." },
+          { title: "Твёрдое «нет» без спазма", desc: "Отказ без тахикардии, стыда и ночного самобичевания." },
+          { title: "Время и деньги на себя", desc: "Внутреннее право вкладывать ресурс в свою жизнь." }
+        ]
+      },
+      exhausted: {
+        poleOut: "Сильная опора для окружающих",
+        poleIn: "Села батарейка и нет сил",
+        titleHtml: 'Почему при внешнем порядке внутри <span class="serif-italic">«села батарейка»</span>',
+        lead: "Вся энергия уходит на удержание фасада и подавление собственной усталости.",
+        reasons: [
+          { title: "Расход сил на подавление злости", desc: "Держать улыбку при внутреннем несогласии — главная утечка энергии." },
+          { title: "Жизнь только из слова «надо»", desc: "В расписании есть обязанности перед всеми, кроме самой себя." },
+          { title: "Болезнь как единственное право на стоп", desc: "Тело включает бессилие или мигрень, чтобы легально дать передышку." }
+        ],
+        s1Tag: "Перекрываем утечку энергии",
+        s1Title: "Находим, куда уходят силы",
+        s1Text: "Разбираем, какие чужие ожидания обесточивают вас.",
+        s2Tag: "Снимаем запрет на отдых",
+        s2Title: "Контакт со своим «хочу»",
+        s2Text: "Разрешаем телу отдыхать вовремя без чувства вины.",
+        s3Tag: "Живой ресурс каждый день",
+        s3Title: "Своя жизнь на первом месте",
+        s3Text: "Возвращаются утренние силы, желания и лёгкость.",
+        outcomes: [
+          { title: "Возврат физических сил", desc: "Уход утренней тяжести и хронического истощения." },
+          { title: "Собственные желания и цели", desc: "Чёткое понимание своих «хочу» вместо чужих «надо»." },
+          { title: "Отдых без болезней и срывов", desc: "Восстановление ресурса без соматических откатов." }
+        ]
+      },
+      past: {
+        poleOut: "Днём — обычные дела и работа",
+        poleIn: "Ночью — поток мыслей и бессонница",
+        titleHtml: 'Почему ночью включается <span class="serif-italic">«мысленная жвачка»</span> без стопа',
+        lead: "В тишине мозг пытается задним числом переиграть незакрытые ситуации прошлого.",
+        reasons: [
+          { title: "Попытка переиграть прошлое", desc: "Ум прокручивает старые диалоги, пытаясь застраховаться от боли." },
+          { title: "Незакрытая вкладка в памяти", desc: "Эмоциональный заряд не разряжен и возвращает вас в одну точку." },
+          { title: "Ночной допрос внутреннего судьи", desc: "Критик требует идеальности и пересматривает каждое прошлое слово." }
+        ],
+        s1Tag: "Выключаем ночной самодопрос",
+        s1Title: "Стоп прокрутке мыслей",
+        s1Text: "Убираем сам механизм ночной мысленной жвачки.",
+        s2Tag: "Отпускаем груз прошлого",
+        s2Title: "Снимаем боль прошлого",
+        s2Text: "Бережными методами (EMDR / ТА) закрываем старые раны.",
+        s3Tag: "Тишина в голове и крепкий сон",
+        s3Title: "Лёгкий сон и ясное утро",
+        s3Text: "Прошлое отпускает и возвращает силы в сегодняшний день.",
+        outcomes: [
+          { title: "Спокойное засыпание вечером", desc: "Тишина в голове без многочасовой прокрутки диалогов." },
+          { title: "Глубокий сон до утра", desc: "Уход ночной тревоги и пробуждений в 3–4 часа утра." },
+          { title: "Ясная голова и бодрость днём", desc: "Возвращение фокуса и сил в сегодняшнюю жизнь." }
+        ]
+      },
+      past_guilt: {
+        poleOut: "Опыт и интеллект снаружи",
+        poleIn: "Самобичевание за прошлые ошибки",
+        titleHtml: 'Почему внутренний судья <span class="serif-italic">не прощает прошлое</span>',
+        lead: "Интеллект, направленный против себя, превращает старую ошибку в приговор.",
+        reasons: [
+          { title: "Самонаказание отказом от радости", desc: "Негласный запрет быть счастливым после прошлой ошибки." },
+          { title: "Суд над собой задним числом", desc: "Оценка давнего решения из сегодняшнего опыта рождает стыд." },
+          { title: "Заморозка перед новым шагом", desc: "Страх повторить боль блокирует новые отношения и проекты." }
+        ],
+        s1Tag: "Останавливаем внутренний суд",
+        s1Title: "Опыт без самонаказания",
+        s1Text: "Снимаем запрет на счастье и рост после прошлой ошибки.",
+        s2Tag: "Освобождаем тело от стыда",
+        s2Title: "Убираем провалы в вину",
+        s2Text: "Прорабатываем телесный след ошибки, чтобы память не жгла.",
+        s3Tag: "Свобода начинать новое",
+        s3Title: "Опыт становится опорой",
+        s3Text: "Освобождаете энергию для сегодняшних целей и отношений.",
+        outcomes: [
+          { title: "Свобода от груза вины", desc: "Спокойное отношение к прошлому как к жизненному опыту." },
+          { title: "Уход приступов стыда", desc: "Воспоминания больше не вызывают спазма и оцепенения." },
+          { title: "Смелость действовать сейчас", desc: "Энергия для новых проектов, дохода и близости." }
+        ]
+      },
+      escape: {
+        poleOut: "Функционирую весь день",
+        poleIn: "Усталость с утра и вечерний допинг",
+        titleHtml: 'Почему вы устаёте с утра и <span class="serif-italic">глушите тревогу вечером</span>',
+        lead: "Работа до ночи, траты или бокал — попытка нервной системы выключить напряжение.",
+        reasons: [
+          { title: "Удержание напряжения даже во сне", desc: "Нервная система не отдыхает ночью — утром вы уже разбиты." },
+          { title: "Вечерний побег от тревоги", desc: "Допинг нужен, чтобы хоть на пару часов выключить шум в голове." },
+          { title: "Эмоциональное онемение", desc: "Психика убавила громкость всех чувств, превратив день в автомат." }
+        ],
+        s1Tag: "Находим источник напряжения",
+        s1Title: "Понимаем, от чего бежите",
+        s1Text: "Без осуждения находим конфликт, который съедает ресурс.",
+        s2Tag: "Снимаем фоновую тревогу",
+        s2Title: "Безопасность в тишине",
+        s2Text: "Убираем напряжение, чтобы вечер не требовал «анестезии».",
+        s3Tag: "Бодрость без допинга",
+        s3Title: "Живая энергия с утра",
+        s3Text: "Сон снова восстанавливает силы, а вечер даёт покой.",
+        outcomes: [
+          { title: "Бодрость после сна", desc: "Полноценное восстановление без утренней разбитости." },
+          { title: "Вечер без побегов и допинга", desc: "Уход тяги к работе до ночи, шопингу или алкоголю." },
+          { title: "Возврат вкуса к жизни", desc: "Уход серой апатии и появление живого интереса." }
+        ]
+      },
+      expert: {
+        poleOut: "Сильный опыт и твёрдые кейсы",
+        poleIn: "Ступор в блоге и страх поднять чек",
+        titleHtml: 'Почему сильным экспертам страшно <span class="serif-italic">проявляться и расти в чеке</span>',
+        lead: "При выходе в публичное поле включается внутренний экзаменатор и страх оценки.",
+        reasons: [
+          { title: "Страх «строгой комиссии» коллег", desc: "Вы пишете с оглядкой на критиков, а не для своих клиентов." },
+          { title: "Ловушка «ещё одного диплома»", desc: "Иллюзия, что новая корочка даст право говорить и поднять цену." },
+          { title: "Неловкость называть достойный чек", desc: "Смешение экспертной работы с безотказным спасательством." }
+        ],
+        s1Tag: "Выключаем самозванца",
+        s1Title: "Убираем страх оценки",
+        s1Text: "Отделяем вашу экспертную силу от чужой критики.",
+        s2Tag: "Снимаем ступор проявленности",
+        s2Title: "Свобода перед публикой",
+        s2Text: "Убираем телесный зажим при ведении блога и продажах.",
+        s3Tag: "Свободный голос и новый чек",
+        s3Title: "Позиция на равных",
+        s3Text: "Легко проявляетесь и уверенно называете достойный чек.",
+        outcomes: [
+          { title: "Лёгкость в блоге и эфирах", desc: "Публикации и выступления без многочасовых сомнений." },
+          { title: "Спокойный рост чека", desc: "Уверенное обозначение цены без стыда и оправданий." },
+          { title: "Работа без спасательства", desc: "Привлечение сильных клиентов и работа без выгорания." }
+        ]
+      }
+    };
 
-    if (stage2Title) stage2Title.textContent = route.stage2Title;
-    if (stage2Text) stage2Text.textContent = route.stage2Text;
+    const scene = VISUAL_SCENES[chosenStateKey] || VISUAL_SCENES.empty;
+    const mirrorPoleOut = document.getElementById("mirrorPoleOut");
+    const mirrorPoleIn = document.getElementById("mirrorPoleIn");
+    const stage1VisualTag = document.getElementById("stage1VisualTag");
+    const stage2VisualTag = document.getElementById("stage2VisualTag");
+    const stage3VisualTag = document.getElementById("stage3VisualTag");
 
-    if (stage3Title) stage3Title.textContent = route.stage3Title;
+    if (mirrorPoleOut) mirrorPoleOut.textContent = scene.poleOut;
+    if (mirrorPoleIn) mirrorPoleIn.textContent = scene.poleIn;
+    if (mirrorTitle) mirrorTitle.innerHTML = scene.titleHtml;
+    if (mirrorProblem) mirrorProblem.textContent = scene.lead;
 
-    if (step2SegmentBadge && route.segmentLabel) {
-      step2SegmentBadge.textContent = route.segmentLabel;
-    }
+    if (reason1Title) reason1Title.textContent = scene.reasons[0].title;
+    if (reason1Desc) reason1Desc.textContent = scene.reasons[0].desc;
+    if (reason2Title) reason2Title.textContent = scene.reasons[1].title;
+    if (reason2Desc) reason2Desc.textContent = scene.reasons[1].desc;
+    if (reason3Title) reason3Title.textContent = scene.reasons[2].title;
+    if (reason3Desc) reason3Desc.textContent = scene.reasons[2].desc;
 
-    // Рендерим 3 возможных механизма («Ответ на вопрос Почему») и подводку к сессии
-    if (Array.isArray(route.reasons) && route.reasons.length >= 3) {
-      if (reason1Title) reason1Title.textContent = route.reasons[0].title;
-      if (reason1Desc) reason1Desc.textContent = route.reasons[0].desc;
-      if (reason2Title) reason2Title.textContent = route.reasons[1].title;
-      if (reason2Desc) reason2Desc.textContent = route.reasons[1].desc;
-      if (reason3Title) reason3Title.textContent = route.reasons[2].title;
-      if (reason3Desc) reason3Desc.textContent = route.reasons[2].desc;
-    }
-    if (mirrorBridgeText && route.bridgeText) {
-      mirrorBridgeText.textContent = route.bridgeText;
-    }
+    if (stage1VisualTag) stage1VisualTag.textContent = scene.s1Tag;
+    if (stage1Title) stage1Title.textContent = scene.s1Title;
+    if (stage1Text) stage1Text.textContent = scene.s1Text;
 
-    // Рендерим 3 конкретных ориентира результата без исследовательских ярлыков
-    if (outcomesSegmentKicker) {
-      outcomesSegmentKicker.textContent = "ОРИЕНТИРЫ РЕЗУЛЬТАТА";
-    }
-    if (Array.isArray(route.outcomes) && route.outcomes.length >= 3) {
-      if (outcome1Title) outcome1Title.textContent = route.outcomes[0].title;
-      if (outcome1Desc) outcome1Desc.textContent = route.outcomes[0].desc;
-      if (outcome2Title) outcome2Title.textContent = route.outcomes[1].title;
-      if (outcome2Desc) outcome2Desc.textContent = route.outcomes[1].desc;
-      if (outcome3Title) outcome3Title.textContent = route.outcomes[2].title;
-      if (outcome3Desc) outcome3Desc.textContent = route.outcomes[2].desc;
-    }
+    if (stage2VisualTag) stage2VisualTag.textContent = scene.s2Tag;
+    if (stage2Title) stage2Title.textContent = scene.s2Title;
+    if (stage2Text) stage2Text.textContent = scene.s2Text;
 
-    const customVal = customExpectInput ? customExpectInput.value.trim() : "";
-    let tail = EXPECTATION_TAILS[chosenExpectKey] || EXPECTATION_TAILS.inner_core;
-    if (customVal) {
-      tail = `В результате мы приходим к вашему главному ориентиру: «${customVal}».`;
-    }
-    if (stage3Text) {
-      stage3Text.textContent = `${route.stage3BaseDesc} ${tail}`;
-    }
+    if (stage3VisualTag) stage3VisualTag.textContent = scene.s3Tag;
+    if (stage3Title) stage3Title.textContent = scene.s3Title;
+    if (stage3Text) stage3Text.textContent = scene.s3Text;
 
-    // Персонализация главного оффера в Hero-блоке на Первом экране
+    if (outcome1Title) outcome1Title.textContent = scene.outcomes[0].title;
+    if (outcome1Desc) outcome1Desc.textContent = scene.outcomes[0].desc;
+    if (outcome2Title) outcome2Title.textContent = scene.outcomes[1].title;
+    if (outcome2Desc) outcome2Desc.textContent = scene.outcomes[1].desc;
+    if (outcome3Title) outcome3Title.textContent = scene.outcomes[2].title;
+    if (outcome3Desc) outcome3Desc.textContent = scene.outcomes[2].desc;
+
+    // Персонализация главного оффера в Hero-блоке (строго фиксированная длина в 2 строки!)
     const heroOfferTitle = document.getElementById("heroOfferTitle");
     const heroOfferSub = document.getElementById("heroOfferSub");
     const HERO_OFFERS_BY_STATE = {
       empty: {
-        titleHtml: 'Вернём живой вкус к жизни <span class="serif-italic">и радость от денег</span>',
-        sub: 'Возвращаем живые желания и эмоциональный отклик без потери масштаба в делах.'
+        titleHtml: 'Вернём вкус к жизни <span class="serif-italic">и радость от денег</span>',
+        sub: 'Отметьте свой запрос — план решения ниже.'
       },
       control: {
-        titleHtml: 'Выйдем из режима «туши пожар» <span class="serif-italic">к спокойной опоре</span>',
-        sub: 'Снимаем вечную боевую готовность, чтобы делегировать и отдыхать без тревоги.'
+        titleHtml: 'Снимем гиперконтроль <span class="serif-italic">без потери масштаба</span>',
+        sub: 'Выходим из режима «туши пожар» без тревоги.'
       },
       panic: {
-        titleHtml: 'Уберём приступы паники <span class="serif-italic">и вернём контроль телу</span>',
-        sub: 'Разбираем корень телесных сбоев и возвращаем уверенность на важных встречах.'
+        titleHtml: 'Уберём приступы паники <span class="serif-italic">и спазмы в теле</span>',
+        sub: 'Полный контроль над телом на любых встречах.'
       },
       trust: {
-        titleHtml: 'Выйдем из одиночества вдвоём <span class="serif-italic">к живой близости</span>',
-        sub: 'Бережно убираем ожидание подвоха и холод в паре для честного диалога на равных.'
+        titleHtml: 'Вернём тёплую близость <span class="serif-italic">без холода в паре</span>',
+        sub: 'Убираем холод и одиночество вдвоём в паре.'
       },
       pleaser: {
-        titleHtml: 'Научим говорить твёрдое «нет» <span class="serif-italic">без спазма и вины</span>',
-        sub: 'Убираем привычку соглашаться в ущерб себе и возвращаем энергию в вашу жизнь.'
+        titleHtml: 'Научим говорить «нет» <span class="serif-italic">спокойно и без вины</span>',
+        sub: 'Свобода от чужих ожиданий и защита границ.'
       },
       exhausted: {
-        titleHtml: 'Перекроем утечку сил <span class="serif-italic">и вернём живую энергию</span>',
-        sub: 'Выводим из состояния «села батарейка», когда на себя совсем не осталось сил.'
+        titleHtml: 'Перекроем утечку сил <span class="serif-italic">и вернём энергию</span>',
+        sub: 'Выход из выгорания к живым силам и опоре.'
       },
       past: {
-        titleHtml: 'Остановим «мысленную жвачку» <span class="serif-italic">и вернём глубокий сон</span>',
-        sub: 'Выключаем ночную прокрутку старых диалогов и возвращаем ясную голову по утрам.'
+        titleHtml: 'Выключим поток мыслей <span class="serif-italic">и вернём крепкий сон</span>',
+        sub: 'Тишина в голове вечером и глубокий сон.'
       },
       past_guilt: {
-        titleHtml: 'Снимем груз прошлых ошибок <span class="serif-italic">и откроем будущее</span>',
-        sub: 'Останавливаем внутреннее самонаказание и возвращаем смелость жить сегодня.'
+        titleHtml: 'Снимем груз прошлого <span class="serif-italic">и самонаказание</span>',
+        sub: 'Свобода от старой вины и смелость жить.'
       },
       escape: {
-        titleHtml: 'Выключим жизнь «на автомате» <span class="serif-italic">и вернём бодрость</span>',
-        sub: 'Убираем утреннюю разбитость и тягу глушить тревогу работой до ночи или бокалом.'
+        titleHtml: 'Вернём бодрость с утра <span class="serif-italic">без вечернего допинга</span>',
+        sub: 'Живая энергия с утра без вечернего допинга.'
       },
       expert: {
-        titleHtml: 'Уберём ступор самозванца <span class="serif-italic">и страх поднять чек</span>',
-        sub: 'Свободное проявление в публичном поле и достойный чек без оглядки на коллег.'
+        titleHtml: 'Уберём страх оценки <span class="serif-italic">и поднимем ваш чек</span>',
+        sub: 'Свободное ведение блога и уверенный чек.'
       }
     };
     const heroOffer = HERO_OFFERS_BY_STATE[chosenStateKey];

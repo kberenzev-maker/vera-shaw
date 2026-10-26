@@ -3724,7 +3724,7 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   V34: LAYERED EDITORIAL HERO POSTER (CUTOUT PNG + POSITION: ABSOLUTE)
+   V35: HIGH-CONVERTING MOBILE CRO ARCHITECTURE (ZERO LAYOUT SHIFT + VISUAL-FIRST)
    ========================================================================== */
 
 .header-nav {
@@ -3732,9 +3732,31 @@ dialog.modal::backdrop {
   pointer-events: auto !important;
 }
 
+.personal-result-bar {
+  display: none !important;
+}
+
+/* Единая чистая шапка секций (без капс-заборов и лишних плашек) */
+.clean-section-head {
+  margin-bottom: 14px;
+}
+
+.clean-section-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   ЭКРАН 1: HERO-ПОСТЕР С ЖЁСТКОЙ ФИКСАЦИЕЙ ГЕОМЕТРИИ (CLS = 0.0px)
+   -------------------------------------------------------------------------- */
 .hero-poster-section {
   min-height: auto;
-  padding: 18px 0 28px;
+  padding: 16px 0 24px;
   display: block;
 }
 
@@ -3742,11 +3764,13 @@ dialog.modal::backdrop {
   position: relative;
   background: linear-gradient(145deg, #F3EFE6 0%, #E4EFE8 54%, #D5E5DC 100%);
   border: 1px solid rgba(24, 48, 37, 0.12);
-  border-radius: 30px;
-  padding: 36px 40px;
+  border-radius: 28px;
+  padding: 28px 36px;
   overflow: hidden;
-  box-shadow: 0 22px 54px rgba(20, 38, 29, 0.08);
-  min-height: 670px;
+  box-shadow: 0 20px 48px rgba(20, 38, 29, 0.08);
+  height: 520px;
+  min-height: 520px;
+  max-height: 520px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -3758,14 +3782,14 @@ dialog.modal::backdrop {
 
 .hero-stage-arch {
   position: absolute;
-  right: 46px;
+  right: 44px;
   top: auto;
   bottom: 0;
-  width: 390px;
-  height: 590px;
-  border-radius: 210px 210px 0 0;
-  background: linear-gradient(180deg, rgba(168, 90, 62, 0.15) 0%, rgba(30, 58, 47, 0.11) 100%);
-  border: 1px solid rgba(30, 58, 47, 0.10);
+  width: 360px;
+  height: 486px;
+  border-radius: 200px 200px 0 0;
+  background: linear-gradient(180deg, rgba(168, 90, 62, 0.14) 0%, rgba(30, 58, 47, 0.10) 100%);
+  border: 1px solid rgba(30, 58, 47, 0.09);
   z-index: 1;
   pointer-events: none;
 }
@@ -3774,69 +3798,41 @@ dialog.modal::backdrop {
   position: absolute;
   right: -60px;
   top: -60px;
-  width: 540px;
-  height: 540px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 250, 240, 0.85) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
 
-.hero-stage-watermark {
-  position: absolute;
-  right: 36px;
-  top: 18px;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 98px;
-  line-height: 1;
-  color: rgba(24, 48, 37, 0.06);
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-}
-
 .hero-offer-copy {
   position: relative;
   z-index: 3;
-  max-width: 600px;
-  margin-bottom: 20px;
+  max-width: 560px;
+  margin-bottom: 12px;
 }
 
-.hero-offer-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 13px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(24, 48, 37, 0.12);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+/* Спокойная текстовая строка регалий без овальных рамок (0 декоративных таблеток!) */
+.hero-flat-credentials {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--forest-text);
-  margin-bottom: 14px;
-}
-
-.hero-live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--terracotta);
-  box-shadow: 0 0 0 3px rgba(168, 90, 62, 0.18);
-  flex-shrink: 0;
+  color: var(--terracotta);
+  margin-bottom: 8px;
 }
 
 .hero-offer-title {
   font-family: var(--font-sans);
-  font-size: clamp(32px, 3.6vw, 46px);
+  font-size: 36px;
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--ink);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
+  height: 80px;
+  overflow: hidden;
 }
 
 .hero-offer-title .serif-italic {
@@ -3847,44 +3843,22 @@ dialog.modal::backdrop {
 }
 
 .hero-offer-sub {
-  font-size: 15.5px;
-  line-height: 1.5;
+  font-size: 14.5px;
+  line-height: 1.42;
   color: var(--ink-soft);
-  margin: 0 0 14px;
-  max-width: 540px;
-}
-
-.hero-trust-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.hero-trust-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(24, 48, 37, 0.11);
-  font-size: 12.5px;
-  color: var(--ink-soft);
-}
-
-.hero-trust-chip strong {
-  color: var(--ink);
-  font-weight: 700;
+  margin: 0;
+  max-width: 500px;
+  height: 42px;
+  overflow: hidden;
 }
 
 .hero-vera-cutout-wrap {
   position: absolute;
-  right: 12px;
+  right: 14px;
   top: auto;
   bottom: 0;
-  width: 485px;
-  height: 585px;
+  width: 430px;
+  height: 500px;
   z-index: 2;
   pointer-events: none;
   display: flex;
@@ -3897,94 +3871,338 @@ dialog.modal::backdrop {
   height: 100%;
   object-fit: contain;
   object-position: bottom right;
-  filter: drop-shadow(-14px 8px 28px rgba(18, 34, 26, 0.18));
-}
-
-.hero-floating-regalia-pill {
-  position: absolute;
-  right: 28px;
-  bottom: 24px;
-  z-index: 4;
-  background: rgba(20, 38, 29, 0.90);
-  backdrop-filter: blur(12px);
-  color: #ffffff;
-  padding: 8px 15px;
-  border-radius: 999px;
-  font-size: 12.5px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  box-shadow: 0 10px 26px rgba(14, 28, 21, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.regalia-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #7BD4A8;
-  flex-shrink: 0;
+  filter: drop-shadow(-12px 8px 24px rgba(18, 34, 26, 0.16));
 }
 
 .hero-stage-bottom-fade {
   display: none;
 }
 
+/* Передняя карточка выбора ситуации (жёсткая высота 284px на всех 3 шагах) */
 .hero-personalizer-sheet {
   position: relative;
   z-index: 4;
-  max-width: 620px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(14px);
+  max-width: 580px;
+  width: 100%;
+  height: 284px;
+  min-height: 284px;
+  max-height: 284px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(24, 48, 37, 0.12);
-  border-radius: 24px;
-  padding: 20px 22px;
-  box-shadow: 0 16px 42px rgba(20, 38, 29, 0.09);
-}
-
-.hero-sheet-head {
-  margin-bottom: 10px;
-}
-
-.hero-personalizer-sheet .step2-top-nav {
+  border-radius: 22px;
+  padding: 16px 20px;
+  box-shadow: 0 14px 36px rgba(20, 38, 29, 0.08);
   display: flex;
-  flex-direction: row !important;
-  align-items: center !important;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sheet-top-bar {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
-  gap: 8px;
-  margin-bottom: 8px;
-  padding-bottom: 8px;
-}
-
-.hero-personalizer-sheet .hero-care-title,
-.hero-personalizer-sheet .quiz-main-question {
-  font-size: 22px;
-  line-height: 1.18;
-  margin-bottom: 6px;
-}
-
-.hero-personalizer-sheet .sphere-choices-grid {
-  grid-template-columns: 1fr 1fr;
   gap: 10px;
+  height: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  margin-bottom: 12px;
+}
+
+.sheet-step-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+
+.sheet-step-pill {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.sheet-back-link {
+  border: none;
+  background: rgba(30, 58, 47, 0.08);
+  color: var(--forest-text);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Сетка кнопок: ровно 208px высоты на Шаге 1, Шаге 2 и Шаге 3 */
+.hero-personalizer-sheet .sphere-choices-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 208px;
+  min-height: 208px;
+  max-height: 208px;
 }
 
 .hero-personalizer-sheet .sphere-choice-btn {
-  padding: 13px 14px;
-  border-radius: 15px;
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+  padding: 0 14px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
 }
 
 .hero-personalizer-sheet .sphere-choice-title {
-  font-size: 14.5px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.hero-personalizer-sheet .sphere-choice-desc {
-  font-size: 12.2px;
-  line-height: 1.35;
+.hero-personalizer-sheet .state-choices-list,
+.hero-personalizer-sheet .expectation-pills {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  height: 208px !important;
+  min-height: 208px !important;
+  max-height: 208px !important;
 }
 
-/* Вырезанный портрет Веры без серого студийного фона в блоке #about-vera и в аватаре #booking */
+.hero-personalizer-sheet .state-choice-btn,
+.hero-personalizer-sheet .expect-pill {
+  height: 64px !important;
+  min-height: 64px !important;
+  max-height: 64px !important;
+  padding: 0 14px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+}
+
+.hero-personalizer-sheet .state-choice-btn[hidden],
+.hero-personalizer-sheet .expect-pill[hidden] {
+  display: none !important;
+}
+
+.hero-personalizer-sheet .choice-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-personalizer-sheet .choice-segment-badge {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  font-size: 13.8px !important;
+  font-weight: 600 !important;
+  line-height: 1.26 !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+}
+
+.hero-personalizer-sheet .state-choice-btn.is-selected .choice-segment-badge,
+.hero-personalizer-sheet .expect-pill.is-selected .choice-segment-badge {
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   ЭКРАН 2 (#personal-mirror): ВИЗУАЛЬНАЯ ИНФО-КАРТИНКА + 3 ЧИСТЫЕ СТРОКИ ПРИЧИН
+   -------------------------------------------------------------------------- */
+.mirror-visual-infocard {
+  position: relative;
+  height: 184px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid rgba(24, 48, 37, 0.10);
+  background: #EFEBE1;
+}
+
+.mirror-infocard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: brightness(0.95);
+}
+
+.mirror-infocard-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 38, 29, 0.14) 0%, rgba(20, 38, 29, 0.56) 100%);
+  padding: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mirror-pole-chip {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mirror-pole-chip--out {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  border: 1px solid rgba(24, 48, 37, 0.12);
+}
+
+.mirror-pole-chip--in {
+  background: rgba(20, 38, 29, 0.92);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.pole-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+.pole-value {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.mirror-pole-arrow {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--terracotta);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mirror-clean-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(24, 48, 37, 0.09);
+  margin-top: 10px;
+}
+
+.mirror-reason-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 !important;
+  height: 72px !important;
+  min-height: 72px !important;
+  max-height: 72px !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid rgba(24, 48, 37, 0.09);
+}
+
+.mirror-reason-row:last-child {
+  border-bottom: none;
+  padding: 10px 0 !important;
+}
+
+.reason-row-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--terracotta);
+  line-height: 1.1;
+  min-width: 22px;
+  padding-top: 1px;
+}
+
+.reason-row-body strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.22;
+  margin-bottom: 2px;
+}
+
+.reason-row-body p {
+  font-size: 12.8px;
+  line-height: 1.32;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   ЭКРАН 3 (#therapy-stages): ВИЗУАЛЬНЫЕ КАРТОЧКИ ШАГОВ ОДИНАКОВОЙ ВЫСОТЫ
+   -------------------------------------------------------------------------- */
+.stage-visual-banner {
+  position: relative;
+  width: 100%;
+  height: 132px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.stage-visual-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.stage-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 34, 26, 0.08) 0%, rgba(18, 34, 26, 0.72) 100%);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.stage-visual-step {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2px;
+}
+
+.stage-visual-tag {
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   ЭКРАН 4 (#about-vera): ПОРТРЕТ БЕЗ ФОНА + ЖЁСТКО ФИКСИРОВАННАЯ ВЫСОТА ВКЛАДОК
+   -------------------------------------------------------------------------- */
 .vera-story-photo--cutout {
   background: linear-gradient(155deg, #F2EDE2 0%, #E1ECE5 58%, #D3E2D9 100%);
   display: flex;
@@ -4031,6 +4249,33 @@ dialog.modal::backdrop {
   z-index: 3;
 }
 
+.vera-tabs-fixed-stage {
+  height: 146px;
+  min-height: 146px;
+  max-height: 146px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vera-tab-pane {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vera-tab-pane[hidden] {
+  display: none !important;
+}
+
+.vera-clean-text {
+  font-size: 13.8px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
 .yasno-expert-avatar {
   background: linear-gradient(145deg, #EFEBE1 0%, #DCE8E0 100%);
   object-fit: contain;
@@ -4038,12 +4283,15 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   МОБИЛЬНЫЙ HERO-ПОСТЕР НА 1 ЭКРАН (<= 860px) — ABSOLUTE COMPOSITING + BOTTOM SHEET
+   МОБИЛЬНАЯ СЕТКА (<= 860px): ЕДИНЫЙ 8PT РИТМ, ОДИНАКОВАЯ ВЫСОТА, 0 СКАЧКОВ
    ========================================================================== */
 @media (max-width: 860px) {
-  .hero-poster-section {
-    padding: 8px 0 12px;
-    min-height: auto;
+  .hero-poster-section,
+  .personal-mirror-section,
+  .therapy-stages-section,
+  .about-vera-section,
+  .booking-section {
+    padding: 12px 0 !important;
   }
 
   .hero-master-layout {
@@ -4052,92 +4300,74 @@ dialog.modal::backdrop {
     border-radius: 0;
     padding: 0;
     box-shadow: none;
+    height: auto;
     min-height: auto;
+    max-height: none;
     overflow: visible;
     display: block;
   }
 
-  /* Верхняя журнальная сцена с Верой на телефоне (position: relative + position: absolute слои) */
+  /* Верхний постер с Верой: ЖЁСТКО 216px высоты — никогда не прыгает! */
   .hero-visual-stage {
     position: relative;
-    min-height: 274px;
-    border-radius: 24px;
+    height: 216px !important;
+    min-height: 216px !important;
+    max-height: 216px !important;
+    border-radius: 22px;
     background: linear-gradient(155deg, #F4F0E6 0%, #E2EDE6 55%, #D3E3DA 100%);
-    border: 1px solid rgba(24, 48, 37, 0.13);
-    padding: 14px 14px 30px;
+    border: 1px solid rgba(24, 48, 37, 0.12);
+    padding: 16px 16px 24px;
     overflow: hidden;
-    box-shadow: 0 12px 30px rgba(20, 38, 29, 0.08);
+    box-shadow: 0 10px 26px rgba(20, 38, 29, 0.07);
   }
 
   .hero-stage-arch {
-    right: -12px;
-    top: 14px;
+    right: -10px;
+    top: 12px;
     bottom: 0;
     height: auto;
-    width: 178px;
-    border-radius: 100px 100px 0 0;
+    width: 168px;
+    border-radius: 95px 95px 0 0;
   }
 
-  .hero-stage-watermark {
-    right: 10px;
-    top: 8px;
-    font-size: 48px;
-  }
-
-  /* Текст оффера слева поверх постера (не перекрывает чёрный пиджак Веры!) */
   .hero-offer-copy {
     position: relative;
     z-index: 3;
-    max-width: 55%;
+    max-width: 57%;
     margin-bottom: 0;
   }
 
-  .hero-offer-kicker {
-    font-size: 9px;
-    padding: 4px 9px;
-    gap: 5px;
-    margin-bottom: 8px;
+  .hero-flat-credentials {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
     white-space: nowrap;
-  }
-
-  .hero-live-dot {
-    width: 6px;
-    height: 6px;
   }
 
   .hero-offer-title {
-    font-size: clamp(20.5px, 5.5vw, 23.5px);
-    line-height: 1.07;
+    font-size: 21px;
+    line-height: 1.1;
     margin-bottom: 6px;
+    height: 69px;
+    overflow: hidden;
   }
 
   .hero-offer-sub {
-    font-size: 11.5px;
+    font-size: 11.8px;
     line-height: 1.32;
-    margin-bottom: 9px;
     color: var(--ink-soft);
+    height: 32px;
+    overflow: hidden;
   }
 
-  .hero-trust-chips {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .hero-trust-chip {
-    font-size: 10.5px;
-    padding: 3.5px 8px;
-    white-space: nowrap;
-  }
-
-  /* Вырезанный портрет Веры справа на position: absolute */
+  /* Вырезанный портрет Веры справа: ЖЁСТКО 208px высоты — 0px смещения! */
   .hero-vera-cutout-wrap {
-    position: absolute;
-    top: auto;
-    right: -22px;
-    bottom: 0;
-    width: 204px;
-    height: 268px;
+    position: absolute !important;
+    top: auto !important;
+    right: -18px !important;
+    bottom: 0 !important;
+    width: 186px !important;
+    height: 208px !important;
     z-index: 2;
   }
 
@@ -4147,153 +4377,165 @@ dialog.modal::backdrop {
     max-width: 100%;
   }
 
-  .hero-floating-regalia-pill {
-    right: 26px;
-    bottom: 24px;
-    padding: 4.5px 9px;
-    font-size: 10px;
-    gap: 5px;
-    white-space: nowrap;
-  }
-
   .hero-stage-bottom-fade {
     display: block;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 34px;
-    background: linear-gradient(to bottom, transparent, rgba(246, 244, 238, 0.88));
+    height: 28px;
+    background: linear-gradient(to bottom, transparent, rgba(246, 244, 238, 0.85));
     z-index: 3;
     pointer-events: none;
   }
 
-  /* Передняя карточка персонализации оффера (наезжает на низ постера с z-index: 5) */
+  /* Передняя карточка выбора: ЖЁСТКО 276px высоты на всех 3 шагах! */
   .hero-personalizer-sheet {
     position: relative;
     z-index: 5;
-    margin-top: -20px;
+    margin-top: -18px;
     max-width: 100%;
+    height: 276px !important;
+    min-height: 276px !important;
+    max-height: 276px !important;
     background: #FFFFFF;
     border-radius: 22px;
-    padding: 13px 14px 14px;
-    border: 1px solid rgba(24, 48, 37, 0.13);
-    box-shadow: 0 16px 38px rgba(20, 38, 29, 0.12);
+    padding: 14px 14px 14px !important;
+    border: 1px solid rgba(24, 48, 37, 0.12);
+    box-shadow: 0 14px 34px rgba(20, 38, 29, 0.10);
   }
 
-  .hero-sheet-head {
-    margin-bottom: 7px;
+  .sheet-top-bar {
+    height: 26px !important;
+    min-height: 26px !important;
+    max-height: 26px !important;
+    margin-bottom: 10px !important;
   }
 
-  .hero-personalizer-sheet .quiz-step-counter {
-    font-size: 10px;
-    margin-bottom: 2px;
+  .sheet-step-title {
+    font-size: 16.5px !important;
   }
 
-  .hero-personalizer-sheet .hero-care-title,
-  .hero-personalizer-sheet .quiz-main-question {
-    font-size: 18px;
-    line-height: 1.15;
-    margin-bottom: 8px;
+  /* Экран 2 (#personal-mirror) на телефоне */
+  .mirror-unified-card {
+    padding: 16px !important;
+    border-radius: 20px !important;
   }
 
-  .hero-personalizer-sheet .sphere-choices-grid {
-    grid-template-columns: 1fr;
+  .mirror-visual-infocard {
+    height: 148px;
+    margin-bottom: 10px;
+  }
+
+  .mirror-infocard-overlay {
+    padding: 10px;
     gap: 6px;
   }
 
-  .hero-personalizer-sheet .sphere-choice-btn {
-    padding: 9px 11px;
+  .mirror-pole-chip {
+    padding: 8px 10px;
     border-radius: 12px;
-    gap: 9px;
   }
 
-  .hero-personalizer-sheet .sphere-choice-title {
-    font-size: 13.8px;
-    margin-bottom: 1px;
+  .pole-label {
+    font-size: 9px;
   }
 
-  .hero-personalizer-sheet .sphere-choice-desc {
-    font-size: 11.5px;
-    line-height: 1.28;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .pole-value {
+    font-size: 11.8px;
+    line-height: 1.2;
   }
 
-  .hero-personalizer-sheet .step2-top-nav {
-    display: flex;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 6px;
-    margin-bottom: 6px;
-    padding-bottom: 6px;
+  .personal-route-lead {
+    font-size: 13.5px !important;
+    line-height: 1.38 !important;
+    margin-bottom: 6px !important;
   }
 
-  .hero-personalizer-sheet .quiz-back-btn {
-    padding: 4px 10px;
-    font-size: 11.5px;
-    min-height: 28px;
-    white-space: nowrap;
+  /* Экран 3 (#therapy-stages): все 4 карточки в свайпе СТРОГО одной высоты 246px! */
+  .stages-swipe-deck .stage-card-row {
+    height: 246px !important;
+    min-height: 246px !important;
+    max-height: 246px !important;
+    padding: 12px !important;
+    gap: 10px !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
   }
 
-  .hero-personalizer-sheet .step2-segment-badge {
-    padding: 4px 9px;
-    font-size: 10.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .stage-visual-banner {
+    height: 118px !important;
+    margin-bottom: 0 !important;
   }
 
-  .hero-personalizer-sheet .state-choices-list,
-  .hero-personalizer-sheet .expectation-pills {
-    gap: 6px;
+  .stage-card-copy {
+    padding: 0 4px !important;
   }
 
-  .hero-personalizer-sheet .state-choice-btn,
-  .hero-personalizer-sheet .expect-pill {
-    padding: 9px 11px;
-    border-radius: 12px;
-    gap: 8px;
+  .stage-card-copy h3 {
+    font-size: 15.5px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 4px !important;
   }
 
-  .hero-personalizer-sheet .choice-segment-badge {
-    font-size: 13px;
-    margin-bottom: 1px;
+  .stage-card-copy p {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
   }
 
-  .hero-personalizer-sheet .choice-quote-text {
-    font-size: 11.5px;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .stage-card-row--outcomes {
+    padding: 14px 16px !important;
   }
 
-  /* В блоке #about-vera на телефоне портрет без фона в аккуратной арке */
+  .research-outcomes-kicker {
+    font-size: 10.5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .research-outcomes-grid {
+    gap: 8px !important;
+  }
+
+  .research-outcome-body h4 {
+    font-size: 13.5px !important;
+    margin-bottom: 1px !important;
+  }
+
+  .research-outcome-body p {
+    font-size: 12px !important;
+    line-height: 1.28 !important;
+  }
+
+  /* Экран 4 (#about-vera) на телефоне: фиксированная высота вкладок 136px */
   .vera-story-photo--cutout {
-    height: 218px !important;
-    min-height: 218px !important;
-    max-height: 218px !important;
+    height: 206px !important;
+    min-height: 206px !important;
+    max-height: 206px !important;
   }
 
   .vera-photo-arch {
-    width: 196px;
+    width: 186px;
     top: 8px;
     bottom: 8px;
-    border-radius: 105px 105px 0 0;
+    border-radius: 100px 100px 0 0;
   }
 
   .vera-cutout-about-img {
-    width: 194px !important;
-    height: 202px !important;
+    width: 184px !important;
+    height: 192px !important;
     object-fit: cover !important;
     object-position: top center !important;
-    border-radius: 105px 105px 0 0;
+    border-radius: 100px 100px 0 0;
     margin: 0 auto 8px !important;
+  }
+
+  .vera-tabs-fixed-stage {
+    height: 134px !important;
+    min-height: 134px !important;
+    max-height: 134px !important;
   }
 }
