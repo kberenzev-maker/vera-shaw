@@ -2500,211 +2500,726 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   АДАПТИВНОСТЬ (ПЛАНШЕТЫ И МОБИЛЬНЫЕ 390x844 — ЭТАЛОННАЯ МОБИЛЬНАЯ ВЁРСТКА)
+   НОВАЯ АРХИТЕКТУРА УПРАВЛЕНИЯ ВНИМАНИЕМ (V33 — MOBILE-FIRST GUIDED FLOW)
    ========================================================================== */
-@media (max-width: 980px) {
+
+/* Верхняя полоса выбранного запроса (компактная, раскрываемая на телефоне) */
+.result-bar-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.result-bar-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--forest);
+  box-shadow: 0 0 0 3px rgba(30, 58, 47, 0.14);
+  flex-shrink: 0;
+}
+
+.result-bar-toggle-hint {
+  display: none;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--forest-text);
+  background: rgba(30, 58, 47, 0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Единая карточка диагностики (#personal-mirror) */
+.mirror-unified-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 36px 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.mirror-top-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.mirror-header-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.mirror-mini-illus-badge {
+  display: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 4px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mirror-mini-illus-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mirror-header-meta .editorial-section-kicker {
+  margin-bottom: 2px;
+}
+
+.mirror-step-tag {
+  display: none;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* Табы переключения 3 причин */
+.mirror-reasons-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mirror-reasons-header .mirror-reasons-kicker {
+  margin-bottom: 0;
+}
+
+.mirror-reasons-tabs {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.reason-tab-btn {
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+}
+
+.reason-tab-btn.is-active {
+  background: var(--forest);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(24, 48, 37, 0.18);
+}
+
+.mirror-reason-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mirror-reason-card-top .mirror-reason-num {
+  margin-bottom: 0;
+}
+
+.reason-next-inline-btn {
+  display: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--forest-text);
+  background: rgba(30, 58, 47, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+.mirror-next-step-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.mirror-next-step-link:hover {
+  background: var(--forest-hover);
+  transform: translateY(-1px);
+}
+
+/* Шапка и трекер шагов в блоке этапов (#therapy-stages) */
+.stages-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stages-section-header .section-title {
+  margin-bottom: 0;
+}
+
+.stages-section-header .stages-individual-note {
+  margin-bottom: 0;
+  max-width: 460px;
+  font-size: 14px;
+}
+
+.stages-step-track {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: var(--surface);
+  padding: 5px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(20, 30, 24, 0.04);
+}
+
+.stage-track-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px 6px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.stage-track-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.stage-track-pill.is-active {
+  background: var(--forest);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(24, 48, 37, 0.2);
+}
+
+.stage-track-pill.is-active .stage-track-num {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.stages-swipe-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stage-card-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stage-mini-thumb {
+  display: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 4px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.stage-mini-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stage-top-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.stage-swipe-hint {
+  display: none;
+  font-size: 11.5px;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+.stage-card-mobile-nav {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.stage-dots-indicator {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
+.stage-prev-btn {
+  padding: 8px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.stage-next-btn {
+  padding: 8px 13px;
+  border-radius: 999px;
+  border: none;
+  background: var(--forest);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.stage-next-btn--accent {
+  background: var(--terracotta);
+}
+
+.stage-card-row--outcomes {
+  display: block;
+}
+
+.research-outcomes-inner {
+  width: 100%;
+}
+
+.research-outcome-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.research-outcome-item .research-outcome-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(30, 58, 47, 0.1);
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: normal;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+.research-outcome-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.research-outcome-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* Блок о Вере (#about-vera) с 3 вкладками внутри карточки */
+.vera-story-photo {
+  position: relative;
+}
+
+.vera-photo-badge-bar {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  background: rgba(20, 38, 29, 0.88);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 9px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.vera-profile-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 6px;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+
+.vera-tab-pill {
+  padding: 8px 14px;
+  border-radius: 9px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.vera-tab-pill.is-active {
+  background: var(--forest);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(24, 48, 37, 0.18);
+}
+
+.vera-tab-pane {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vera-creds-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vera-cred-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.vera-cred-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--terracotta);
+  line-height: 1.1;
+  min-width: 22px;
+}
+
+.vera-cred-row strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.vera-cred-row p {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.vera-insta-compact-box {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vera-insta-lead {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.vera-insta-lead strong {
+  color: var(--ink);
+}
+
+.vera-insta-cta-btn {
+  align-self: flex-start;
+}
+
+.vera-card-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.vera-inline-insta-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--forest-text);
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(30, 58, 47, 0.08);
+}
+
+/* Липкая нижняя панель на телефоне (по умолчанию скрыта на десктопе) */
+.mobile-sticky-cta-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   НАСТОЯЩАЯ МОБИЛЬНАЯ АРХИТЕКТУРА (<= 860px) — 1 ЭКРАН = 1 ФОКУС, 0 ПРОСТЫНЕЙ
+   ========================================================================== */
+@media (max-width: 860px) {
   .header-nav {
     display: none !important;
   }
 
-  .mirror-grid,
-  .stage-card-row,
-  .stage-card-row--reverse,
-  .vera-story-split,
-  .swiss-clean-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .vera-story-split {
-    gap: 0;
-  }
-
-  .vera-story-photo {
-    min-height: 320px;
-    max-height: 380px;
-  }
-
-  .vera-hero-split {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .stage-card-row--reverse .stage-card-illus {
-    order: 0;
-  }
-
-  .vera-hero-split-photo {
-    min-height: 340px;
-  }
-
-  .vera-stats-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .diplomas-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 860px) {
   .site-container {
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .header-inner {
-    height: 54px;
-    gap: 10px;
-  }
-
-  .brand {
-    gap: 6px;
+    height: 52px;
+    gap: 8px;
   }
 
   .brand-name {
-    font-size: 16.5px;
+    font-size: 16px;
   }
 
   .brand-role {
-    font-size: 12px;
-  }
-
-  .theme-toggle-btn {
-    width: 34px;
-    height: 34px;
-    font-size: 15px;
+    font-size: 11.5px;
   }
 
   .btn-header-quiet {
-    min-height: 34px;
-    padding: 6px 12px;
-    font-size: 12.5px;
+    min-height: 32px;
+    padding: 5px 11px;
+    font-size: 12px;
   }
 
+  /* КВИЗ: Строго в 1 экран телефона без вертикального скролла */
   .quiz-entry-section {
-    min-height: calc(100dvh - 55px);
+    min-height: calc(100dvh - 53px);
     align-items: center;
-    padding: 16px 0 24px;
+    padding: 12px 0 18px;
   }
 
   .hero-dialogue-col {
-    gap: 16px;
+    gap: 12px;
   }
 
-  .hero-care-title {
-    font-size: clamp(28px, 7.2vw, 34px);
-    line-height: 1.1;
+  .hero-care-title,
+  .quiz-main-question {
+    font-size: clamp(24px, 6.5vw, 30px);
+    line-height: 1.12;
   }
 
   .hero-care-sub {
-    font-size: 14px;
-    line-height: 1.42;
-    margin-top: 6px;
+    font-size: 13.5px;
+    line-height: 1.38;
+    margin-top: 4px;
   }
 
   .sphere-choices-grid,
   .state-choices-list {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .sphere-choice-btn {
-    padding: 14px 16px;
-    gap: 12px;
+    padding: 12px 14px;
+    gap: 10px;
     border-radius: 14px;
   }
 
   .sphere-choice-title {
-    font-size: 15.5px;
+    font-size: 15px;
   }
 
   .sphere-choice-desc {
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12.5px;
+    line-height: 1.35;
   }
 
-  .state-choice-btn {
-    min-height: auto;
-    padding: 14px 16px;
-    font-size: 13.8px;
-    line-height: 1.4;
-    gap: 10px;
-    border-radius: 14px;
-  }
-
-  .choice-num {
-    font-size: 18px;
-    min-width: 22px;
-  }
-
-  .quiz-step2-clean-wrap {
-    gap: 14px;
-  }
-
-  .quiz-back-btn {
-    font-size: 13px;
-    padding: 5px 12px;
-  }
-
-  .quiz-main-question {
-    font-size: clamp(26px, 6.8vw, 32px);
-  }
-
-  .expectation-pills {
-    gap: 9px;
-  }
-
+  .state-choice-btn,
   .expect-pill {
-    padding: 13px 16px;
-    font-size: 13.8px;
+    min-height: auto;
+    padding: 12px 14px;
+    font-size: 13.2px;
+    line-height: 1.36;
     gap: 10px;
     border-radius: 13px;
   }
-}
 
-@media (max-width: 640px) {
-  .personal-result-bar {
-    padding: 10px 0;
+  .choice-num {
+    font-size: 16px;
+    min-width: 20px;
   }
 
-  .personal-result-bar-inner {
-    gap: 6px;
+  /* ВЕРХНЯЯ ПОЛОСА РАЗБОРА: 1 компактная строка в начале разбора (не перекрывает экраны при скролле) */
+  .personal-result-bar {
+    padding: 8px 0;
+    position: relative;
+    top: auto;
+    z-index: 20;
+    background: var(--bg-soft);
+  }
+
+  .result-bar-top-row {
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .result-bar-kicker {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .result-bar-toggle-hint {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .result-reset-btn {
+    padding: 5px 10px;
+    font-size: 11.5px;
+    white-space: nowrap;
   }
 
   .personal-result-summary {
+    display: none;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
-    font-size: 12.5px;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(30, 58, 47, 0.12);
+    font-size: 12px;
+  }
+
+  .personal-result-summary.is-open {
+    display: flex;
   }
 
   .result-arrow-sep {
     display: none;
   }
 
-  .result-pill-item {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 1.35;
-  }
-
+  /* ОТСТУПЫ СЕКЦИЙ НА МОБИЛЬНОМ — ПЛОТНЫЙ ЭКРАННЫЙ РИТМ */
   .personal-mirror-section,
   .therapy-stages-section,
   .about-vera-section,
   .booking-section {
-    padding: 36px 0;
+    padding: 14px 0;
+    scroll-margin-top: 56px;
   }
 
-  .pre-booking-instagram-section {
-    padding: 32px 0 0;
+  .booking-section {
+    padding-bottom: 36px;
+  }
+
+  /* ЭКРАН 1 (#personal-mirror): 1 ЭКРАН ТЕЛЕФОНА, ТАБЫ ПРИЧИН ВМЕСТО 3 КОРОБОК В СТОЛБИК */
+  .mirror-unified-card {
+    padding: 16px 15px;
+    border-radius: 20px;
+  }
+
+  .mirror-top-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Убираем гигантскую квадратную картинку под текстом на телефоне! */
+  .mirror-visual-col {
+    display: none !important;
+  }
+
+  /* Показываем аккуратный бейдж-иллюстрацию 48x48 в шапке карточки */
+  .mirror-header-row {
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .mirror-mini-illus-badge {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+
+  .mirror-step-tag {
+    display: block;
   }
 
   .editorial-section-kicker {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
   }
 
   .editorial-section-kicker::after {
@@ -2712,213 +3227,493 @@ dialog.modal::backdrop {
   }
 
   .section-title {
-    font-size: clamp(24px, 6.6vw, 30px);
+    font-size: clamp(21px, 5.8vw, 25px);
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .personal-route-lead {
-    font-size: 15.5px;
-    line-height: 1.54;
-  }
-
-  /* Компактные редакционные иллюстрации на мобильном (без гигантских пустых/чёрных квадратов) */
-  .illus-editorial-frame,
-  .illus-editorial-frame--stage {
-    max-width: 200px;
-    padding: 10px 14px;
-    border-radius: 16px;
-  }
-
-  .editorial-spot-illus,
-  .stage-spot-illus {
-    max-height: 160px;
-    width: auto;
-    object-fit: contain;
+    font-size: 13.8px;
+    line-height: 1.45;
+    margin-bottom: 0;
   }
 
   .mirror-reasons-block {
-    margin-top: 24px;
-    padding-top: 20px;
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  .mirror-reasons-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .mirror-reasons-kicker {
+    font-size: 10px;
+  }
+
+  .mirror-reasons-tabs {
+    display: grid;
+  }
+
+  .mirror-reasons-grid {
+    display: block;
+    margin-bottom: 10px;
   }
 
   .mirror-reason-card {
-    padding: 16px 18px;
-    border-radius: 16px;
+    display: none;
+    padding: 13px 14px;
+    border-radius: 14px;
+    background: var(--bg);
   }
 
-  .stages-individual-note {
-    font-size: 14.5px;
-    margin-bottom: 22px;
+  .mirror-reason-card.is-active {
+    display: block;
+    animation: fadeIn 0.2s ease;
   }
 
-  .stages-vertical-stack {
-    gap: 16px;
+  .reason-next-inline-btn {
+    display: inline-flex;
   }
 
-  .stage-card-row {
-    padding: 20px 18px;
-    border-radius: 18px;
-    gap: 16px;
+  .mirror-reason-card h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .mirror-reason-card p {
+    font-size: 13.5px;
+    line-height: 1.44;
+  }
+
+  .mirror-session-bridge {
+    padding: 0;
+    border: none;
+    background: transparent;
+    margin-top: 4px;
+  }
+
+  .mirror-session-bridge-copy {
+    display: none;
+  }
+
+  .mirror-next-step-link {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  /* ЭКРАН 2 (#therapy-stages): ГОРИЗОНТАЛЬНАЯ СВАЙП-КОЛОДА НА ТЕЛЕФОНЕ ВМЕСТО ВЕРТИКАЛЬНОЙ ПРОСТЫНИ */
+  .stages-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .stages-section-header .stages-individual-note {
+    font-size: 12.5px;
+    line-height: 1.38;
+  }
+
+  .stages-step-track {
+    display: grid;
+    margin-bottom: 10px;
+  }
+
+  .stages-swipe-deck {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    margin: 0 -14px;
+    padding: 2px 14px 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .stages-swipe-deck::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stage-card-row,
+  .stage-card-row--reverse,
+  .stage-card-row--outcomes {
+    flex: 0 0 90%;
+    max-width: 90%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px 15px;
+    border-radius: 20px;
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Убираем огромные квадратные иллюстрации под каждым этапом на телефоне! */
+  .stage-card-illus {
+    display: none !important;
+  }
+
+  .stage-mini-thumb {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+
+  .stage-swipe-hint {
+    display: block;
   }
 
   .stage-num {
     font-size: 11px;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-  }
-
-  .stage-card-copy h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-
-  .stage-card-copy p {
-    font-size: 15px;
-    line-height: 1.52;
-  }
-
-  .stage-inline-quote {
-    font-size: 16.5px;
-    margin-top: 12px;
-    padding-left: 12px;
-  }
-
-  .vera-story-photo {
-    min-height: 280px;
-    max-height: 320px;
-  }
-
-  .vera-story-copy,
-  .vera-hero-split-copy {
-    padding: 22px 18px;
-  }
-
-  .vera-about-heading {
-    font-size: 24px;
-    margin-bottom: 14px;
-  }
-
-  .vera-about-bio p {
-    font-size: 14.8px;
-    line-height: 1.54;
-    margin-bottom: 10px;
-  }
-
-  .vera-story-quote {
-    font-size: 17.5px;
-    margin-top: 14px;
-    padding-left: 14px;
-  }
-
-  .vera-credentials-clean,
-  .booking-card {
-    padding: 20px 16px;
-    border-radius: 20px;
-  }
-
-  .vera-stats-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-  }
-
-  .vera-stat-item {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 12px 14px;
-  }
-
-  .vera-stat-val {
-    font-size: 24px;
-  }
-
-  .vera-stat-label {
-    font-size: 12px;
-    line-height: 1.35;
-  }
-
-  .swiss-clean-grid {
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-
-  .swiss-clean-col {
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .swiss-clean-col:last-child {
+    margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
   }
 
-  .ilyakhov-warm-bridge {
-    padding: 20px 16px;
-    gap: 16px;
+  .stage-card-copy {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .stage-card-copy h3 {
+    font-size: 18.5px;
+    line-height: 1.2;
+    margin-bottom: 7px;
+  }
+
+  .stage-card-copy p {
+    font-size: 13.8px;
+    line-height: 1.45;
+  }
+
+  .stage-inline-quote {
+    font-size: 14.2px;
+    line-height: 1.36;
+    margin-top: 10px;
+    padding-left: 10px;
+  }
+
+  .stage-card-mobile-nav {
+    display: flex;
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  /* Слайд 4 (Результаты) внутри горизонтальной свайп-колоды */
+  .research-outcomes-head {
+    margin-bottom: 8px;
+  }
+
+  .research-outcomes-kicker {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+
+  .research-outcomes-title {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  .research-outcomes-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .research-outcome-item {
+    display: flex;
+    flex-direction: row !important;
+    align-items: flex-start;
+    padding: 9px 11px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    gap: 9px;
+  }
+
+  .research-outcome-body h4 {
+    font-size: 13.5px;
+    margin-bottom: 2px;
+  }
+
+  .research-outcome-body p {
+    font-size: 12.2px;
+    line-height: 1.35;
+  }
+
+  /* ЭКРАН 3 (#about-vera): КОМПАКТНАЯ ПРОФИЛЬ-КАРТОЧКА С 3 ТАБАМИ В 1 ЭКРАН */
+  .vera-story-split {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .vera-story-photo {
+    min-height: 185px;
+    max-height: 195px;
+  }
+
+  .vera-story-photo img {
+    object-position: center 18%;
+  }
+
+  .vera-photo-badge-bar {
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    padding: 6px 10px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .vera-story-copy {
+    padding: 14px 15px 15px;
+  }
+
+  .vera-about-kicker {
+    font-size: 9.5px;
+    margin-bottom: 3px;
+  }
+
+  .vera-about-heading {
+    font-size: 20px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .vera-profile-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-bottom: 12px;
+    gap: 4px;
+  }
+
+  .vera-tab-pill {
+    padding: 7px 4px;
+    font-size: 11.8px;
+    text-align: center;
+  }
+
+  .vera-about-bio p {
+    font-size: 13.2px;
+    line-height: 1.44;
+    margin-bottom: 6px;
+  }
+
+  .vera-story-quote {
+    font-size: 14.5px;
+    line-height: 1.32;
+    margin-top: 8px;
+    padding-left: 10px;
+  }
+
+  .vera-card-footer-actions {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .inline-diplomas-btn {
+    font-size: 11.8px;
+    padding: 7px 10px;
+    white-space: nowrap;
+  }
+
+  .vera-inline-insta-link {
+    font-size: 11.8px;
+    padding: 7px 10px;
+    white-space: nowrap;
+  }
+
+  /* ЭКРАН 4 (#booking): КОМПАКТНЫЙ СВИТЧЕР ФОРМАТА + КАЛЕНДАРЬ НА 1 ЭКРАНЕ ТЕЛЕФОНА */
+  .booking-card {
+    padding: 16px 14px;
     border-radius: 20px;
   }
 
-  .warm-bridge-btn {
-    width: 100%;
-    white-space: normal;
-    line-height: 1.3;
-  }
-
-  /* Шапка виджета записи на мобильном в одну аккуратную строку */
   .yasno-widget-header {
     flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
-    padding-bottom: 14px;
-    margin-bottom: 16px;
-  }
-
-  .yasno-expert-mini {
-    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
   }
 
   .yasno-expert-avatar {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 
   .yasno-expert-info h2 {
-    font-size: 16.5px;
+    font-size: 16px;
     margin-bottom: 2px;
   }
 
   .yasno-expert-meta {
-    font-size: 12px;
+    font-size: 11.5px;
     gap: 4px;
   }
 
   .yasno-price-pill {
-    font-size: 14px;
-    padding: 6px 12px;
+    font-size: 13.5px;
+    padding: 5px 11px;
+  }
+
+  .cal-booking-layout {
+    gap: 14px;
+  }
+
+  /* Формат встречи: в 1 компактную строку-переключатель (42px вместо 320px!) */
+  .cal-col-format {
+    padding-bottom: 12px;
   }
 
   .cal-step-kicker {
+    font-size: 10.5px;
+    margin-bottom: 6px;
+  }
+
+  .cal-format-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    background: var(--bg);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+
+  .cal-format-card {
+    padding: 9px 10px;
+    border-radius: 9px;
+    border: none !important;
+    background: transparent;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cal-format-card.is-active {
+    background: var(--forest);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(24, 48, 37, 0.18);
+  }
+
+  .cal-format-card.is-active .cal-format-card-title {
+    color: #ffffff;
+  }
+
+  .cal-radio-circle,
+  .cal-format-card-desc,
+  .cal-selection-summary {
+    display: none !important;
+  }
+
+  .cal-format-card-title {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  .cal-col-month {
+    padding-bottom: 12px;
+  }
+
+  .cal-month-bar {
     margin-bottom: 8px;
   }
 
+  .cal-month-title {
+    font-size: 15px;
+  }
+
   .cal-day-btn {
-    min-height: 35px;
+    min-height: 34px;
     font-size: 13px;
-    border-radius: 9px;
+    border-radius: 8px;
   }
 
   .time-slots-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 7px;
-    margin-bottom: 14px;
+    gap: 6px;
+    margin-bottom: 12px;
   }
 
   .time-slot-btn {
-    padding: 10px 6px;
+    padding: 9px 6px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .yasno-widget-footnote {
+    font-size: 11.5px;
+    margin-top: 10px;
+  }
+
+  /* ЛИПКАЯ НИЖНЯЯ ПАНЕЛЬ ДЕЙСТВИЯ НА ТЕЛЕФОНЕ */
+  .result-flow:not(.is-hidden-until-quiz) .mobile-sticky-cta-bar {
+    display: flex;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 90;
+    background: rgba(252, 250, 246, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 12px 32px rgba(20, 38, 29, 0.18);
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .mobile-sticky-cta-bar.is-hidden-near-booking {
+    transform: translateY(130%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-sticky-cta-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .mobile-sticky-cta-meta strong {
     font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .mobile-sticky-cta-meta span {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+
+  .mobile-sticky-cta-btn {
+    min-height: 38px;
+    padding: 8px 16px;
+    font-size: 13px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .site-footer {
+    padding-bottom: 84px;
   }
 
   .diplomas-grid,
