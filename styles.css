@@ -4539,3 +4539,1154 @@ dialog.modal::backdrop {
     max-height: 134px !important;
   }
 }
+
+/* ==========================================================================
+   V36: АВТОРСКИЙ САЙТ ПСИХОЛОГА ВЕРЫ ШОУ ПО ПРИНЦИПАМ МАКСИМА ИЛЬЯХОВА
+   1. Без квизов-конструкторов, без скрытых вкладок, без рисованных мультиков.
+   2. Спокойный, живой рассказ: Кто Вера и кому помогает → С чем приходят →
+      Большой рассказ о Вере, методах МГУ/ВШЭ, дипломах и видео →
+      Честный фильтр «Кому подойду / не подойду» → Первая встреча → Запись.
+   ========================================================================== */
+
+.ilyakhov-editorial-page {
+  background-color: #F6F4EE;
+  color: #16241D;
+}
+
+/* Первый экран (#quizSection.ilyakhov-hero-section) */
+.ilyakhov-hero-section {
+  padding: 28px 0 36px;
+}
+
+.ilyakhov-hero-card {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 44px;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.11);
+  border-radius: 28px;
+  padding: 44px 48px;
+  box-shadow: 0 18px 48px rgba(20, 38, 29, 0.06);
+}
+
+.ilyakhov-kicker {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 14px;
+}
+
+.ilyakhov-hero-title {
+  font-size: clamp(30px, 3.3vw, 44px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.ilyakhov-hero-title .serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.08em;
+  color: var(--forest);
+}
+
+.ilyakhov-hero-lead {
+  font-size: 16.5px;
+  line-height: 1.58;
+  color: var(--ink-soft);
+  margin: 0 0 26px;
+  max-width: 640px;
+}
+
+.ilyakhov-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.ilyakhov-primary-btn {
+  min-height: 52px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.ilyakhov-secondary-btn {
+  min-height: 52px;
+  padding: 14px 22px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: #F6F4EE;
+}
+
+.ilyakhov-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(24, 48, 37, 0.1);
+}
+
+.ilyakhov-fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ilyakhov-fact-item strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ilyakhov-fact-item span {
+  font-size: 12.8px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+/* Портрет Веры на первом экране */
+.ilyakhov-portrait-frame {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #E8E6DF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  box-shadow: 0 16px 36px rgba(20, 38, 29, 0.1);
+}
+
+.ilyakhov-portrait-img {
+  width: 100%;
+  height: 490px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.ilyakhov-portrait-caption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  background: rgba(22, 36, 29, 0.88);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ilyakhov-portrait-caption strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.ilyakhov-portrait-caption span {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Общие секции по Ильяхову */
+.ilyakhov-section,
+.booking-section,
+#diplomas-showcase,
+#video-intro {
+  scroll-margin-top: 68px;
+}
+
+.ilyakhov-section {
+  padding: 56px 0;
+}
+
+.ilyakhov-section--warm {
+  background: #EFECE3;
+  border-top: 1px solid rgba(24, 48, 37, 0.08);
+  border-bottom: 1px solid rgba(24, 48, 37, 0.08);
+}
+
+.ilyakhov-section-head {
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+
+.ilyakhov-section-kicker {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 8px;
+}
+
+.ilyakhov-section-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.ilyakhov-section-title .serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.08em;
+  color: var(--forest);
+}
+
+.ilyakhov-section-sub {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* БЛОК 2: 4 запроса клиентов (#requests) */
+.ilyakhov-requests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.ilyakhov-request-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 22px;
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 28px rgba(20, 38, 29, 0.04);
+}
+
+.request-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.request-card-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--terracotta);
+  line-height: 1;
+}
+
+.request-card-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+  background: rgba(24, 48, 37, 0.06);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.ilyakhov-request-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.24;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+.ilyakhov-request-card p {
+  font-size: 15px;
+  line-height: 1.56;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  flex-grow: 1;
+}
+
+.request-card-result {
+  background: #F6F4EE;
+  border-left: 3px solid var(--forest);
+  padding: 12px 14px;
+  border-radius: 0 12px 12px 0;
+  font-size: 13.8px;
+  line-height: 1.46;
+  color: var(--ink);
+}
+
+.request-card-result strong {
+  color: var(--forest);
+}
+
+/* БЛОК 3: Большой рассказ о Вере (#about-vera) */
+.ilyakhov-story-grid {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.ilyakhov-story-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-photo-main,
+.story-photo-secondary {
+  margin: 0;
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(20, 38, 29, 0.06);
+}
+
+.story-photo-main img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.story-photo-secondary img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+.story-photo-main figcaption,
+.story-photo-secondary figcaption {
+  padding: 14px 18px;
+  font-size: 13.8px;
+  line-height: 1.45;
+  color: var(--ink);
+  font-style: italic;
+  background: #FFFFFF;
+}
+
+.ilyakhov-story-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prose-block {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 22px;
+  padding: 26px 30px;
+  box-shadow: 0 8px 24px rgba(20, 38, 29, 0.04);
+}
+
+.prose-block h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.prose-block p {
+  font-size: 15.2px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.prose-block p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-method-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prose-method-list li {
+  font-size: 14.8px;
+  line-height: 1.54;
+  color: var(--ink-soft);
+}
+
+.prose-method-list li strong {
+  color: var(--ink);
+}
+
+/* Витрина дипломов (#diplomas-showcase) */
+.ilyakhov-diplomas-block {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 24px;
+  padding: 28px 30px;
+  margin-bottom: 28px;
+}
+
+.diplomas-block-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.diplomas-block-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--ink);
+  margin: 0;
+}
+
+.diplomas-open-all-btn {
+  min-height: 42px;
+  padding: 10px 18px;
+  font-size: 13.8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.diplomas-preview-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.diploma-preview-item {
+  background: #F6F4EE;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.diploma-preview-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(20, 38, 29, 0.09);
+}
+
+.diploma-preview-img {
+  position: relative;
+  height: 156px;
+  background: #E8E5DC;
+  overflow: hidden;
+}
+
+.diploma-preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.diploma-zoom-badge {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(22, 36, 29, 0.86);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.diploma-preview-meta {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.diploma-preview-meta span {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--terracotta);
+}
+
+.diploma-preview-meta strong {
+  font-size: 13.5px;
+  line-height: 1.32;
+  color: var(--ink);
+}
+
+/* Короткие видео Веры (#video-intro) */
+.ilyakhov-video-block {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 24px;
+  padding: 28px 30px;
+}
+
+.video-block-header {
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.video-block-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.video-block-header p {
+  font-size: 14.8px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.video-block-header a {
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.video-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.video-reel-card {
+  background: #F6F4EE;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-reel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(20, 38, 29, 0.1);
+}
+
+.video-reel-thumb {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  background: #183025;
+}
+
+.video-reel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  filter: brightness(0.88);
+}
+
+.video-play-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding-left: 3px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.video-duration-tag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(22, 36, 29, 0.85);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.video-reel-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.video-reel-body strong {
+  font-size: 14.5px;
+  line-height: 1.34;
+  color: var(--ink);
+}
+
+.video-reel-body span {
+  font-size: 12.8px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* БЛОК 4: Кому я подойду и кому не помогу (#fit-check) */
+.ilyakhov-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.fit-card {
+  background: #FFFFFF;
+  border-radius: 22px;
+  padding: 28px 30px;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+}
+
+.fit-card--yes {
+  border-top: 4px solid var(--forest);
+}
+
+.fit-card--no {
+  border-top: 4px solid var(--terracotta);
+}
+
+.fit-card-badge {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.fit-card-badge--yes {
+  background: rgba(24, 48, 37, 0.08);
+  color: var(--forest);
+}
+
+.fit-card-badge--no {
+  background: rgba(168, 90, 62, 0.12);
+  color: var(--terracotta);
+}
+
+.fit-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fit-list li {
+  font-size: 14.8px;
+  line-height: 1.54;
+  color: var(--ink-soft);
+}
+
+.fit-list li strong {
+  color: var(--ink);
+}
+
+/* БЛОК 5: Первая встреча и условия (#first-session) */
+.first-session-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.first-session-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session-step-item {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 20px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.session-step-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--terracotta);
+  line-height: 1;
+  min-width: 28px;
+}
+
+.session-step-body h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.session-step-body p {
+  font-size: 14.6px;
+  line-height: 1.54;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.first-session-rules-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(20, 38, 29, 0.06);
+}
+
+.rules-photo-row {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.rules-photo-row img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.rules-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 34, 26, 0.05) 0%, rgba(18, 34, 26, 0.84) 100%);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #FFFFFF;
+}
+
+.rules-photo-overlay strong {
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.rules-photo-overlay span {
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.rules-specs-list {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rules-spec-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(24, 48, 37, 0.08);
+  font-size: 14px;
+}
+
+.rules-spec-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rules-spec-row span {
+  color: var(--ink-soft);
+}
+
+.rules-spec-row strong {
+  color: var(--ink);
+  text-align: right;
+}
+
+/* Плашка прямого контакта в Telegram перед календарём */
+.ilyakhov-direct-contact-bar {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.12);
+  border-left: 4px solid var(--forest);
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.direct-contact-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.direct-contact-copy strong {
+  font-size: 16.5px;
+  color: var(--ink);
+}
+
+.direct-contact-copy span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.direct-contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.direct-tg-btn {
+  min-height: 44px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.direct-phone-link {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   МОБИЛЬНАЯ ВЕРСИЯ (<= 860px): ЧИСТАЯ, СПОКОЙНАЯ ВЕРСТКА ДЛЯ ЧТЕНИЯ С ТЕЛЕФОНА
+   ========================================================================== */
+@media (max-width: 860px) {
+  .ilyakhov-hero-section {
+    padding: 12px 0 20px !important;
+  }
+
+  .ilyakhov-hero-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px 18px;
+    border-radius: 22px;
+  }
+
+  /* На телефоне сначала крупный живой портрет Веры и короткое знакомство на 1 экране */
+  .ilyakhov-hero-visual {
+    order: -1;
+  }
+
+  .ilyakhov-portrait-img {
+    height: 236px;
+    object-position: center 14%;
+  }
+
+  .ilyakhov-portrait-caption {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 12px;
+  }
+
+  .ilyakhov-portrait-caption strong {
+    font-size: 13.5px;
+  }
+
+  .ilyakhov-portrait-caption span {
+    font-size: 11.2px;
+  }
+
+  .ilyakhov-kicker {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .ilyakhov-hero-title {
+    font-size: 21.5px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .ilyakhov-hero-lead {
+    font-size: 13.8px;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .ilyakhov-hero-actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .ilyakhov-primary-btn,
+  .ilyakhov-secondary-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .ilyakhov-hero-facts {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .ilyakhov-fact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2px;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .ilyakhov-fact-item strong {
+    font-size: 12.2px;
+    white-space: nowrap;
+  }
+
+  .ilyakhov-fact-item span {
+    font-size: 10.8px;
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .ilyakhov-section {
+    padding: 32px 0 !important;
+  }
+
+  .ilyakhov-section-head {
+    margin-bottom: 20px;
+  }
+
+  .ilyakhov-section-title {
+    font-size: 24px;
+    line-height: 1.16;
+    margin-bottom: 8px;
+  }
+
+  .ilyakhov-section-sub {
+    font-size: 14.2px;
+    line-height: 1.48;
+  }
+
+  .ilyakhov-requests-grid,
+  .ilyakhov-story-grid,
+  .ilyakhov-fit-grid,
+  .first-session-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ilyakhov-request-card,
+  .prose-block,
+  .fit-card {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .ilyakhov-request-card h3,
+  .prose-block h3 {
+    font-size: 18px;
+  }
+
+  .ilyakhov-request-card p,
+  .prose-block p {
+    font-size: 14.2px;
+    line-height: 1.52;
+  }
+
+  .story-photo-main img {
+    height: 300px;
+  }
+
+  .story-photo-secondary img {
+    height: 250px;
+  }
+
+  .ilyakhov-diplomas-block,
+  .ilyakhov-video-block {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .diplomas-block-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .diplomas-block-header h3,
+  .video-block-header h3 {
+    font-size: 19px;
+  }
+
+  .diplomas-open-all-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .diplomas-preview-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .diploma-preview-img {
+    height: 120px;
+  }
+
+  .diploma-zoom-badge {
+    font-size: 9.8px;
+    padding: 3px 7px;
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .diploma-preview-meta {
+    padding: 10px;
+  }
+
+  .diploma-preview-meta strong {
+    font-size: 12.2px;
+  }
+
+  .video-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .video-reel-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .video-reel-thumb {
+    width: 116px;
+    height: auto;
+    min-height: 108px;
+    flex-shrink: 0;
+  }
+
+  .video-play-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .video-duration-tag {
+    font-size: 9.5px;
+    padding: 2px 7px;
+    left: 6px;
+    bottom: 6px;
+  }
+
+  .video-reel-body {
+    padding: 12px 14px;
+  }
+
+  .video-reel-body strong {
+    font-size: 13.8px;
+  }
+
+  .session-step-item {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .rules-spec-row {
+    font-size: 13.2px;
+  }
+
+  .ilyakhov-direct-contact-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .direct-contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .direct-tg-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .direct-phone-link {
+    text-align: center;
+  }
+
+  /* Липкая нижняя панель на телефоне для страницы v36 */
+  .ilyakhov-editorial-page .mobile-sticky-cta-bar {
+    display: flex;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 90;
+    background: rgba(252, 250, 246, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 12px 32px rgba(20, 38, 29, 0.18);
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .ilyakhov-editorial-page .mobile-sticky-cta-bar.is-hidden-near-booking {
+    transform: translateY(130%);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
