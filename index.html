@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/fonts/onest-cyrillic-v11.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-cyrillic-600-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23183025'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-style='italic' font-weight='600' font-size='26'%3EВШ%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body class="ilyakhov-editorial-page">
 
@@ -25,10 +25,11 @@
 
       <div class="header-right-actions">
         <nav class="header-nav is-unlocked" aria-label="Навигация по странице">
-          <a href="#requests">С чем работаю</a>
-          <a href="#about-vera">Обо мне и методах</a>
+          <a href="#requests">Запросы</a>
+          <a href="#about-vera">Обо мне</a>
           <a href="#diplomas-showcase">Дипломы</a>
-          <a href="#first-session">Первая встреча</a>
+          <a href="#video-intro">Видео</a>
+          <a href="#first-session">Условия</a>
         </nav>
 
         <a href="#booking" class="header-skip-link">
@@ -41,119 +42,123 @@
   <main id="top">
 
     <!-- ======================================================================
-         ЭКРАН 1: ЗНАКОМСТВО, ПОЗИЦИОНИРОВАНИЕ И ЖИВОЙ КОНТАКТ (ПО ИЛЬЯХОВУ)
+         ЭКРАН 1: ПЕРВЫЙ ЭКРАН — ЧИСТЫЙ ПОРТРЕТ БЕЗ НАЛЕПЛЕННЫХ ПЛАШЕК И СИЛЬНЫЙ ОФФЕР
          ====================================================================== -->
     <section class="ilyakhov-hero-section" id="quizSection">
       <div class="site-container">
-        <div class="ilyakhov-hero-card">
+        <div class="ilyakhov-hero-grid">
           <div class="ilyakhov-hero-copy">
             <div class="ilyakhov-kicker">
-              ПСИХОЛОГ · МГУ · МАГИСТР НИУ ВШЭ · МОСКВА И ОНЛАЙН
+              ПСИХОЛОГ-КОНСУЛЬТАНТ · МГУ · МАГИСТР НИУ ВШЭ
             </div>
 
             <h1 class="ilyakhov-hero-title">
-              Помогаю сильным людям, которые устали всё тащить на себе, <span class="serif-italic">вернуть опору и вкус к жизни</span>
+              Помогаю взрослым, сильным людям выйти из выгорания, тревоги <span class="serif-italic">и одиночества вдвоём</span>
             </h1>
 
-            <div class="ilyakhov-hero-actions">
-              <a href="#booking" class="btn btn-forest ilyakhov-primary-btn">
-                Выбрать время встречи →
-              </a>
-              <a href="#video-intro" class="btn btn-outline ilyakhov-secondary-btn">
-                ▶ Мои видео (1 мин)
-              </a>
-            </div>
+            <p class="ilyakhov-hero-sublead">
+              Меня зовут Вера Шоу. До психологии я 20 лет работала в крупном бизнесе рядом с первыми лицами — со мной не нужно держать лицо и объяснять базовые вещи.
+            </p>
 
-            <div class="ilyakhov-hero-facts">
-              <div class="ilyakhov-fact-item">
+            <div class="ilyakhov-hero-meta-strip">
+              <div class="hero-meta-item">
                 <strong>МГУ + НИУ ВШЭ</strong>
                 <span>диплом с отличием</span>
               </div>
-              <div class="ilyakhov-fact-item">
-                <strong>20 лет в бизнесе</strong>
-                <span>топ-менеджмент</span>
+              <div class="hero-meta-item">
+                <strong>ЕАТА + EMDR</strong>
+                <span>доказательный метод</span>
               </div>
-              <div class="ilyakhov-fact-item">
+              <div class="hero-meta-item">
                 <strong>8 лет в терапии</strong>
                 <span>супервизия ЕАТА</span>
               </div>
             </div>
+
+            <div class="ilyakhov-hero-actions">
+              <a href="#booking" class="btn btn-forest ilyakhov-primary-btn">
+                Записаться на первую встречу →
+              </a>
+              <a href="https://t.me/+79856463870" target="_blank" rel="noopener" class="btn btn-outline ilyakhov-secondary-btn">
+                Написать лично в Telegram ↗
+              </a>
+            </div>
+
+            <div class="ilyakhov-hero-session-note">
+              Индивидуальная сессия 60 минут · <strong>10 000 ₽</strong> · Очно в центре Москвы и онлайн (Zoom)
+            </div>
           </div>
 
           <div class="ilyakhov-hero-visual">
-            <div class="ilyakhov-portrait-frame">
+            <figure class="ilyakhov-portrait-frame">
               <img
                 src="assets/img/vera-editorial-blazer.jpg"
                 alt="Вера Шоу — практикующий психолог, МГУ, магистр НИУ ВШЭ"
                 class="ilyakhov-portrait-img"
-                width="900"
-                height="960"
+                width="1080"
+                height="1152"
                 fetchpriority="high"
               >
-              <div class="ilyakhov-portrait-caption">
-                <strong>Вера Шоу</strong>
-                <span>Индивидуальная терапия · 60 мин · 10 000 ₽</span>
-              </div>
-            </div>
+            </figure>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         ЭКРАН 2: С ЧЕМ КО МНЕ ПРИХОДЯТ (КОРОТКО, БЕЗ ВОДЫ И ОПИСАНИЙ ПОД ЗАГОЛОВКОМ)
+         ЭКРАН 2: С ЧЕМ КО МНЕ ПРИХОДЯТ — ЧИСТЫЕ КАРТОЧКИ БЕЗ ЦВЕТНЫХ ДУГ И ВЛОЖЕННЫХ РАМОК
          ====================================================================== -->
     <section class="ilyakhov-section" id="requests">
       <div class="site-container">
         <div class="ilyakhov-section-head">
-          <span class="ilyakhov-section-kicker">01 · С ЧЕМ Я РАБОТАЮ</span>
+          <span class="ilyakhov-section-kicker">01 · С ЧЕМ КО МНЕ ОБРАЩАЮТСЯ</span>
           <h2 class="ilyakhov-section-title">
-            Когда внешне всё в порядке, <span class="serif-italic">а внутри — тяжело</span>
+            Когда внешне всё успешно, <span class="serif-italic">а внутри — пустота и напряжение</span>
           </h2>
         </div>
 
         <div class="ilyakhov-requests-grid">
           <article class="ilyakhov-request-card">
-            <div class="request-card-top">
-              <span class="request-card-num">01</span>
-              <span class="request-card-tag">Выгорание и контроль</span>
-            </div>
-            <h3>Деньги и результаты есть, а радости и сил — ноль</h3>
-            <div class="request-card-result">
-              <strong>Результат:</strong> уходит гиперконтроль и бессонница, возвращается вкус к жизни.
-            </div>
-          </article>
-
-          <article class="ilyakhov-request-card">
-            <div class="request-card-top">
-              <span class="request-card-num">02</span>
-              <span class="request-card-tag">Отношения и границы</span>
-            </div>
-            <h3>Привычка быть «удобной» для всех и одиночество вдвоём</h3>
-            <div class="request-card-result">
-              <strong>Результат:</strong> спокойное «нет» без чувства вины и тёплая близость в паре.
+            <span class="request-card-label">Выгорание и гиперконтроль</span>
+            <h3>Деньги и результаты есть, а радости и сил больше нет</h3>
+            <p class="request-card-symptom">
+              Живёте в режиме вечного «надо», не можете расслабиться без чувства вины, плохо спите.
+            </p>
+            <div class="request-outcome">
+              Возвращаем глубокий сон, живые эмоции и вкус к жизни без потери деловой хватки.
             </div>
           </article>
 
           <article class="ilyakhov-request-card">
-            <div class="request-card-top">
-              <span class="request-card-num">03</span>
-              <span class="request-card-tag">Тревога и сон</span>
-            </div>
-            <h3>Ночная «мысленная жвачка», тревога и груз прошлых ошибок</h3>
-            <div class="request-card-result">
-              <strong>Результат:</strong> перерабатываем травмы прошлого (EMDR, ТА) и возвращаем глубокий сон.
+            <span class="request-card-label">Личные границы</span>
+            <h3>Для всех вокруг вы опора, а на себя сил не остаётся</h3>
+            <p class="request-card-symptom">
+              Проще промолчать и взвалить всё на себя, чем выдержать чужую обиду или конфликт.
+            </p>
+            <div class="request-outcome">
+              Учимся спокойно говорить «нет» без чувства вины и выходим из роли спасателя.
             </div>
           </article>
 
           <article class="ilyakhov-request-card">
-            <div class="request-card-top">
-              <span class="request-card-num">04</span>
-              <span class="request-card-tag">Самореализация и чек</span>
+            <span class="request-card-label">Отношения в паре</span>
+            <h3>Одиночество вдвоём, холод и повторяющиеся обиды</h3>
+            <p class="request-card-symptom">
+              Внешне вы пара, но внутри — дистанция, накопленные претензии или страх снова открыться.
+            </p>
+            <div class="request-outcome">
+              Распутываем болезненный сценарий и возвращаем честную, тёплую близость.
             </div>
-            <h3>Сильный опыт внутри, но страх оценки мешает расти в доходе</h3>
-            <div class="request-card-result">
-              <strong>Результат:</strong> убираем синдром самозванца и возвращаем уверенную позицию на равных.
+          </article>
+
+          <article class="ilyakhov-request-card">
+            <span class="request-card-label">Тревога и самооценка</span>
+            <h3>Фоновая тревога, «мысленная жвачка» и внутренний критик</h3>
+            <p class="request-card-symptom">
+              Головой всё понимаете, но перед сном крутятся старые диалоги, а страх оценки мешает расти.
+            </p>
+            <div class="request-outcome">
+              Бережно убираем корень тревоги, стыда и прошлых травм методами EMDR и ТА.
             </div>
           </article>
         </div>
@@ -161,65 +166,84 @@
     </section>
 
     <!-- ======================================================================
-         ЭКРАН 3: ОБО МНЕ — КОРОТКО И ПО ДЕЛУ (ЧЕРЕЗ ПОЛЬЗУ КЛИЕНТУ)
+         ЭКРАН 3: О ВЕРЕ И МЕТОДЕ — АВТОРСКИЙ ТРИПТИХ (ПОЛНЫЕ ФОТО 2:3 БЕЗ ОБРЕЗКИ)
          ====================================================================== -->
     <section class="ilyakhov-section ilyakhov-section--warm" id="about-vera">
       <div class="site-container">
         <div class="ilyakhov-section-head">
           <span class="ilyakhov-section-kicker">02 · ОБО МНЕ И ПОДХОДЕ</span>
           <h2 class="ilyakhov-section-title">
-            Почему со мной безопасно <span class="serif-italic">и не нужно объяснять базовые вещи</span>
+            Почему со мной безопасно <span class="serif-italic">и как мы работаем</span>
           </h2>
         </div>
 
-        <div class="ilyakhov-story-grid">
-          <div class="ilyakhov-story-photos">
-            <figure class="story-photo-main">
+        <div class="ilyakhov-triptych-grid">
+          <article class="triptych-card">
+            <figure class="triptych-photo">
               <img
                 src="assets/img/vera-portrait-warm.jpg"
-                alt="Вера Шоу — портрет психолога"
+                alt="Вера Шоу — 20 лет опыта в бизнесе"
                 width="800"
                 height="1200"
                 loading="lazy"
               >
             </figure>
-          </div>
-
-          <div class="ilyakhov-story-prose">
-            <div class="prose-block">
-              <h3>1. 20 лет в реальном бизнесе</h3>
+            <div class="triptych-body">
+              <span class="triptych-num">01 · Опыт и контекст</span>
+              <h3>20 лет в реальном бизнесе</h3>
               <p>
-                ВТБ-Лизинг, Ямал СПГ, работа с акционерами и руководителями — понимаю груз ответственности за команду, деньги и семью без долгих объяснений.
+                До частной практики работала в крупном бизнесе (ВТБ-Лизинг, Ямал СПГ) рядом с акционерами и руководителями. Понимаю цену ответственности за команду, деньги и семью с полуслова.
               </p>
             </div>
+          </article>
 
-            <div class="prose-block">
-              <h3>2. Доказательная база МГУ и НИУ ВШЭ</h3>
+          <article class="triptych-card">
+            <figure class="triptych-photo">
+              <img
+                src="assets/img/vera-red-thread.jpg"
+                alt="Вера Шоу — распутываем жизненный сценарий"
+                width="800"
+                height="1200"
+                loading="lazy"
+              >
+            </figure>
+            <div class="triptych-body">
+              <span class="triptych-num">02 · Научная база МГУ и ВШЭ</span>
+              <h3>Распутываем корень сценария</h3>
               <p>
-                Психфак МГУ, очная магистратура ВШЭ с отличием, 4-летняя европейская программа Транзактного анализа (ЕАТА) и травматерапия EMDR. Без эзотерики.
+                Психфак МГУ, очная магистратура НИУ ВШЭ с отличием, 4-летняя европейская программа Транзактного анализа (ЕАТА) и EMDR. Вместо советов «просто отдохнуть» находим нить, на которой держится напряжение.
               </p>
             </div>
+          </article>
 
-            <div class="prose-block">
-              <h3>3. 8 лет личной терапии и супервизия</h3>
+          <article class="triptych-card">
+            <figure class="triptych-photo">
+              <img
+                src="assets/img/vera-shadow-thread.jpg"
+                alt="Вера Шоу — бережная работа с травмой и тенью"
+                width="800"
+                height="1200"
+                loading="lazy"
+              >
+            </figure>
+            <div class="triptych-body">
+              <span class="triptych-num">03 · Безопасность и этика</span>
+              <h3>8 лет личной терапии и супервизия</h3>
               <p>
-                Регулярная супервизия у преподавателей ЕАТА (д.м.н. Т. В. Агибалова, Д. И. Шустов) — гарантия бережной работы без оценок и советов.
+                Практикую под регулярной супервизией ведущих преподавателей и психиатров ЕАТА (д.м.н. Т. В. Агибалова, Д. И. Шустов). Без осуждения, эзотерики и навязывания своей картины мира.
               </p>
             </div>
-          </div>
+          </article>
         </div>
 
         <!-- ==================================================================
-             ВИТРИНА НАСТОЯЩИХ ДИПЛОМОВ ПРЯМО НА СТРАНИЦЕ
+             ОРИГИНАЛЫ ДИПЛОМОВ
              ================================================================== -->
-        <div class="ilyakhov-diplomas-block" id="diplomas-showcase">
-          <div class="diplomas-block-header">
-            <div>
-              <span class="ilyakhov-section-kicker">ДОКУМЕНТЫ ОБ ОБРАЗОВАНИИ</span>
-              <h3>Оригиналы дипломов и сертификатов</h3>
-            </div>
+        <div class="ilyakhov-diplomas-strip-wrap" id="diplomas-showcase">
+          <div class="diplomas-strip-head">
+            <h3>Оригиналы дипломов и европейских сертификатов</h3>
             <button type="button" class="btn btn-outline diplomas-open-all-btn" data-open-diplomas>
-              Все 22 документа →
+              Смотреть все 22 документа →
             </button>
           </div>
 
@@ -227,7 +251,7 @@
             <article class="diploma-preview-item" data-diploma-group="msu">
               <div class="diploma-preview-img">
                 <img src="assets/diplomas/msu_diploma.jpg" alt="Диплом МГУ им. М.В. Ломоносова" loading="lazy">
-                <span class="diploma-zoom-badge">Скан · 4 стр.</span>
+                <span class="diploma-zoom-badge">4 стр.</span>
               </div>
               <div class="diploma-preview-meta">
                 <span>МГУ им. М. В. Ломоносова</span>
@@ -238,7 +262,7 @@
             <article class="diploma-preview-item" data-diploma-group="hse">
               <div class="diploma-preview-img">
                 <img src="assets/diplomas/hse_master_1.jpg" alt="Диплом магистра НИУ ВШЭ" loading="lazy">
-                <span class="diploma-zoom-badge">Скан · 4 стр.</span>
+                <span class="diploma-zoom-badge">4 стр.</span>
               </div>
               <div class="diploma-preview-meta">
                 <span>НИУ ВШЭ · Магистратура</span>
@@ -249,7 +273,7 @@
             <article class="diploma-preview-item" data-diploma-group="ta">
               <div class="diploma-preview-img">
                 <img src="assets/diplomas/sita_eata_year2.jpg" alt="Сертификат ЕАТА / СОТА" loading="lazy">
-                <span class="diploma-zoom-badge">Скан · 4 док.</span>
+                <span class="diploma-zoom-badge">4 док.</span>
               </div>
               <div class="diploma-preview-meta">
                 <span>ЕАТА / СОТА (Европа)</span>
@@ -260,7 +284,7 @@
             <article class="diploma-preview-item" data-diploma-group="trauma">
               <div class="diploma-preview-img">
                 <img src="assets/diplomas/solwi_emdr_50h.jpg" alt="Сертификат EMDR / ДПДГ" loading="lazy">
-                <span class="diploma-zoom-badge">Скан · 6 док.</span>
+                <span class="diploma-zoom-badge">6 док.</span>
               </div>
               <div class="diploma-preview-meta">
                 <span>SOLWI · EMDR и SE</span>
@@ -271,51 +295,42 @@
         </div>
 
         <!-- ==================================================================
-             КОРОТКИЕ ВИДЕО ВЕРЫ (БЕЗ ПОДЗАГОЛОВКА)
+             КОРОТКИЕ ВИДЕО ВЕРЫ (ЧИСТЫЕ КАРТОЧКИ БЕЗ ПОВТОРА ФОТОГРАФИЙ)
              ================================================================== -->
-        <div class="ilyakhov-video-block" id="video-intro">
-          <div class="video-block-header">
-            <div>
-              <span class="ilyakhov-section-kicker">КОРОТКИЕ ВИДЕО · 1 МИН</span>
-              <h3>Посмотрите, как я говорю и рассуждаю</h3>
-            </div>
+        <div class="ilyakhov-video-strip" id="video-intro">
+          <div class="diplomas-strip-head">
+            <h3>Короткие видео по 1 минуте — послушайте мой голос и подачу</h3>
+            <a href="https://www.instagram.com/psy_vera_shaw/" target="_blank" rel="noopener" class="video-ig-profile-link">
+              Instagram @psy_vera_shaw ↗
+            </a>
           </div>
 
-          <div class="video-cards-grid">
-            <a href="https://www.instagram.com/reel/DT238v6CCbK/" target="_blank" rel="noopener" class="video-reel-card">
-              <div class="video-reel-thumb">
-                <img src="assets/img/vera-portrait-warm.jpg" alt="Видео Веры Шоу — Почему мы застреваем в сценарии" loading="lazy">
-                <span class="video-play-btn" aria-hidden="true">▶</span>
-                <span class="video-duration-tag">1 мин</span>
-              </div>
-              <div class="video-reel-body">
+          <div class="video-clean-cards">
+            <a href="https://www.instagram.com/reel/DT238v6CCbK/" target="_blank" rel="noopener" class="video-clean-card">
+              <span class="video-clean-play" aria-hidden="true">▶</span>
+              <div class="video-clean-body">
+                <span class="video-clean-meta">Reels · 1 минута</span>
                 <strong>Почему сильные люди застревают в сценарии «я всё сам»</strong>
-                <span>Смотреть в Instagram ↗</span>
               </div>
+              <span class="video-clean-arrow" aria-hidden="true">↗</span>
             </a>
 
-            <a href="https://www.instagram.com/reel/DULdGfjCGef/" target="_blank" rel="noopener" class="video-reel-card">
-              <div class="video-reel-thumb">
-                <img src="assets/img/vera-red-thread.jpg" alt="Видео Веры Шоу — Внутренний критик и усталость" loading="lazy">
-                <span class="video-play-btn" aria-hidden="true">▶</span>
-                <span class="video-duration-tag">1 мин</span>
+            <a href="https://www.instagram.com/reel/DULdGfjCGef/" target="_blank" rel="noopener" class="video-clean-card">
+              <span class="video-clean-play" aria-hidden="true">▶</span>
+              <div class="video-clean-body">
+                <span class="video-clean-meta">Reels · 1 минута</span>
+                <strong>Откуда берётся внутренний критик, обесценивающий победы</strong>
               </div>
-              <div class="video-reel-body">
-                <strong>Откуда берётся внутренний критик и обесценивание</strong>
-                <span>Смотреть в Instagram ↗</span>
-              </div>
+              <span class="video-clean-arrow" aria-hidden="true">↗</span>
             </a>
 
-            <a href="https://www.instagram.com/reel/DUSzH4sCDp8/" target="_blank" rel="noopener" class="video-reel-card">
-              <div class="video-reel-thumb">
-                <img src="assets/img/vera-shadow-thread.jpg" alt="Видео Веры Шоу — Контакт с телом и границами" loading="lazy">
-                <span class="video-play-btn" aria-hidden="true">▶</span>
-                <span class="video-duration-tag">1 мин</span>
-              </div>
-              <div class="video-reel-body">
+            <a href="https://www.instagram.com/reel/DUSzH4sCDp8/" target="_blank" rel="noopener" class="video-clean-card">
+              <span class="video-clean-play" aria-hidden="true">▶</span>
+              <div class="video-clean-body">
+                <span class="video-clean-meta">Reels · 1 минута</span>
                 <strong>Как вернуть контакт с желаниями, когда «села батарейка»</strong>
-                <span>Смотреть в Instagram ↗</span>
               </div>
+              <span class="video-clean-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -323,132 +338,74 @@
     </section>
 
     <!-- ======================================================================
-         ЭКРАН 4: ЧЕСТНЫЙ ФИЛЬТР ПО ИЛЬЯХОВУ (БЕЗ ВОДЫ И ОПИСАНИЙ ПОД ЗАГОЛОВКОМ)
+         ЭКРАН 3: КАК ПРОХОДИТ ПЕРВАЯ ВСТРЕЧА И УСЛОВИЯ РАБОТЫ
          ====================================================================== -->
-    <section class="ilyakhov-section" id="fit-check">
+    <section class="ilyakhov-section" id="first-session">
       <div class="site-container">
         <div class="ilyakhov-section-head">
-          <span class="ilyakhov-section-kicker">03 · ГРАНИЦЫ РАБОТЫ</span>
-          <h2 class="ilyakhov-section-title">
-            Кому я подойду, <span class="serif-italic">а кому не смогу помочь</span>
-          </h2>
-        </div>
-
-        <div class="ilyakhov-fit-grid">
-          <div class="fit-card fit-card--yes">
-            <div class="fit-card-badge fit-card-badge--yes">✓ Мы сработаемся</div>
-            <ul class="fit-list">
-              <li>Хотите убрать корень проблемы, а не просто «выпустить пар»</li>
-              <li>Готовы к системной работе ради устойчивого результата</li>
-              <li>Ищете взрослого психолога на равных — без эзотерики и поучений</li>
-            </ul>
-          </div>
-
-          <div class="fit-card fit-card--no">
-            <div class="fit-card-badge fit-card-badge--no">✕ Не смогу помочь, если</div>
-            <ul class="fit-list">
-              <li>Нужен готовый совет или «волшебная таблетка» за одну встречу</li>
-              <li>Требуется большая психиатрия и выписка рецептов</li>
-              <li>Запрос связан с химической зависимостью или детьми до 18 лет</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         ЭКРАН 5: ПЕРВАЯ ВСТРЕЧА И УСЛОВИЯ (КОРОТКО)
-         ====================================================================== -->
-    <section class="ilyakhov-section ilyakhov-section--warm" id="first-session">
-      <div class="site-container">
-        <div class="ilyakhov-section-head">
-          <span class="ilyakhov-section-kicker">04 · ПЕРВАЯ СЕССИЯ</span>
+          <span class="ilyakhov-section-kicker">03 · ПЕРВАЯ ВСТРЕЧА И ПРАВИЛА</span>
           <h2 class="ilyakhov-section-title">
             Как проходят первые <span class="serif-italic">60 минут</span>
           </h2>
         </div>
 
-        <div class="first-session-layout">
-          <div class="first-session-steps">
-            <div class="session-step-item">
-              <span class="session-step-num">01</span>
-              <div class="session-step-body">
-                <h3>Знакомство без «экзамена» · 15 мин</h3>
-                <p>Рассказываете о ситуации как получается — готовить речь не нужно.</p>
-              </div>
-            </div>
-
-            <div class="session-step-item">
-              <span class="session-step-num">02</span>
-              <div class="session-step-body">
-                <h3>Разбор причины состояния · 30 мин</h3>
-                <p>Находим, что именно забирает силы и вызывает тревогу или холод в паре.</p>
-              </div>
-            </div>
-
-            <div class="session-step-item">
-              <span class="session-step-num">03</span>
-              <div class="session-step-body">
-                <h3>Понятный маршрут · 15 мин</h3>
-                <p>Намечаем план и темп работы без навязывания «пакетов сессий».</p>
-              </div>
-            </div>
+        <div class="session-steps-row">
+          <div class="session-step-col">
+            <span class="step-col-num">01 · Первые 15 минут</span>
+            <h3>Спокойное знакомство без подготовки</h3>
+            <p>Готовить речь не нужно — рассказываете как получается, я помогу собрать картину бережными вопросами.</p>
           </div>
 
-          <aside class="first-session-rules-card">
-            <div class="rules-photo-row">
-              <img
-                src="assets/img/vera-confidential.jpg"
-                alt="Вера Шоу — полная конфиденциальность"
-                width="600"
-                height="750"
-                loading="lazy"
-              >
-              <div class="rules-photo-overlay">
-                <strong>100% конфиденциально</strong>
-                <span>Строго по этическому кодексу ЕАТА</span>
-              </div>
-            </div>
+          <div class="session-step-col">
+            <span class="step-col-num">02 · Основная часть</span>
+            <h3>Разбор причины вашего состояния</h3>
+            <p>Находим скрытый механизм: что именно забирает силы и откуда берётся тревога, бессонница или холод в паре.</p>
+          </div>
 
-            <div class="rules-specs-list">
-              <div class="rules-spec-row">
-                <span>Стоимость</span>
-                <strong>10 000 ₽ · 60 минут</strong>
-              </div>
-              <div class="rules-spec-row">
-                <span>Формат</span>
-                <strong>Онлайн (Zoom) или Москва</strong>
-              </div>
-              <div class="rules-spec-row">
-                <span>Ритм</span>
-                <strong>1 раз в неделю</strong>
-              </div>
-              <div class="rules-spec-row">
-                <span>Перенос</span>
-                <strong>Бесплатно за 24 часа</strong>
-              </div>
-            </div>
-          </aside>
+          <div class="session-step-col">
+            <span class="step-col-num">03 · Финал встречи</span>
+            <h3>Понятный маршрут работы</h3>
+            <p>Даю честный план, с чего начнём и как придём к результату. Без навязывания «пакетов сессий».</p>
+          </div>
+        </div>
+
+        <div class="session-terms-banner">
+          <div class="term-banner-item">
+            <span>Стоимость сессии</span>
+            <strong>10 000 ₽ · 60 минут</strong>
+          </div>
+          <div class="term-banner-item">
+            <span>Формат</span>
+            <strong>Онлайн (Zoom) или центр Москвы</strong>
+          </div>
+          <div class="term-banner-item">
+            <span>Конфиденциальность</span>
+            <strong>100% тайна по кодексу ЕАТА</strong>
+          </div>
+          <div class="term-banner-item">
+            <span>Перенос и отмена</span>
+            <strong>Бесплатно за 24 часа</strong>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         ЭКРАН 6: ЗАПИСЬ НА ПЕРВУЮ СЕССИЮ
+         ЭКРАН 4: ЗАПИСЬ НА ПЕРВУЮ СЕССИЮ
          ====================================================================== -->
     <section class="booking-section" id="booking">
       <div class="site-container">
         <div class="ilyakhov-section-head">
-          <span class="ilyakhov-section-kicker">05 · ЗАПИСЬ</span>
+          <span class="ilyakhov-section-kicker">04 · ОНЛАЙН-ЗАПИСЬ</span>
           <h2 class="ilyakhov-section-title">
-            Выберите удобное время <span class="serif-italic">или напишите мне лично</span>
+            Выберите удобное время <span class="serif-italic">или напишите мне в Telegram</span>
           </h2>
         </div>
 
         <div class="ilyakhov-direct-contact-bar">
           <div class="direct-contact-copy">
-            <strong>Есть вопрос перед записью?</strong>
-            <span>Отвечаю в Telegram лично, без ассистентов и ботов.</span>
+            <strong>Хотите сначала уточнить свой запрос перед записью?</strong>
+            <span>Напишите мне в Telegram — отвечаю лично, без ассистентов и ботов.</span>
           </div>
           <div class="direct-contact-actions">
             <a href="https://t.me/+79856463870" target="_blank" rel="noopener" class="btn btn-outline direct-tg-btn">
