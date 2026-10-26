@@ -827,10 +827,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const sphereTitle = SPHERE_TITLES[activeSphereKey] || SPHERE_TITLES.achievers;
 
     sphereButtons.forEach((btn) => {
-      const isActive =
-        highlightSphereBtn && btn.getAttribute("data-sphere-key") === activeSphereKey;
-      btn.classList.toggle("is-selected", isActive);
-      btn.setAttribute("aria-selected", isActive ? "true" : "false");
+      btn.classList.toggle(
+        "is-selected",
+        highlightSphereBtn && btn.getAttribute("data-sphere-key") === activeSphereKey
+      );
     });
 
     if (step1SphereBadge) {
@@ -840,6 +840,7 @@ document.addEventListener("DOMContentLoaded", () => {
       step2SegmentBadge.textContent = sphereTitle;
     }
 
+    // Шаг 2: Показываем только цитаты выбранной жизненной сферы
     let visibleStateIndex = 0;
     stateButtons.forEach((btn) => {
       const btnSegment = btn.getAttribute("data-segment") || "";
@@ -853,14 +854,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-  }
 
-  function pulseDiagnosticCard() {
-    const diagCard = document.getElementById("personal-mirror");
-    if (!diagCard) return;
-    diagCard.classList.remove("is-updating");
-    void diagCard.offsetWidth;
-    diagCard.classList.add("is-updating");
+    // Шаг 3: Показываем только ориентиры результата выбранной сферы + «Сформулировать своими словами»
+    let visibleExpectIndex = 0;
+    expectButtons.forEach((pill) => {
+      const isCustom = pill.getAttribute("data-custom-expect") === "true";
+      const pillSeg = pill.getAttribute("data-for-segment") || "";
+      const shouldShow = isCustom || pillSeg === activeSphereKey;
+      pill.hidden = !shouldShow;
+      if (shouldShow && !isCustom) {
+        visibleExpectIndex += 1;
+        const numEl = pill.querySelector(".choice-num");
+        if (numEl) {
+          numEl.textContent = String(visibleExpectIndex).padStart(2, "0");
+        }
+      }
+    });
   }
 
   function saveQuizState() {
@@ -870,17 +879,19 @@ document.addEventListener("DOMContentLoaded", () => {
         chosenStateKey,
         chosenStateText,
         chosenExpectKey,
-        chosenExpectText
+        chosenExpectText,
+        customExpectValue: customExpectInput ? customExpectInput.value.trim() : "",
+        currentStep,
+        isResultUnlocked
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    } catch (_) {}
+    } catch (_) {
+      // Игнорируем ошибки приватного режима браузера
+    }
   }
 
   function renderPersonalizedRoute() {
-    const route =
-      PERSONALIZED_ROUTES[chosenStateKey] ||
-      PERSONALIZED_ROUTES.empty ||
-      PERSONALIZED_ROUTES.trust;
+    const route = PERSONALIZED_ROUTES[chosenStateKey] || PERSONALIZED_ROUTES.empty || PERSONALIZED_ROUTES.trust;
     if (mirrorTitle) mirrorTitle.innerHTML = route.titleHtml;
     if (mirrorProblem) mirrorProblem.textContent = route.lead;
 
@@ -897,6 +908,7 @@ document.addEventListener("DOMContentLoaded", () => {
       step2SegmentBadge.textContent = route.segmentLabel;
     }
 
+    // Рендерим 3 возможных механизма («Ответ на вопрос Почему») и подводку к сессии
     if (Array.isArray(route.reasons) && route.reasons.length >= 3) {
       if (reason1Title) reason1Title.textContent = route.reasons[0].title;
       if (reason1Desc) reason1Desc.textContent = route.reasons[0].desc;
@@ -909,135 +921,315 @@ document.addEventListener("DOMContentLoaded", () => {
       mirrorBridgeText.textContent = route.bridgeText;
     }
 
+    // Рендерим 3 конкретных ориентира результата без исследовательских ярлыков
     if (outcomesSegmentKicker) {
-      outcomesSegmentKicker.textContent = "К КАКОМУ РЕЗУЛЬТАТУ МЫ ПРИДЁМ В РАБОТЕ";
+      outcomesSegmentKicker.textContent = "ОРИЕНТИРЫ РЕЗУЛЬТАТА";
     }
     if (Array.isArray(route.outcomes) && route.outcomes.length >= 3) {
-      if (outcome1Title) outcome1Title.textContent = `${route.outcomes[0].title}:`;
+      if (outcome1Title) outcome1Title.textContent = route.outcomes[0].title;
       if (outcome1Desc) outcome1Desc.textContent = route.outcomes[0].desc;
-      if (outcome2Title) outcome2Title.textContent = `${route.outcomes[1].title}:`;
+      if (outcome2Title) outcome2Title.textContent = route.outcomes[1].title;
       if (outcome2Desc) outcome2Desc.textContent = route.outcomes[1].desc;
-      if (outcome3Title) outcome3Title.textContent = `${route.outcomes[2].title}:`;
+      if (outcome3Title) outcome3Title.textContent = route.outcomes[2].title;
       if (outcome3Desc) outcome3Desc.textContent = route.outcomes[2].desc;
     }
 
-    const tail = EXPECTATION_TAILS[chosenExpectKey] || EXPECTATION_TAILS.inner_core;
+    const customVal = customExpectInput ? customExpectInput.value.trim() : "";
+    let tail = EXPECTATION_TAILS[chosenExpectKey] || EXPECTATION_TAILS.inner_core;
+    if (customVal) {
+      tail = `В результате мы приходим к вашему главному ориентиру: «${customVal}».`;
+    }
     if (stage3Text) {
       stage3Text.textContent = `${route.stage3BaseDesc} ${tail}`;
     }
   }
 
   function updateContextSummaries() {
+    const customVal = customExpectInput ? customExpectInput.value.trim() : "";
+    const finalExpect = customVal || chosenExpectText;
+
     if (resultBarStateText && chosenStateText) {
       resultBarStateText.textContent = `«${chosenStateText}»`;
     }
+    if (resultBarExpectText && finalExpect) {
+      resultBarExpectText.textContent = `«${finalExpect}»`;
+    }
+
     renderPersonalizedRoute();
+  }
+
+  function showQuizStep(stepNumber) {
+    currentStep = stepNumber;
+    const steps = [
+      { num: 0, el: quizStep0 },
+      { num: 1, el: quizStep1 },
+      { num: 2, el: quizStep2 }
+    ];
+    steps.forEach(({ num, el }) => {
+      if (!el) return;
+      const isCurrent = num === stepNumber;
+      el.hidden = !isCurrent;
+      el.classList.toggle("is-active", isCurrent);
+    });
+    saveQuizState();
+  }
+
+  function unlockResultFlowAndScroll(targetEl, skipScroll = false) {
+    isResultUnlocked = true;
+    updateContextSummaries();
+    saveQuizState();
+
+    if (quizSection) {
+      quizSection.hidden = true;
+    }
+    if (personalizedResultFlow) {
+      personalizedResultFlow.classList.remove("is-hidden-until-quiz");
+    }
+    if (headerNav) {
+      headerNav.classList.add("is-unlocked");
+    }
+
+    if (skipScroll) return;
+
+    const scrollTarget = targetEl || personalizedResultFlow;
+    if (scrollTarget === personalizedResultFlow) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else if (scrollTarget) {
+      setTimeout(() => {
+        scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 40);
+    }
   }
 
   function restoreSavedQuizState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const saved = JSON.parse(raw);
-        if (saved && typeof saved === "object") {
-          if (saved.activeSphereKey && SPHERE_TITLES[saved.activeSphereKey]) {
-            activeSphereKey = saved.activeSphereKey;
-          }
-          if (saved.chosenStateKey && PERSONALIZED_ROUTES[saved.chosenStateKey]) {
-            chosenStateKey = saved.chosenStateKey;
-          }
-          if (saved.chosenStateText) {
-            chosenStateText = saved.chosenStateText;
-          }
-          if (saved.chosenExpectKey && EXPECTATION_TAILS[saved.chosenExpectKey]) {
-            chosenExpectKey = saved.chosenExpectKey;
-          }
+      if (!raw) {
+        applySphereSelection(activeSphereKey, false);
+        updateContextSummaries();
+        return;
+      }
+      const saved = JSON.parse(raw);
+      if (!saved || typeof saved !== "object") {
+        applySphereSelection(activeSphereKey, false);
+        updateContextSummaries();
+        return;
+      }
+
+      if (saved.activeSphereKey && SPHERE_TITLES[saved.activeSphereKey]) {
+        activeSphereKey = saved.activeSphereKey;
+      }
+      applySphereSelection(activeSphereKey);
+
+      if (saved.chosenStateKey && PERSONALIZED_ROUTES[saved.chosenStateKey]) {
+        chosenStateKey = saved.chosenStateKey;
+      }
+      if (saved.chosenStateText) {
+        chosenStateText = saved.chosenStateText;
+      }
+      if (saved.chosenExpectKey && EXPECTATION_TAILS[saved.chosenExpectKey]) {
+        chosenExpectKey = saved.chosenExpectKey;
+      }
+      if (saved.chosenExpectText) {
+        chosenExpectText = saved.chosenExpectText;
+      }
+
+      // Отмечаем выбранную мысль на Шаге 2
+      stateButtons.forEach((btn) => {
+        const isMatch = btn.getAttribute("data-state-key") === chosenStateKey;
+        btn.classList.toggle("is-selected", isMatch);
+        if (isMatch && !chosenStateText) {
+          chosenStateText = btn.getAttribute("data-state-text") || "";
         }
+      });
+
+      // Отмечаем выбранный результат на Шаге 3
+      const hasCustom = Boolean(saved.customExpectValue);
+      if (hasCustom && customExpectInput) {
+        customExpectInput.value = saved.customExpectValue;
+        if (customExpectBox) customExpectBox.classList.add("is-open");
       }
-    } catch (_) {}
 
-    applySphereSelection(activeSphereKey, true);
+      expectButtons.forEach((pill) => {
+        const isCustomBtn = pill.getAttribute("data-custom-expect") === "true";
+        const isMatch = hasCustom
+          ? isCustomBtn
+          : pill.getAttribute("data-expect-key") === chosenExpectKey;
+        pill.classList.toggle("is-selected", isMatch);
+      });
 
-    let matchedBtn = Array.from(stateButtons).find(
-      (b) =>
-        b.getAttribute("data-segment") === activeSphereKey &&
-        b.getAttribute("data-state-key") === chosenStateKey
-    );
-    if (!matchedBtn) {
-      matchedBtn = Array.from(stateButtons).find(
-        (b) => b.getAttribute("data-segment") === activeSphereKey
-      );
+      updateContextSummaries();
+
+      if (saved.isResultUnlocked) {
+        unlockResultFlowAndScroll(personalizedResultFlow, true);
+      } else if (saved.currentStep === 1 || saved.currentStep === 2) {
+        showQuizStep(saved.currentStep);
+      } else {
+        showQuizStep(0);
+      }
+    } catch (_) {
+      applySphereSelection(activeSphereKey);
+      updateContextSummaries();
     }
-    stateButtons.forEach((b) => {
-      const isMatch = b === matchedBtn;
-      b.classList.toggle("is-selected", isMatch);
-      if (isMatch) {
-        chosenStateKey = b.getAttribute("data-state-key") || chosenStateKey;
-        chosenStateText = b.getAttribute("data-state-text") || chosenStateText;
-        chosenExpectKey =
-          b.getAttribute("data-expect-default") || chosenExpectKey || "inner_core";
-      }
-    });
-
-    updateContextSummaries();
   }
 
+  // Восстановление сохранённого выбора пользователя при загрузке / обновлении страницы
   restoreSavedQuizState();
 
-  // Переключение вкладки сферы в 1 клик
+  // ШАГ 1 ИЗ 3: Выбор жизненной сферы -> фильтрует цитаты и результаты и переводит на Шаг 2
   sphereButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const sphereKey = btn.getAttribute("data-sphere-key") || "achievers";
-      applySphereSelection(sphereKey, true);
+      applySphereSelection(sphereKey);
 
+      // Предвыбираем первую релевантную цитату и результат этой сферы для дефолтного контекста
       const firstStateBtn = Array.from(stateButtons).find(
         (b) => b.getAttribute("data-segment") === sphereKey
       );
-      stateButtons.forEach((b) => {
-        const isFirst = b === firstStateBtn;
-        b.classList.toggle("is-selected", isFirst);
-      });
-
       if (firstStateBtn) {
         chosenStateKey = firstStateBtn.getAttribute("data-state-key") || chosenStateKey;
         chosenStateText = firstStateBtn.getAttribute("data-state-text") || chosenStateText;
-        chosenExpectKey =
-          firstStateBtn.getAttribute("data-expect-default") || chosenExpectKey;
+        stateButtons.forEach((b) => b.classList.remove("is-selected"));
+      }
+
+      const firstExpectBtn = Array.from(expectButtons).find(
+        (p) => p.getAttribute("data-for-segment") === sphereKey
+      );
+      if (firstExpectBtn) {
+        chosenExpectKey = firstExpectBtn.getAttribute("data-expect-key") || chosenExpectKey;
+        chosenExpectText = firstExpectBtn.getAttribute("data-expect-text") || chosenExpectText;
+        expectButtons.forEach((p) => p.classList.remove("is-selected"));
       }
 
       updateContextSummaries();
-      pulseDiagnosticCard();
       saveQuizState();
+
+      setTimeout(() => {
+        showQuizStep(1);
+        if (quizSection) {
+          const rect = quizSection.getBoundingClientRect();
+          if (rect.top < -20) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+      }, 150);
     });
   });
 
-  // Выбор конкретной карточки состояния в 1 клик -> мгновенно обновляет карточку разбора ниже
+  // Кнопка «← Выбрать другую сферу» на Шаге 2
+  if (quizBackToStep0) {
+    quizBackToStep0.addEventListener("click", () => {
+      showQuizStep(0);
+    });
+  }
+
+  // ШАГ 2 ИЗ 3: Выбор точного состояния (цитаты) -> через 160ms открывает Шаг 3
   stateButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       stateButtons.forEach((b) => b.classList.remove("is-selected"));
       btn.classList.add("is-selected");
 
-      chosenStateKey = btn.getAttribute("data-state-key") || "empty";
+      chosenStateKey = btn.getAttribute("data-state-key") || "trust";
       chosenStateText = btn.getAttribute("data-state-text") || "";
-      chosenExpectKey =
-        btn.getAttribute("data-expect-default") || chosenExpectKey || "inner_core";
 
       const btnSphere = btn.getAttribute("data-segment");
       if (btnSphere && SPHERE_TITLES[btnSphere]) {
-        applySphereSelection(btnSphere, true);
+        applySphereSelection(btnSphere);
       }
 
       updateContextSummaries();
-      pulseDiagnosticCard();
       saveQuizState();
 
-      const diagCard = document.getElementById("personal-mirror");
-      if (diagCard && window.innerWidth <= 900) {
-        const rect = diagCard.getBoundingClientRect();
-        if (rect.top > window.innerHeight * 0.65 || rect.top < 0) {
-          diagCard.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        showQuizStep(2);
+        if (quizSection) {
+          const rect = quizSection.getBoundingClientRect();
+          if (rect.top < -20) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }
+      }, 160);
+    });
+  });
+
+  // Кнопка «← Назад к выбору состояния» на Шаге 3
+  if (quizBackToStep1) {
+    quizBackToStep1.addEventListener("click", () => {
+      showQuizStep(1);
+    });
+  }
+
+  // ШАГ 3 ИЗ 3: Выбор желаемого результата -> открывает #personalizedResultFlow
+  expectButtons.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      expectButtons.forEach((p) => p.classList.remove("is-selected"));
+      pill.classList.add("is-selected");
+
+      const isCustom = pill.getAttribute("data-custom-expect") === "true";
+      if (customExpectBox) {
+        customExpectBox.classList.toggle("is-open", isCustom);
       }
+
+      if (isCustom) {
+        if (customExpectInput) customExpectInput.focus();
+        saveQuizState();
+      } else {
+        if (customExpectInput) customExpectInput.value = "";
+        chosenExpectKey = pill.getAttribute("data-expect-key") || "trust_rel";
+        chosenExpectText = pill.getAttribute("data-expect-text") || "";
+        updateContextSummaries();
+        unlockResultFlowAndScroll(personalizedResultFlow);
+      }
+    });
+  });
+
+  if (customExpectInput) {
+    customExpectInput.addEventListener("input", () => {
+      updateContextSummaries();
+      saveQuizState();
+    });
+    customExpectInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        unlockResultFlowAndScroll(personalizedResultFlow);
+      }
+    });
+  }
+
+  if (openResultFromCustomBtn) {
+    openResultFromCustomBtn.addEventListener("click", () => {
+      unlockResultFlowAndScroll(personalizedResultFlow);
+    });
+  }
+
+  // Кнопка «Изменить ответы ↑» в шапке персонального разбора и в футере
+  const handleResetQuiz = () => {
+    isResultUnlocked = false;
+    if (quizSection) {
+      quizSection.hidden = false;
+    }
+    if (personalizedResultFlow) {
+      personalizedResultFlow.classList.add("is-hidden-until-quiz");
+    }
+    if (headerNav) {
+      headerNav.classList.remove("is-unlocked");
+    }
+    showQuizStep(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  if (resetQuizBtn) {
+    resetQuizBtn.addEventListener("click", handleResetQuiz);
+  }
+  document.querySelectorAll("[data-reset-quiz]").forEach((btn) => {
+    btn.addEventListener("click", handleResetQuiz);
+  });
+
+  // Кнопка «Сразу к записи» в шапке
+  document.querySelectorAll("[data-skip-to-booking]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const bookingSection = document.getElementById("booking");
+      unlockResultFlowAndScroll(bookingSection);
     });
   });
 
