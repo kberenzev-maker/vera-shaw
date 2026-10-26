@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/fonts/onest-cyrillic-v11.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-cyrillic-600-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231B3B2B'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-style='italic' font-weight='600' font-size='26'%3EВШ%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=33">
+  <link rel="stylesheet" href="styles.css?v=34">
 </head>
 <body>
 
@@ -38,91 +38,137 @@
   </header>
 
   <main>
-    <!-- ЧАСТЬ 1: УМНЫЙ ДИАЛОГ СО СТОРОНЫ КЛИЕНТА (3 ЛЁГКИХ ШАГА ПО 3–4 КАРТОЧКИ НА ЭКРАН) -->
-    <section class="quiz-entry-section" id="quizSection" aria-label="Диалог в 3 шага">
+    <!-- ЧАСТЬ 1: ПЕРВЫЙ ЭКРАН — HERO-ПОСТЕР С ВЕРОЙ ШОУ (CUTOUT + POSITION: ABSOLUTE) И ПЕРСОНАЛИЗАЦИЕЙ ОФФЕРА -->
+    <section class="quiz-entry-section hero-poster-section" id="quizSection" aria-label="Первый экран с Верой Шоу и персонализация оффера">
       <div class="site-container">
+        <div class="hero-master-layout">
 
-        <!-- ШАГ 1 ИЗ 3: ВЫБОР ЖИЗНЕННОЙ СФЕРЫ (ЕСТЕСТВЕННАЯ СЕГМЕНТАЦИЯ БЕЗ МАРКЕТИНГОВЫХ ЯРЛЫКОВ) -->
-        <div class="quiz-step is-active" data-quiz-step="0" id="quizStep0">
-          <div class="hero-care-grid">
-            <div class="hero-dialogue-col">
-              <div>
-                <div class="quiz-step-counter">ШАГ 1 ИЗ 3 · С ЧЕГО НАЧНЁМ</div>
-                <h1 class="hero-care-title">
-                  В какой сфере сейчас <span class="serif-italic">тяжелее всего?</span>
-                </h1>
-                <p class="hero-care-sub">
-                  Отметьте то, с чем связано ваше напряжение — на следующем шаге вы увидите точные состояния и получите персональный разбор ситуации:
-                </p>
+          <!-- СЛОЙ 1: ЖУРНАЛЬНАЯ СЦЕНА С ВЕРОЙ (ВЫРЕЗАННЫЙ ПОРТРЕТ БЕЗ ФОНА НА POSITION: ABSOLUTE + ДИНАМИЧЕСКИЙ ОФФЕР) -->
+          <div class="hero-visual-stage" id="heroVisualStage">
+            <div class="hero-stage-arch" aria-hidden="true"></div>
+            <div class="hero-stage-glow" aria-hidden="true"></div>
+            <div class="hero-stage-watermark" aria-hidden="true">Vera Shaw</div>
+
+            <div class="hero-offer-copy">
+              <div class="hero-offer-kicker">
+                <span class="hero-live-dot" aria-hidden="true"></span>
+                <span>ВЕРА ШОУ · МГУ · МАГИСТР ВШЭ</span>
               </div>
+              <h1 class="hero-offer-title" id="heroOfferTitle">
+                Вернём внутреннюю опору, <span class="serif-italic">ясную голову и вкус к жизни</span>
+              </h1>
+              <p class="hero-offer-sub" id="heroOfferSub">
+                Глубокая терапия без «воды» и эзотерики. Отметьте свою ситуацию ниже — оффер и план решения сразу перестроятся под вас.
+              </p>
 
-              <div class="sphere-choices-grid" role="radiogroup" aria-label="В какой сфере сейчас тяжелее всего">
-                <button
-                  type="button"
-                  class="sphere-choice-btn"
-                  data-sphere-key="achievers"
-                  data-sphere-title="Работа, деньги и моё состояние"
-                >
-                  <span class="choice-num" aria-hidden="true">01</span>
-                  <span class="choice-body">
-                    <strong class="sphere-choice-title">Работа, деньги и моё состояние</strong>
-                    <span class="sphere-choice-desc">Внешне есть результаты и доход, но внутри — пустота, вечный режим «туши пожар» или внезапные приступы тревоги и паники.</span>
-                  </span>
-                  <span class="choice-arrow" aria-hidden="true">→</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="sphere-choice-btn"
-                  data-sphere-key="pleasers"
-                  data-sphere-title="Отношения и личные границы"
-                >
-                  <span class="choice-num" aria-hidden="true">02</span>
-                  <span class="choice-body">
-                    <strong class="sphere-choice-title">Отношения и личные границы</strong>
-                    <span class="sphere-choice-desc">Одиночество вдвоём при «нормальной картинке», недоверие к партнёру или привычка соглашаться со всеми в ущерб себе.</span>
-                  </span>
-                  <span class="choice-arrow" aria-hidden="true">→</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="sphere-choice-btn"
-                  data-sphere-key="past_hostages"
-                  data-sphere-title="Тяжёлые мысли, прошлое и сон"
-                >
-                  <span class="choice-num" aria-hidden="true">03</span>
-                  <span class="choice-body">
-                    <strong class="sphere-choice-title">Тяжёлые мысли, прошлое и сон</strong>
-                    <span class="sphere-choice-desc">Ночная «мысленная жвачка» перед сном, чувство вины за прошлые ошибки или состояние, когда нет сил даже после 10 часов сна.</span>
-                  </span>
-                  <span class="choice-arrow" aria-hidden="true">→</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="sphere-choice-btn"
-                  data-sphere-key="experts"
-                  data-sphere-title="Профессиональная проявленность и чек"
-                >
-                  <span class="choice-num" aria-hidden="true">04</span>
-                  <span class="choice-body">
-                    <strong class="sphere-choice-title">Профессиональная проявленность и чек</strong>
-                    <span class="sphere-choice-desc">У вас сильный опыт и образование (психолог, эксперт, руководитель), но страшно вести блог, заявлять о себе и поднимать цену.</span>
-                  </span>
-                  <span class="choice-arrow" aria-hidden="true">→</span>
-                </button>
+              <div class="hero-trust-chips">
+                <span class="hero-trust-chip"><strong>20 лет</strong> в бизнесе</span>
+                <span class="hero-trust-chip"><strong>8 лет</strong> личной терапии</span>
               </div>
             </div>
+
+            <div class="hero-vera-cutout-wrap">
+              <picture>
+                <source srcset="assets/img/vera-hero-cutout.webp" type="image/webp">
+                <img
+                  src="assets/img/vera-hero-cutout.png"
+                  alt="Вера Шоу — психолог-консультант МГУ, магистр психологии НИУ ВШЭ"
+                  class="hero-vera-cutout-img"
+                  width="870"
+                  height="1051"
+                  fetchpriority="high"
+                >
+              </picture>
+              <div class="hero-floating-regalia-pill">
+                <span class="regalia-dot" aria-hidden="true"></span>
+                <span>МГУ · НИУ ВШЭ · 22 диплома</span>
+              </div>
+            </div>
+
+            <div class="hero-stage-bottom-fade" aria-hidden="true"></div>
           </div>
-        </div>
+
+          <!-- СЛОЙ 2: ПЕРЕДНЯЯ КАРТОЧКА ПЕРСОНАЛИЗАЦИИ ОФФЕРА (НАЕЗЖАЕТ НА НИЖНИЙ КРАЙ ПОСТЕРА С Z-INDEX: 5) -->
+          <div class="hero-personalizer-sheet" id="heroPersonalizerSheet">
+
+            <!-- ШАГ 1 ИЗ 3: ВЫБОР ЖИЗНЕННОЙ СФЕРЫ -->
+            <div class="quiz-step is-active" data-quiz-step="0" id="quizStep0">
+              <div class="hero-care-grid">
+                <div class="hero-dialogue-col">
+                  <div class="hero-sheet-head">
+                    <div class="quiz-step-counter">ШАГ 1 ИЗ 3 · ПЕРСОНАЛИЗАЦИЯ ОФФЕРА</div>
+                    <h2 class="hero-care-title">
+                      В какой сфере сейчас <span class="serif-italic">тяжелее всего?</span>
+                    </h2>
+                  </div>
+
+                  <div class="sphere-choices-grid" role="radiogroup" aria-label="В какой сфере сейчас тяжелее всего">
+                    <button
+                      type="button"
+                      class="sphere-choice-btn"
+                      data-sphere-key="achievers"
+                      data-sphere-title="Работа, деньги и моё состояние"
+                    >
+                      <span class="choice-num" aria-hidden="true">01</span>
+                      <span class="choice-body">
+                        <strong class="sphere-choice-title">Работа, деньги и моё состояние</strong>
+                        <span class="sphere-choice-desc">Внешне есть результаты и доход, но внутри — пустота, вечный режим «туши пожар» или внезапные приступы тревоги и паники.</span>
+                      </span>
+                      <span class="choice-arrow" aria-hidden="true">→</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="sphere-choice-btn"
+                      data-sphere-key="pleasers"
+                      data-sphere-title="Отношения и личные границы"
+                    >
+                      <span class="choice-num" aria-hidden="true">02</span>
+                      <span class="choice-body">
+                        <strong class="sphere-choice-title">Отношения и личные границы</strong>
+                        <span class="sphere-choice-desc">Одиночество вдвоём при «нормальной картинке», недоверие к партнёру или привычка соглашаться со всеми в ущерб себе.</span>
+                      </span>
+                      <span class="choice-arrow" aria-hidden="true">→</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="sphere-choice-btn"
+                      data-sphere-key="past_hostages"
+                      data-sphere-title="Тяжёлые мысли, прошлое и сон"
+                    >
+                      <span class="choice-num" aria-hidden="true">03</span>
+                      <span class="choice-body">
+                        <strong class="sphere-choice-title">Тяжёлые мысли, прошлое и сон</strong>
+                        <span class="sphere-choice-desc">Ночная «мысленная жвачка» перед сном, чувство вины за прошлые ошибки или состояние, когда нет сил даже после 10 часов сна.</span>
+                      </span>
+                      <span class="choice-arrow" aria-hidden="true">→</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="sphere-choice-btn"
+                      data-sphere-key="experts"
+                      data-sphere-title="Профессиональная проявленность и чек"
+                    >
+                      <span class="choice-num" aria-hidden="true">04</span>
+                      <span class="choice-body">
+                        <strong class="sphere-choice-title">Профессиональная проявленность и чек</strong>
+                        <span class="sphere-choice-desc">У вас сильный опыт и образование (психолог, эксперт, руководитель), но страшно вести блог, заявлять о себе и поднимать цену.</span>
+                      </span>
+                      <span class="choice-arrow" aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         <!-- ШАГ 2 ИЗ 3: ТОЧНЫЕ ЦИТАТЫ ВНУТРИ ВЫБРАННОЙ СФЕРЫ (ВСЕГДА РОВНО 3 КАРТОЧКИ НА ЭКРАН) -->
         <div class="quiz-step" data-quiz-step="1" id="quizStep1" hidden>
           <div class="quiz-step2-clean-wrap">
             <div class="step2-top-nav">
               <button type="button" class="quiz-back-btn" id="quizBackToStep0">
-                ← Выбрать другую сферу
+                ← К сферам
               </button>
               <span class="step2-segment-badge" id="step1SphereBadge">
                 Работа, деньги и моё состояние
@@ -322,7 +368,7 @@
           <div class="quiz-step2-clean-wrap">
             <div class="step2-top-nav">
               <button type="button" class="quiz-back-btn" id="quizBackToStep1">
-                ← Назад к выбору состояния
+                ← К состоянию
               </button>
               <span class="step2-segment-badge" id="step2SegmentBadge">
                 Работа, деньги и моё состояние
@@ -474,13 +520,14 @@
               </div>
             </div>
           </div>
-        </div>
 
+          </div><!-- /.hero-personalizer-sheet -->
+        </div><!-- /.hero-master-layout -->
       </div>
     </section>
 
-    <!-- ЧАСТЬ 2: ПЕРСОНАЛЬНЫЙ РАЗБОР (MOBILE-FIRST GUIDED FLOW V33) -->
-    <div id="personalizedResultFlow" class="result-flow is-hidden-until-quiz">
+    <!-- ЧАСТЬ 2: ПЕРСОНАЛЬНЫЙ РАЗБОР И РЕШЕНИЕ ПРОБЛЕМЫ (MOBILE-FIRST GUIDED FLOW V34) -->
+    <div id="personalizedResultFlow" class="result-flow">
 
       <!-- КОМПАКТНАЯ ШАПКА ВЫБРАННОГО ЗАПРОСА (В 1 СТРОКУ НА ТЕЛЕФОНЕ С РАСКРЫТИЕМ ПО ТАПУ) -->
       <div class="personal-result-bar">
@@ -828,14 +875,19 @@
           <div class="editorial-section-kicker">// 03 · КТО БУДЕТ РЯДОМ С ВАМИ</div>
 
           <div class="vera-story-split">
-            <div class="vera-story-photo">
-              <img
-                src="assets/img/vera-split-portrait.jpg"
-                alt="Вера Шоу — психолог, магистр психологии НИУ ВШЭ и МГУ"
-                width="1080"
-                height="1152"
-                loading="lazy"
-              >
+            <div class="vera-story-photo vera-story-photo--cutout">
+              <div class="vera-photo-arch" aria-hidden="true"></div>
+              <picture>
+                <source srcset="assets/img/vera-portrait-cutout.webp" type="image/webp">
+                <img
+                  src="assets/img/vera-portrait-cutout.png"
+                  alt="Вера Шоу — психолог, магистр психологии НИУ ВШЭ и МГУ"
+                  class="vera-cutout-about-img"
+                  width="800"
+                  height="1032"
+                  loading="lazy"
+                >
+              </picture>
               <div class="vera-photo-badge-bar">
                 <span><strong>МГУ и ВШЭ</strong> магистр</span>
                 <span>·</span>
@@ -944,7 +996,7 @@
               <div class="yasno-widget-header">
                 <div class="yasno-expert-mini">
                   <img
-                    src="assets/img/vera-portrait-warm.jpg"
+                    src="assets/img/vera-portrait-cutout.webp"
                     alt="Вера Шоу"
                     class="yasno-expert-avatar"
                     width="104"

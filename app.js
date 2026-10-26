@@ -942,6 +942,57 @@ document.addEventListener("DOMContentLoaded", () => {
     if (stage3Text) {
       stage3Text.textContent = `${route.stage3BaseDesc} ${tail}`;
     }
+
+    // Персонализация главного оффера в Hero-блоке на Первом экране
+    const heroOfferTitle = document.getElementById("heroOfferTitle");
+    const heroOfferSub = document.getElementById("heroOfferSub");
+    const HERO_OFFERS_BY_STATE = {
+      empty: {
+        titleHtml: 'Вернём живой вкус к жизни <span class="serif-italic">и радость от денег</span>',
+        sub: 'Возвращаем живые желания и эмоциональный отклик без потери масштаба в делах.'
+      },
+      control: {
+        titleHtml: 'Выйдем из режима «туши пожар» <span class="serif-italic">к спокойной опоре</span>',
+        sub: 'Снимаем вечную боевую готовность, чтобы делегировать и отдыхать без тревоги.'
+      },
+      panic: {
+        titleHtml: 'Уберём приступы паники <span class="serif-italic">и вернём контроль телу</span>',
+        sub: 'Разбираем корень телесных сбоев и возвращаем уверенность на важных встречах.'
+      },
+      trust: {
+        titleHtml: 'Выйдем из одиночества вдвоём <span class="serif-italic">к живой близости</span>',
+        sub: 'Бережно убираем ожидание подвоха и холод в паре для честного диалога на равных.'
+      },
+      pleaser: {
+        titleHtml: 'Научим говорить твёрдое «нет» <span class="serif-italic">без спазма и вины</span>',
+        sub: 'Убираем привычку соглашаться в ущерб себе и возвращаем энергию в вашу жизнь.'
+      },
+      exhausted: {
+        titleHtml: 'Перекроем утечку сил <span class="serif-italic">и вернём живую энергию</span>',
+        sub: 'Выводим из состояния «села батарейка», когда на себя совсем не осталось сил.'
+      },
+      past: {
+        titleHtml: 'Остановим «мысленную жвачку» <span class="serif-italic">и вернём глубокий сон</span>',
+        sub: 'Выключаем ночную прокрутку старых диалогов и возвращаем ясную голову по утрам.'
+      },
+      past_guilt: {
+        titleHtml: 'Снимем груз прошлых ошибок <span class="serif-italic">и откроем будущее</span>',
+        sub: 'Останавливаем внутреннее самонаказание и возвращаем смелость жить сегодня.'
+      },
+      escape: {
+        titleHtml: 'Выключим жизнь «на автомате» <span class="serif-italic">и вернём бодрость</span>',
+        sub: 'Убираем утреннюю разбитость и тягу глушить тревогу работой до ночи или бокалом.'
+      },
+      expert: {
+        titleHtml: 'Уберём ступор самозванца <span class="serif-italic">и страх поднять чек</span>',
+        sub: 'Свободное проявление в публичном поле и достойный чек без оглядки на коллег.'
+      }
+    };
+    const heroOffer = HERO_OFFERS_BY_STATE[chosenStateKey];
+    if (heroOffer && heroOfferTitle && heroOfferSub) {
+      heroOfferTitle.innerHTML = heroOffer.titleHtml;
+      heroOfferSub.textContent = heroOffer.sub;
+    }
   }
 
   function updateContextSummaries() {
@@ -979,8 +1030,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateContextSummaries();
     saveQuizState();
 
+    // Hero-блок с Верой остаётся на первом экране, а ниже открыт персональный разбор
     if (quizSection) {
-      quizSection.hidden = true;
+      quizSection.hidden = false;
     }
     if (personalizedResultFlow) {
       personalizedResultFlow.classList.remove("is-hidden-until-quiz");
@@ -991,13 +1043,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (skipScroll) return;
 
-    const scrollTarget = targetEl || personalizedResultFlow;
-    if (scrollTarget === personalizedResultFlow) {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    } else if (scrollTarget) {
+    const mirrorSection = document.getElementById("personal-mirror");
+    const scrollTarget =
+      targetEl && targetEl !== personalizedResultFlow
+        ? targetEl
+        : mirrorSection || personalizedResultFlow;
+    if (scrollTarget) {
       setTimeout(() => {
         scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 40);
+      }, 60);
     }
   }
 
@@ -1208,12 +1262,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (quizSection) {
       quizSection.hidden = false;
     }
-    if (personalizedResultFlow) {
-      personalizedResultFlow.classList.add("is-hidden-until-quiz");
-    }
-    if (headerNav) {
-      headerNav.classList.remove("is-unlocked");
-    }
     showQuizStep(0);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -1348,19 +1396,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Липкая нижняя панель на телефоне (#mobileStickyCtaBar): прячется, когда виден блок #booking
+  // Липкая нижняя панель на телефоне (#mobileStickyCtaBar): прячется на Первом экране (Hero) и возле #booking
   const mobileStickyCtaBar = document.getElementById("mobileStickyCtaBar");
   const bookingSectionEl = document.getElementById("booking");
-  if (mobileStickyCtaBar && bookingSectionEl && "IntersectionObserver" in window) {
-    const bookingObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          mobileStickyCtaBar.classList.toggle("is-hidden-near-booking", entry.isIntersecting);
-        });
-      },
-      { threshold: 0.12 }
-    );
-    bookingObserver.observe(bookingSectionEl);
+  if (mobileStickyCtaBar && "IntersectionObserver" in window) {
+    let isHeroVisible = true;
+    let isBookingVisible = false;
+    const syncStickyVisibility = () => {
+      mobileStickyCtaBar.classList.toggle("is-hidden-near-booking", isHeroVisible || isBookingVisible);
+    };
+    syncStickyVisibility();
+
+    if (quizSection) {
+      const heroObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isHeroVisible = entry.isIntersecting;
+            syncStickyVisibility();
+          });
+        },
+        { threshold: 0.2 }
+      );
+      heroObserver.observe(quizSection);
+    }
+
+    if (bookingSectionEl) {
+      const bookingObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isBookingVisible = entry.isIntersecting;
+            syncStickyVisibility();
+          });
+        },
+        { threshold: 0.12 }
+      );
+      bookingObserver.observe(bookingSectionEl);
+    }
   }
 
   // Переключатель вкладок в швейцарской таблице блока «Обо мне» (приём Лии liinature)
