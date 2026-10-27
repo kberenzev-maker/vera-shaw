@@ -4583,7 +4583,7 @@ dialog.modal::backdrop {
    ЭКРАН 1: HERO (ЧИСТЫЙ ПОРТРЕТ 15:16 И ВОЗДУХ ПО СЕТКЕ 8PX)
    ========================================================================== */
 .ilyakhov-hero-section {
-  padding: 64px 0 80px;
+  padding: 64px 0 72px;
   border-bottom: 1px solid rgba(24, 48, 37, 0.1);
 }
 
@@ -4685,10 +4685,10 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ОБЩИЕ СЕКЦИИ (96PX ВОЗДУХА СВЕРХУ И СНИЗУ НА ДЕСКТОПЕ)
+   ОБЩИЕ СЕКЦИИ (72PX ВОЗДУХА МЕЖДУ ЭКРАНАМИ)
    ========================================================================== */
 .ilyakhov-section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 
 .ilyakhov-section--warm {
@@ -5176,7 +5176,7 @@ dialog.modal::backdrop {
    ЭКРАН 5: БЛОК ОНЛАЙН-ЗАПИСИ И ПОДВАЛ (8PX СЕТКА)
    ========================================================================== */
 .ilyakhov-editorial-page .booking-section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 
 .ilyakhov-editorial-page .booking-card {
@@ -5215,7 +5215,7 @@ dialog.modal::backdrop {
   }
 
   .ilyakhov-hero-section {
-    padding: 24px 0 48px !important;
+    padding: 24px 0 72px !important;
   }
 
   .ilyakhov-hero-grid {
@@ -5276,9 +5276,9 @@ dialog.modal::backdrop {
     line-height: 1.5;
   }
 
-  /* Увеличенный воздух между секциями на телефоне (56px = 8x7) */
+  /* Отступ между секциями/экранами на телефоне (72px = 8x9) */
   .ilyakhov-section {
-    padding: 56px 0 !important;
+    padding: 72px 0 !important;
   }
 
   .ilyakhov-section-head {
@@ -5510,7 +5510,7 @@ dialog.modal::backdrop {
   }
 
   .ilyakhov-editorial-page .booking-section {
-    padding: 56px 0 96px !important;
+    padding: 72px 0 96px !important;
   }
 
   .ilyakhov-editorial-page .booking-card {
