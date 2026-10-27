@@ -4583,7 +4583,7 @@ dialog.modal::backdrop {
    ЭКРАН 1: HERO (ЧИСТЫЙ ПОРТРЕТ 15:16 И ВОЗДУХ ПО СЕТКЕ 8PX)
    ========================================================================== */
 .ilyakhov-hero-section {
-  padding: 64px 0 72px;
+  padding: 64px 0 104px;
   border-bottom: 1px solid rgba(24, 48, 37, 0.1);
 }
 
@@ -4685,10 +4685,10 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ОБЩИЕ СЕКЦИИ (72PX ВОЗДУХА МЕЖДУ ЭКРАНАМИ)
+   ОБЩИЕ СЕКЦИИ (104PX ВОЗДУХА МЕЖДУ ЭКРАНАМИ = 8 × 13)
    ========================================================================== */
 .ilyakhov-section {
-  padding: 72px 0;
+  padding: 104px 0;
 }
 
 .ilyakhov-section--warm {
@@ -4699,7 +4699,7 @@ dialog.modal::backdrop {
 
 .ilyakhov-section-head {
   max-width: 768px;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .ilyakhov-section-kicker {
@@ -4735,7 +4735,7 @@ dialog.modal::backdrop {
 .situations-zig-list {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
 }
 
 .situation-zig-item {
@@ -5188,7 +5188,7 @@ dialog.modal::backdrop {
    ЭКРАН 5: ПОЭТАПНЫЙ 4-ШАГОВЫЙ БЛОК ОНЛАЙН-ЗАПИСИ И ПОДВАЛ (8PX СЕТКА)
    ========================================================================== */
 .ilyakhov-editorial-page .booking-section {
-  padding: 72px 0;
+  padding: 104px 0;
 }
 
 .ilyakhov-editorial-page .booking-card--wizard {
@@ -5438,7 +5438,7 @@ dialog.modal::backdrop {
   }
 
   .ilyakhov-hero-section {
-    padding: 24px 0 72px !important;
+    padding: 24px 0 96px !important;
   }
 
   .ilyakhov-hero-grid {
@@ -5499,9 +5499,9 @@ dialog.modal::backdrop {
     line-height: 1.5;
   }
 
-  /* Отступ между секциями/экранами на телефоне (72px = 8x9) */
+  /* Отступ между секциями/экранами на телефоне (96px = 8x12) */
   .ilyakhov-section {
-    padding: 72px 0 !important;
+    padding: 96px 0 !important;
   }
 
   .ilyakhov-section-head {
@@ -5727,7 +5727,7 @@ dialog.modal::backdrop {
   }
 
   .ilyakhov-editorial-page .booking-section {
-    padding: 72px 0 96px !important;
+    padding: 96px 0 112px !important;
   }
 
   .ilyakhov-editorial-page .booking-card,
