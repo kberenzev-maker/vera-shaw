@@ -4730,71 +4730,83 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ЭКРАН 2: ЗАПРОСЫ — СЕТКА С ШАГОМ 24PX И КАРТОЧКИ С ПАДДИНГОМ 32PX
+   ЭКРАН 2: ЗНАКОМЫЕ СИТУАЦИИ — 6 ВЕРТИКАЛЬНЫХ БЛОКОВ ЗИГЗАГОМ (ЛЕВО / ПРАВО)
    ========================================================================== */
-.ilyakhov-requests-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  align-items: stretch;
+.situations-zig-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.ilyakhov-request-card {
+.situation-zig-item {
+  width: min(100%, 840px);
   background: #FFFFFF;
   border: 1px solid rgba(24, 48, 37, 0.1);
   border-radius: 24px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 24px;
+  display: grid;
+  align-items: center;
+  gap: 32px;
   box-shadow: 0 16px 32px rgba(20, 38, 29, 0.04);
 }
 
-.request-card-label {
-  display: inline-block;
+.situation-zig-item--left {
+  margin-right: auto;
+  grid-template-columns: 320px 1fr;
+}
+
+.situation-zig-item--right {
+  margin-left: auto;
+  grid-template-columns: 1fr 320px;
+}
+
+.situation-zig-visual {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #F4F0E6;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(24, 48, 37, 0.08);
+}
+
+.situation-zig-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.situation-zig-quote-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px;
+}
+
+.situation-zig-tag {
+  display: inline-flex;
   align-self: flex-start;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #F4F0E6;
+  color: var(--terracotta);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 16px;
 }
 
-.ilyakhov-request-card h3 {
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--ink);
-  margin: 0 0 16px;
-}
-
-.request-card-symptom {
-  font-size: 15px;
-  line-height: 1.54;
-  color: var(--ink-soft);
-  margin: 0 0 24px;
-  flex-grow: 1;
-}
-
-.request-outcome {
-  font-size: 14.5px;
+.situation-zig-quote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 600;
-  line-height: 1.48;
-  color: var(--forest);
-  padding-top: 16px;
-  border-top: 1px solid rgba(24, 48, 37, 0.1);
-  position: relative;
-  padding-left: 24px;
-}
-
-.request-outcome::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 16px;
-  font-weight: 700;
-  color: var(--forest);
+  font-size: clamp(24px, 2.5vw, 31px);
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 /* ==========================================================================
@@ -5501,41 +5513,35 @@ dialog.modal::backdrop {
     line-height: 1.16;
   }
 
-  /* Карточки запросов на телефоне: gap 16px, padding 24px */
-  .ilyakhov-requests-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  /* 6 ситуаций на телефоне: крупная картинка сверху + цитата снизу (шаг 16px / 24px) */
+  .situations-zig-list {
+    gap: 24px;
   }
 
-  .ilyakhov-request-card {
-    padding: 24px;
+  .situation-zig-item,
+  .situation-zig-item--left,
+  .situation-zig-item--right {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
     border-radius: 16px;
   }
 
-  .request-card-label {
-    font-size: 10px;
-    margin-bottom: 8px;
+  .situation-zig-visual {
+    order: -1;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
   }
 
-  .ilyakhov-request-card h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
+  .situation-zig-quote-box {
+    padding: 8px;
+    gap: 8px;
   }
 
-  .request-card-symptom {
-    font-size: 14px;
-    line-height: 1.48;
-    margin-bottom: 16px;
-  }
-
-  .request-outcome {
-    font-size: 13.5px;
-    padding-top: 16px;
-    padding-left: 24px;
-  }
-
-  .request-outcome::before {
-    top: 16px;
+  .situation-zig-quote {
+    font-size: 21px;
+    line-height: 1.24;
   }
 
   /* Асимметричная мозаика «Почему со мной безопасно» на телефоне (2-колоночный Bento, шаг 16px) */
