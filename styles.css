@@ -5425,6 +5425,12 @@ dialog.modal::backdrop {
    МОБИЛЬНАЯ ВЕРСИЯ (<= 860px) — СТРОГАЯ СЕТКА 8PX И ВОЗДУШНЫЕ ОТСТУПЫ
    ========================================================================== */
 @media (max-width: 860px) {
+  html,
+  .ilyakhov-editorial-page {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   .ilyakhov-editorial-page .site-container {
     padding-left: 16px;
     padding-right: 16px;
@@ -5435,6 +5441,34 @@ dialog.modal::backdrop {
     padding-top: 8px;
     padding-bottom: 8px;
     gap: 16px;
+  }
+
+  .ilyakhov-editorial-page .header-nav,
+  .ilyakhov-editorial-page .header-nav.is-unlocked {
+    display: none !important;
+  }
+
+  .ilyakhov-editorial-page .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .ilyakhov-editorial-page .brand-name {
+    font-size: 16px;
+    line-height: 1.1;
+  }
+
+  .ilyakhov-editorial-page .brand-role {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .ilyakhov-editorial-page .btn-header-quiet {
+    min-height: 36px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    white-space: nowrap;
   }
 
   .ilyakhov-hero-section {
@@ -5756,11 +5790,40 @@ dialog.modal::backdrop {
   .cal-format-cards--wizard {
     grid-template-columns: 1fr;
     gap: 16px;
+    background: transparent;
+    padding: 0;
+    border: none;
   }
 
   .cal-format-cards--wizard .cal-format-card {
     padding: 16px;
-    min-height: 72px;
+    min-height: 80px;
+    border-radius: 16px;
+    border: 1.5px solid var(--line-strong) !important;
+    background: #FFFFFF;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .cal-format-cards--wizard .cal-format-card.is-active {
+    background: #F3F8F5;
+    border-color: var(--forest) !important;
+    color: var(--ink);
+    box-shadow: 0 4px 14px rgba(24, 48, 37, 0.08);
+  }
+
+  .cal-format-cards--wizard .cal-format-card.is-active .cal-format-card-title {
+    color: var(--ink);
+  }
+
+  .cal-format-cards--wizard .cal-radio-circle {
+    display: inline-flex !important;
+  }
+
+  .cal-format-cards--wizard .cal-format-card-desc {
+    display: block !important;
+    font-size: 13px;
+    margin-top: 4px;
   }
 
   .cal-col-month--wizard {
