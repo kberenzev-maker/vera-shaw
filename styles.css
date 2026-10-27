@@ -5173,15 +5173,20 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ЭКРАН 5: БЛОК ОНЛАЙН-ЗАПИСИ И ПОДВАЛ (8PX СЕТКА)
+   ЭКРАН 5: ПОЭТАПНЫЙ 4-ШАГОВЫЙ БЛОК ОНЛАЙН-ЗАПИСИ И ПОДВАЛ (8PX СЕТКА)
    ========================================================================== */
 .ilyakhov-editorial-page .booking-section {
   padding: 72px 0;
 }
 
-.ilyakhov-editorial-page .booking-card {
+.ilyakhov-editorial-page .booking-card--wizard {
+  max-width: 720px;
+  margin: 0 auto;
   padding: 40px;
   border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 48, 37, 0.12);
+  box-shadow: 0 24px 48px rgba(20, 38, 29, 0.06);
 }
 
 .ilyakhov-editorial-page .yasno-widget-header {
@@ -5190,8 +5195,214 @@ dialog.modal::backdrop {
   gap: 16px;
 }
 
-.ilyakhov-editorial-page .cal-booking-layout {
+/* Цепочка из 4 шагов сверху (1. Формат -> 2. Дата -> 3. Время -> 4. Контакты) */
+.booking-wizard-progress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 8px;
+  background: #F6F4EE;
+  border-radius: 16px;
+  border: 1px solid rgba(24, 48, 37, 0.08);
+}
+
+.wizard-step-tab {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 8px;
+  min-height: 40px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wizard-step-tab:hover {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--ink);
+}
+
+.wizard-step-tab.is-active {
+  background: #FFFFFF;
+  color: var(--ink);
+  border-color: rgba(24, 48, 37, 0.14);
+  box-shadow: 0 4px 12px rgba(20, 38, 29, 0.06);
+}
+
+.wizard-step-tab.is-done {
+  color: var(--forest);
+}
+
+.wizard-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(24, 48, 37, 0.08);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wizard-step-tab.is-active .wizard-step-num {
+  background: var(--forest);
+  color: #FFFFFF;
+}
+
+.wizard-step-tab.is-done .wizard-step-num {
+  background: #DCE6E0;
+  color: var(--forest);
+}
+
+.booking-wizard-pane[hidden] {
+  display: none !important;
+}
+
+.wizard-pane-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(24, 48, 37, 0.08);
+}
+
+.wizard-back-btn {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--forest);
+  cursor: pointer;
+}
+
+.wizard-back-btn:hover {
+  text-decoration: underline;
+}
+
+.wizard-chosen-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #EEF3F0;
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.wizard-pane-head {
+  margin-bottom: 24px;
+}
+
+.wizard-pane-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.24;
+  color: var(--ink);
+  margin: 8px 0 0;
+}
+
+.wizard-pane-sub {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 8px 0 0;
+}
+
+.cal-format-cards--wizard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cal-format-cards--wizard .cal-format-card {
+  padding: 24px;
+  border-radius: 16px;
+  min-height: 96px;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.cal-format-card-desc {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+.cal-col-month--wizard {
+  background: #FAF8F3;
+  border: 1px solid rgba(24, 48, 37, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.time-slots-grid--wizard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.time-slots-grid--wizard .time-slot-btn {
+  min-height: 56px;
+  font-size: 16px;
+  border-radius: 16px;
+}
+
+.wizard-pane-footer {
+  margin-top: 8px;
+}
+
+.wizard-fields-stack {
+  display: flex;
+  flex-direction: column;
   gap: 24px;
+  margin-bottom: 24px;
+}
+
+.wizard-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wizard-field-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.wizard-field-hint {
+  font-weight: 400;
+  color: var(--ink-soft);
 }
 
 .ilyakhov-editorial-page .site-footer {
@@ -5513,9 +5724,51 @@ dialog.modal::backdrop {
     padding: 72px 0 96px !important;
   }
 
-  .ilyakhov-editorial-page .booking-card {
+  .ilyakhov-editorial-page .booking-card,
+  .ilyakhov-editorial-page .booking-card--wizard {
     padding: 24px 16px !important;
     border-radius: 16px;
+  }
+
+  .booking-wizard-progress {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+    margin-bottom: 24px;
+  }
+
+  .wizard-step-tab {
+    justify-content: flex-start;
+    padding: 8px 16px;
+    font-size: 12.5px;
+  }
+
+  .wizard-pane-title {
+    font-size: 19px;
+  }
+
+  .cal-format-cards--wizard {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cal-format-cards--wizard .cal-format-card {
+    padding: 16px;
+    min-height: 72px;
+  }
+
+  .cal-col-month--wizard {
+    padding: 16px;
+  }
+
+  .time-slots-grid--wizard {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .time-slots-grid--wizard .time-slot-btn {
+    min-height: 48px;
+    font-size: 15px;
   }
 
   /* Липкая нижняя панель на телефоне (строго 8px / 16px) */

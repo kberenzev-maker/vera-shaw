@@ -1852,13 +1852,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const calPrevMonthBtn = document.getElementById("calPrevMonthBtn");
   const calNextMonthBtn = document.getElementById("calNextMonthBtn");
   const calSelectedDateHeading = document.getElementById("calSelectedDateHeading");
-  const calSummaryFormat = document.getElementById("calSummaryFormat");
-  const calSummaryDate = document.getElementById("calSummaryDate");
-  const calSummaryTime = document.getElementById("calSummaryTime");
   const yasnoFormatMetaText = document.getElementById("yasnoFormatMetaText");
-  const yasnoWidgetFootnote = document.getElementById("yasnoWidgetFootnote");
   const sessionFormatHiddenInput = document.getElementById("sessionFormatHiddenInput");
-  const bookingContactInput = document.getElementById("bookingContactInput");
+  const bookingEmailInput = document.getElementById("bookingEmailInput");
+  const bookingPhoneInput = document.getElementById("bookingPhoneInput");
+  const bookingEmailLabel = document.getElementById("bookingEmailLabel");
+  const wizardStep4Heading = document.getElementById("wizardStep4Heading");
+  const wizardChipFormat = document.getElementById("wizardChipFormat");
+  const wizardChipDate = document.getElementById("wizardChipDate");
+  const wizardTabLabel1 = document.getElementById("wizardTabLabel1");
+  const wizardTabLabel2 = document.getElementById("wizardTabLabel2");
+  const wizardTabLabel3 = document.getElementById("wizardTabLabel3");
+  const wizardNextToDateBtn = document.getElementById("wizardNextToDateBtn");
+  const wizardNextToTimeBtn = document.getElementById("wizardNextToTimeBtn");
   const primaryBookingBtn = document.getElementById("primaryBookingBtn");
   const paymentModal = document.getElementById("paymentModal");
   const paymentSummaryContent = document.getElementById("paymentSummaryContent");
@@ -1881,6 +1887,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let chosenTimeSlot = "14:00";
   let displayedYear = 2026;
   let displayedMonth = 9; // 0-based (9 = Октябрь)
+  let currentWizardStep = 1;
+
+  function goToBookingWizardStep(stepNum) {
+    const targetStep = Math.max(1, Math.min(4, Number(stepNum) || 1));
+    currentWizardStep = targetStep;
+
+    document.querySelectorAll("[data-wizard-pane]").forEach((pane) => {
+      const pNum = Number(pane.getAttribute("data-wizard-pane"));
+      pane.hidden = pNum !== targetStep;
+    });
+
+    document.querySelectorAll("[data-wizard-tab]").forEach((tab) => {
+      const tNum = Number(tab.getAttribute("data-wizard-tab"));
+      tab.classList.toggle("is-active", tNum === targetStep);
+      tab.classList.toggle("is-done", tNum < targetStep);
+    });
+
+    if (targetStep === 4 && bookingEmailInput) {
+      setTimeout(() => bookingEmailInput.focus(), 40);
+    }
+  }
 
   function getMinTomorrowDate() {
     const d = new Date();
@@ -1919,14 +1946,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  function getNextHourLabel(slotStr) {
-    const parts = (slotStr || "14:00").split(":");
-    const hh = parseInt(parts[0], 10);
-    if (isNaN(hh)) return slotStr;
-    const nextHh = String((hh + 1) % 24).padStart(2, "0");
-    return `${slotStr} – ${nextHh}:${parts[1] || "00"}`;
-  }
-
   function applySessionFormatUI(formatVal) {
     chosenFormat = formatVal === "moscow" ? "moscow" : "online";
     const isOnline = chosenFormat === "online";
@@ -1942,22 +1961,22 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "Видеосвязь Zoom"
         : "Очно · кабинет в центре Москвы";
     }
-    if (yasnoWidgetFootnote) {
-      yasnoWidgetFootnote.textContent = isOnline
-        ? "После выбора времени откроется подтверждение и автоматически сформируется ссылка на Zoom"
-        : "После выбора времени откроется подтверждение, и мы пришлём точный адрес кабинета в центре Москвы";
-    }
     if (sessionFormatHiddenInput) {
       sessionFormatHiddenInput.value = chosenFormat;
     }
-    if (bookingContactInput) {
-      bookingContactInput.placeholder = isOnline
-        ? "Куда прислать ссылку на Zoom: @Telegram, телефон или Email *"
-        : "Куда прислать адрес кабинета в Москве: @Telegram, телефон или Email *";
+    if (wizardStep4Heading) {
+      wizardStep4Heading.textContent = isOnline
+        ? "Куда отправить ссылку на встречу?"
+        : "Куда отправить подтверждение и адрес кабинета?";
+    }
+    if (bookingEmailLabel) {
+      bookingEmailLabel.textContent = isOnline
+        ? "Ваша почта (пришлём ссылку на Zoom и приглашение в календарь)"
+        : "Ваша почта (пришлём точный адрес кабинета в Москве и памятку)";
     }
     if (primaryBookingBtn) {
       primaryBookingBtn.textContent = isOnline
-        ? "Подтвердить слот и получить ссылку Zoom →"
+        ? "Подтвердить запись и получить ссылку Zoom →"
         : "Подтвердить очную встречу в Москве →";
     }
     updateYasnoButtonAndSummary();
@@ -1966,24 +1985,29 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateYasnoButtonAndSummary() {
     const isOnline = chosenFormat !== "moscow";
     const formatShort = isOnline ? "Онлайн (Zoom)" : "Очно в Москве";
+    const formatTiny = isOnline ? "Онлайн" : "Очно · МСК";
     const summaryText = `${chosenDateLabel} в ${chosenTimeSlot}`;
-    if (yasnoProceedToConfirmBtn) {
-      yasnoProceedToConfirmBtn.textContent = `Забронировать: ${chosenDateLabel}, ${chosenTimeSlot} →`;
+
+    if (wizardChipFormat) {
+      wizardChipFormat.textContent = formatShort;
+    }
+    if (wizardChipDate) {
+      wizardChipDate.textContent = `${formatTiny} · ${chosenDateLabel}`;
     }
     if (yasnoChosenSlotSummary) {
-      yasnoChosenSlotSummary.textContent = `${summaryText} (МСК) · ${formatShort}`;
+      yasnoChosenSlotSummary.textContent = `${formatTiny} · ${summaryText} (МСК)`;
     }
     if (calSelectedDateHeading) {
       calSelectedDateHeading.textContent = chosenDateLongLabel || chosenDateLabel;
     }
-    if (calSummaryFormat) {
-      calSummaryFormat.textContent = formatShort;
+    if (wizardTabLabel1) {
+      wizardTabLabel1.textContent = formatTiny;
     }
-    if (calSummaryDate) {
-      calSummaryDate.textContent = chosenDateLongLabel || chosenDateLabel;
+    if (wizardTabLabel2) {
+      wizardTabLabel2.textContent = chosenDateLabel || "Дата";
     }
-    if (calSummaryTime) {
-      calSummaryTime.textContent = getNextHourLabel(chosenTimeSlot);
+    if (wizardTabLabel3) {
+      wizardTabLabel3.textContent = chosenTimeSlot || "Время";
     }
   }
 
@@ -2060,18 +2084,46 @@ document.addEventListener("DOMContentLoaded", () => {
         chosenDateLabel = btn.getAttribute("data-date-label") || "";
         chosenDateLongLabel = btn.getAttribute("data-date-long") || chosenDateLabel;
         saveBookingSlotToStorage();
+        goToBookingWizardStep(3);
       });
     });
 
     updateYasnoButtonAndSummary();
   }
 
-  // Переключение Онлайн / Очно в Москве на Шаге 1
+  // Шаг 1: Выбор формата (клик по карточке сразу переводит на Шаг 2 — Дата)
   document.querySelectorAll("[data-format-choice]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const fmt = btn.getAttribute("data-format-choice") || "online";
       applySessionFormatUI(fmt);
       saveBookingSlotToStorage();
+      goToBookingWizardStep(2);
+    });
+  });
+
+  if (wizardNextToDateBtn) {
+    wizardNextToDateBtn.addEventListener("click", () => goToBookingWizardStep(2));
+  }
+
+  if (wizardNextToTimeBtn) {
+    wizardNextToTimeBtn.addEventListener("click", () => goToBookingWizardStep(3));
+  }
+
+  if (yasnoProceedToConfirmBtn) {
+    yasnoProceedToConfirmBtn.addEventListener("click", () => goToBookingWizardStep(4));
+  }
+
+  document.querySelectorAll("[data-wizard-goto]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = Number(btn.getAttribute("data-wizard-goto")) || 1;
+      goToBookingWizardStep(target);
+    });
+  });
+
+  document.querySelectorAll("[data-wizard-tab]").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = Number(tab.getAttribute("data-wizard-tab")) || 1;
+      goToBookingWizardStep(target);
     });
   });
 
@@ -2145,24 +2197,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("is-selected");
         chosenTimeSlot = slotVal;
         saveBookingSlotToStorage();
+        goToBookingWizardStep(4);
       });
-    });
-  }
-
-  // Переход между Шагом 1 (Расписание как в «Ясно») и Шагом 2 (Подтверждение)
-  if (yasnoProceedToConfirmBtn && yasnoStep1Schedule && bookingForm) {
-    yasnoProceedToConfirmBtn.addEventListener("click", () => {
-      yasnoStep1Schedule.hidden = true;
-      bookingForm.hidden = false;
-      const contactInput = document.getElementById("bookingContactInput");
-      if (contactInput) contactInput.focus();
-    });
-  }
-
-  if (yasnoBackToSlotsBtn && yasnoStep1Schedule && bookingForm) {
-    yasnoBackToSlotsBtn.addEventListener("click", () => {
-      bookingForm.hidden = true;
-      yasnoStep1Schedule.hidden = false;
     });
   }
 
@@ -2175,7 +2211,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const formData = new FormData(bookingForm);
-      const clientContact = (formData.get("clientContact") || "").toString().trim();
+      const clientEmail = (formData.get("clientEmail") || "").toString().trim();
+      const clientPhone = (formData.get("clientPhone") || "").toString().trim();
+      const clientContact = [clientEmail, clientPhone].filter(Boolean).join(" · ");
       const sessionFormat = (formData.get("sessionFormat") || "online").toString();
       const isOnline = sessionFormat !== "moscow";
 
@@ -2198,7 +2236,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `• Дата и время: ${slotSummary}\n` +
         `• Формат: ${formatLabel}\n` +
         (isOnline ? `• Ссылка Zoom: ${zoomJoinUrl}\n` : "") +
-        `• Контакт клиента: ${clientContact}\n` +
+        `• Почта: ${clientEmail}\n` +
+        `• Телефон: ${clientPhone}\n` +
         (chosenStateText ? `• Запрос: ${chosenStateText}\n` : "") +
         (finalExpect ? `• Ожидание: ${finalExpect}` : "")
       );
@@ -2216,7 +2255,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button type="button" class="copy-zoom-btn" id="copyZoomUrlBtn">Скопировать</button>
               </div>
               <div style="font-size: 12.5px; color: var(--ink-soft); margin-top: 8px;">
-                Никаких предварительных созвонов — просто подключитесь по ссылке <strong>${slotSummary}</strong>. Копия также отправлена на <strong>${clientContact}</strong>.
+                Ссылка и приглашение отправлены на <strong>${clientEmail}</strong> (резервный номер: <strong>${clientPhone}</strong>).
               </div>
             </div>
           `
@@ -2226,7 +2265,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="zoom-pass-badge">● Очный приём в центре Москвы</span>
               </div>
               <div style="font-size: 13.5px; color: var(--ink); line-height: 1.5;">
-                Слот <strong>${slotSummary}</strong> закреплён за вами. Точный адрес кабинета и схема прохода продублированы на <strong>${clientContact}</strong>.
+                Слот <strong>${slotSummary}</strong> закреплён за вами. Точный адрес кабинета отправлен на <strong>${clientEmail}</strong> (резервный номер: <strong>${clientPhone}</strong>).
               </div>
             </div>
           `;

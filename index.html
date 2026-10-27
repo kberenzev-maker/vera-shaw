@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/fonts/onest-cyrillic-v11.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-cyrillic-600-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23183025'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='serif' font-style='italic' font-weight='600' font-size='26'%3EВШ%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body class="ilyakhov-editorial-page">
 
@@ -363,14 +363,14 @@
           </h2>
         </div>
 
-        <div class="booking-card">
-          <div class="editorial-section-kicker" style="margin-bottom: 16px;">ОНЛАЙН-РАСПИСАНИЕ СВОБОДНЫХ ОКОН</div>
+        <div class="booking-card booking-card--wizard">
+          <div class="editorial-section-kicker" style="margin-bottom: 16px;">ПОШАГОВАЯ ЗАПИСЬ НА ПЕРВУЮ ВСТРЕЧУ</div>
 
           <!-- Контейнер для прямого встраивания готового сервиса (Planerka.app или Cal.com) -->
           <div id="externalBookingEmbedContainer" hidden></div>
 
-          <!-- Двухшаговый виджет расписания -->
-          <div id="yasnoScheduleWidget">
+          <!-- Четырёхшаговый спокойный виджет расписания (по одному действию на экране) -->
+          <div id="yasnoScheduleWidget" class="booking-wizard">
             <div class="yasno-widget-header">
               <div class="yasno-expert-mini">
                 <img
@@ -392,128 +392,192 @@
               <div class="yasno-price-pill">10 000 ₽</div>
             </div>
 
-            <!-- ШАГ 1 ВИДЖЕТА: ФОРМАТ + КАЛЕНДАРЬ + ВРЕМЯ -->
-            <div id="yasnoStep1Schedule">
-              <div class="cal-booking-layout">
-                <!-- КОЛОНКА 1: ВЫБОР ФОРМАТА -->
-                <div class="cal-col-format">
-                  <div class="cal-step-kicker">1. Формат встречи</div>
-                  <div class="cal-format-cards" role="radiogroup" aria-label="Выберите формат встречи">
-                    <button
-                      type="button"
-                      class="cal-format-card is-active"
-                      data-format-choice="online"
-                      role="radio"
-                      aria-checked="true"
-                    >
-                      <span class="cal-radio-circle" aria-hidden="true"></span>
-                      <span class="cal-format-card-body">
-                        <span class="cal-format-card-title">Онлайн · Zoom</span>
-                      </span>
-                    </button>
+            <!-- ИНДИКАТОР ЭТАПОВ (МОЖНО ВЕРНУТЬСЯ НА ЛЮБОЙ ПРОЙДЕННЫЙ ШАГ) -->
+            <div class="booking-wizard-progress" role="navigation" aria-label="Этапы записи">
+              <button type="button" class="wizard-step-tab is-active" data-wizard-tab="1">
+                <span class="wizard-step-num">1</span>
+                <span class="wizard-step-label" id="wizardTabLabel1">Формат</span>
+              </button>
+              <button type="button" class="wizard-step-tab" data-wizard-tab="2">
+                <span class="wizard-step-num">2</span>
+                <span class="wizard-step-label" id="wizardTabLabel2">Дата</span>
+              </button>
+              <button type="button" class="wizard-step-tab" data-wizard-tab="3">
+                <span class="wizard-step-num">3</span>
+                <span class="wizard-step-label" id="wizardTabLabel3">Время</span>
+              </button>
+              <button type="button" class="wizard-step-tab" data-wizard-tab="4">
+                <span class="wizard-step-num">4</span>
+                <span class="wizard-step-label" id="wizardTabLabel4">Контакты</span>
+              </button>
+            </div>
 
-                    <button
-                      type="button"
-                      class="cal-format-card"
-                      data-format-choice="moscow"
-                      role="radio"
-                      aria-checked="false"
-                    >
-                      <span class="cal-radio-circle" aria-hidden="true"></span>
-                      <span class="cal-format-card-body">
-                        <span class="cal-format-card-title">Очно · Москва (центр)</span>
-                      </span>
-                    </button>
-                  </div>
+            <!-- ШАГ 1: ВЫБОР ФОРМАТА (ОЧНО ИЛИ ОНЛАЙН) -->
+            <div class="booking-wizard-pane" id="wizardStep1Format" data-wizard-pane="1">
+              <div class="wizard-pane-head">
+                <span class="cal-step-kicker">ШАГ 1 ИЗ 4 · ФОРМАТ</span>
+                <h3 class="wizard-pane-title">Как вам комфортнее провести встречу?</h3>
+              </div>
 
-                  <div class="cal-selection-summary" aria-live="polite">
-                    <div class="cal-summary-row">
-                      <span>Формат:</span>
-                      <strong id="calSummaryFormat">Онлайн (Zoom)</strong>
-                    </div>
-                    <div class="cal-summary-row">
-                      <span>Дата:</span>
-                      <strong id="calSummaryDate">Пн, 26 окт</strong>
-                    </div>
-                    <div class="cal-summary-row">
-                      <span>Время (МСК):</span>
-                      <strong id="calSummaryTime">14:00 – 15:00</strong>
-                    </div>
-                  </div>
-                </div>
+              <div class="cal-format-cards cal-format-cards--wizard" role="radiogroup" aria-label="Выберите формат встречи">
+                <button
+                  type="button"
+                  class="cal-format-card is-active"
+                  data-format-choice="online"
+                  role="radio"
+                  aria-checked="true"
+                >
+                  <span class="cal-radio-circle" aria-hidden="true"></span>
+                  <span class="cal-format-card-body">
+                    <span class="cal-format-card-title">Онлайн · Видеосвязь Zoom</span>
+                    <span class="cal-format-card-desc">Спокойный разговор из дома или любого тихого места</span>
+                  </span>
+                </button>
 
-                <!-- КОЛОНКА 2: МЕСЯЧНЫЙ КАЛЕНДАРЬ -->
-                <div class="cal-col-month">
-                  <div class="cal-step-kicker">2. Выберите день в календаре</div>
-                  <div class="cal-month-bar">
-                    <span class="cal-month-title" id="calMonthTitle">Октябрь 2026</span>
-                    <div class="cal-month-nav-btns">
-                      <button type="button" class="cal-month-arrow" id="calPrevMonthBtn" aria-label="Предыдущий месяц">‹</button>
-                      <button type="button" class="cal-month-arrow" id="calNextMonthBtn" aria-label="Следующий месяц">›</button>
-                    </div>
-                  </div>
+                <button
+                  type="button"
+                  class="cal-format-card"
+                  data-format-choice="moscow"
+                  role="radio"
+                  aria-checked="false"
+                >
+                  <span class="cal-radio-circle" aria-hidden="true"></span>
+                  <span class="cal-format-card-body">
+                    <span class="cal-format-card-title">Очно · Центр Москвы</span>
+                    <span class="cal-format-card-desc">Тихий кабинет в пешей доступности от метро</span>
+                  </span>
+                </button>
+              </div>
 
-                  <div class="cal-weekdays-row" aria-hidden="true">
-                    <span>Пн</span>
-                    <span>Вт</span>
-                    <span>Ср</span>
-                    <span>Чт</span>
-                    <span>Пт</span>
-                    <span>Сб</span>
-                    <span>Вс</span>
-                  </div>
-
-                  <div class="cal-month-grid" id="bookingDateSlots" role="grid" aria-label="Календарь доступных дней">
-                    <!-- Сетка чисел месяца генерируется в app.js -->
-                  </div>
-                </div>
-
-                <!-- КОЛОНКА 3: СВОБОДНЫЕ ОКНА ВРЕМЕНИ И КНОПКА ЗАПИСИ -->
-                <div class="cal-col-times" id="calColTimesBox">
-                  <div class="cal-step-kicker">3. Доступное время</div>
-                  <div class="cal-selected-date-head">
-                    <span class="cal-selected-date-title" id="calSelectedDateHeading">Пн, 26 октября</span>
-                    <span class="cal-tz-badge">МСК (GMT+3)</span>
-                  </div>
-
-                  <div class="time-slots-grid" id="bookingTimeSlots" role="radiogroup" aria-label="Доступное время">
-                    <button type="button" class="time-slot-btn" data-time-slot="11:00">11:00</button>
-                    <button type="button" class="time-slot-btn" data-time-slot="13:00">13:00</button>
-                    <button type="button" class="time-slot-btn is-selected" data-time-slot="14:00">14:00</button>
-                    <button type="button" class="time-slot-btn" data-time-slot="16:00">16:00</button>
-                    <button type="button" class="time-slot-btn" data-time-slot="17:00">17:00</button>
-                    <button type="button" class="time-slot-btn" data-time-slot="19:00">19:00</button>
-                  </div>
-
-                  <button type="button" id="yasnoProceedToConfirmBtn" class="btn btn-forest primary-submit-btn cal-confirm-cta">
-                    Продолжить →
-                  </button>
-                </div>
+              <div class="wizard-pane-footer">
+                <button type="button" class="btn btn-forest primary-submit-btn" id="wizardNextToDateBtn">
+                  Далее: выбрать дату →
+                </button>
               </div>
             </div>
 
-            <!-- ШАГ 2 ВИДЖЕТА: ПОДТВЕРЖДЕНИЕ ВЫБРАННОГО СЛОТА -->
-            <form id="bookingPaymentForm" novalidate hidden>
-              <input type="hidden" name="sessionFormat" id="sessionFormatHiddenInput" value="online">
-
-              <div class="yasno-chosen-bar">
-                <span class="yasno-chosen-text" id="yasnoChosenSlotSummary">Выбранный слот: 14:00 (МСК)</span>
-                <button type="button" class="yasno-back-link" id="yasnoBackToSlotsBtn">← Изменить время</button>
+            <!-- ШАГ 2: ВЫБОР ДАТЫ В КАЛЕНДАРЕ -->
+            <div class="booking-wizard-pane" id="wizardStep2Date" data-wizard-pane="2" hidden>
+              <div class="wizard-pane-topbar">
+                <button type="button" class="wizard-back-btn" data-wizard-goto="1">← К выбору формата</button>
+                <span class="wizard-chosen-chip" id="wizardChipFormat">Онлайн (Zoom)</span>
               </div>
 
-              <div class="single-input-wrap">
-                <input
-                  type="text"
-                  name="clientContact"
-                  id="bookingContactInput"
-                  class="input-field"
-                  placeholder="Куда прислать ссылку на Zoom: @Telegram, телефон или Email *"
-                  required
-                >
+              <div class="wizard-pane-head">
+                <span class="cal-step-kicker">ШАГ 2 ИЗ 4 · ДЕНЬ ВСТРЕЧИ</span>
+                <h3 class="wizard-pane-title">Выберите удобный день в календаре</h3>
+              </div>
+
+              <div class="cal-col-month cal-col-month--wizard">
+                <div class="cal-month-bar">
+                  <span class="cal-month-title" id="calMonthTitle">Октябрь 2026</span>
+                  <div class="cal-month-nav-btns">
+                    <button type="button" class="cal-month-arrow" id="calPrevMonthBtn" aria-label="Предыдущий месяц">‹</button>
+                    <button type="button" class="cal-month-arrow" id="calNextMonthBtn" aria-label="Следующий месяц">›</button>
+                  </div>
+                </div>
+
+                <div class="cal-weekdays-row" aria-hidden="true">
+                  <span>Пн</span>
+                  <span>Вт</span>
+                  <span>Ср</span>
+                  <span>Чт</span>
+                  <span>Пт</span>
+                  <span>Сб</span>
+                  <span>Вс</span>
+                </div>
+
+                <div class="cal-month-grid" id="bookingDateSlots" role="grid" aria-label="Календарь доступных дней">
+                  <!-- Сетка чисел месяца генерируется в app.js -->
+                </div>
+              </div>
+
+              <div class="wizard-pane-footer">
+                <button type="button" class="btn btn-forest primary-submit-btn" id="wizardNextToTimeBtn">
+                  Далее: выбрать время →
+                </button>
+              </div>
+            </div>
+
+            <!-- ШАГ 3: ВЫБОР СВОБОДНОГО ВРЕМЕНИ -->
+            <div class="booking-wizard-pane" id="wizardStep3Time" data-wizard-pane="3" hidden>
+              <div class="wizard-pane-topbar">
+                <button type="button" class="wizard-back-btn" data-wizard-goto="2">← Изменить дату</button>
+                <span class="wizard-chosen-chip" id="wizardChipDate">Онлайн · Ср, 28 окт</span>
+              </div>
+
+              <div class="wizard-pane-head">
+                <span class="cal-step-kicker">ШАГ 3 ИЗ 4 · ДОСТУПНОЕ ВРЕМЯ</span>
+                <h3 class="wizard-pane-title">
+                  Выберите удобное время на <span id="calSelectedDateHeading">Ср, 28 октября</span>
+                </h3>
+                <p class="wizard-pane-sub">Время московское (GMT+3) · Длительность встречи 60 минут</p>
+              </div>
+
+              <div class="time-slots-grid time-slots-grid--wizard" id="bookingTimeSlots" role="radiogroup" aria-label="Доступное время">
+                <button type="button" class="time-slot-btn" data-time-slot="11:00">11:00</button>
+                <button type="button" class="time-slot-btn" data-time-slot="13:00">13:00</button>
+                <button type="button" class="time-slot-btn is-selected" data-time-slot="14:00">14:00</button>
+                <button type="button" class="time-slot-btn" data-time-slot="16:00">16:00</button>
+                <button type="button" class="time-slot-btn" data-time-slot="17:00">17:00</button>
+                <button type="button" class="time-slot-btn" data-time-slot="19:00">19:00</button>
+              </div>
+
+              <div class="wizard-pane-footer">
+                <button type="button" id="yasnoProceedToConfirmBtn" class="btn btn-forest primary-submit-btn">
+                  Далее: указать почту и телефон →
+                </button>
+              </div>
+            </div>
+
+            <!-- ШАГ 4: ПОЧТА И НОМЕР ТЕЛЕФОНА -->
+            <form id="bookingPaymentForm" class="booking-wizard-pane" data-wizard-pane="4" novalidate hidden>
+              <input type="hidden" name="sessionFormat" id="sessionFormatHiddenInput" value="online">
+
+              <div class="wizard-pane-topbar">
+                <button type="button" class="wizard-back-btn" id="yasnoBackToSlotsBtn" data-wizard-goto="3">← Изменить время</button>
+                <span class="wizard-chosen-chip" id="yasnoChosenSlotSummary">Онлайн · Ср, 28 окт в 14:00</span>
+              </div>
+
+              <div class="wizard-pane-head">
+                <span class="cal-step-kicker">ШАГ 4 ИЗ 4 · ПОДТВЕРЖДЕНИЕ</span>
+                <h3 class="wizard-pane-title" id="wizardStep4Heading">Куда отправить ссылку на встречу?</h3>
+              </div>
+
+              <div class="wizard-fields-stack">
+                <div class="wizard-field-group">
+                  <label for="bookingEmailInput" class="wizard-field-label" id="bookingEmailLabel">
+                    Ваша почта (пришлём ссылку на Zoom и приглашение в календарь)
+                  </label>
+                  <input
+                    type="email"
+                    name="clientEmail"
+                    id="bookingEmailInput"
+                    class="input-field"
+                    placeholder="name@example.com *"
+                    autocomplete="email"
+                    required
+                  >
+                </div>
+
+                <div class="wizard-field-group">
+                  <label for="bookingPhoneInput" class="wizard-field-label">
+                    Номер телефона <span class="wizard-field-hint">(на всякий случай, если письмо не дойдёт или попадёт в спам)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="clientPhone"
+                    id="bookingPhoneInput"
+                    class="input-field"
+                    placeholder="+7 (999) 000-00-00 *"
+                    autocomplete="tel"
+                    required
+                  >
+                </div>
               </div>
 
               <button type="submit" data-submit-mode="pay" id="primaryBookingBtn" class="btn btn-forest primary-submit-btn">
-                Подтвердить слот и получить ссылку Zoom →
+                Подтвердить запись · 10 000 ₽ →
               </button>
 
               <div class="legal-checks" style="margin-top: 16px;">
@@ -721,6 +785,6 @@
     <div class="modal-body" id="paymentSummaryContent"></div>
   </dialog>
 
-  <script src="app.js?v=37"></script>
+  <script src="app.js?v=43"></script>
 </body>
 </html>
