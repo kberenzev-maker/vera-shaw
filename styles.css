@@ -4542,10 +4542,9 @@ dialog.modal::backdrop {
 
 
 /* ==========================================================================
-   V38: ЖУРНАЛЬНЫЙ ЛЕНДИНГ ПСИХОЛОГА ВЕРЫ ШОУ
-   - Ни одной обрезанной фотографии (точные пропорции 15:16 и 2:3 без плашек поверх лиц)
-   - Никаких «рамок в рамке» и цветных рожек на скруглениях
-   - Авторский триптих «Обо мне» (на десктопе 3 колонки, на телефоне 3 компактных ряда 2:3 + текст на 1 экран)
+   V40: СТРОГАЯ МОДУЛЬНАЯ СЕТКА 8PX И ВОЗДУШНЫЕ ОТСТУПЫ (DESKTOP + MOBILE)
+   - Все отступы (margin, padding, gap) строго кратны 8px (8, 16, 24, 32, 40, 48, 56, 64, 80, 96)
+   - Увеличен воздух между секциями, карточками и внутри элементов
    ========================================================================== */
 
 .ilyakhov-editorial-page {
@@ -4553,25 +4552,45 @@ dialog.modal::backdrop {
   color: #16241D;
 }
 
+.ilyakhov-editorial-page .site-container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.ilyakhov-editorial-page .header-inner {
+  min-height: 72px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  gap: 24px;
+}
+
+.ilyakhov-editorial-page .header-right-actions {
+  gap: 24px;
+}
+
+.ilyakhov-editorial-page .header-nav {
+  gap: 24px;
+}
+
 .ilyakhov-section,
 .booking-section,
 #diplomas-showcase,
 #video-intro {
-  scroll-margin-top: 68px;
+  scroll-margin-top: 72px;
 }
 
 /* ==========================================================================
-   ЭКРАН 1: HERO (ЧИСТЫЙ ПОРТРЕТ 15:16 БЕЗ ПЛАШЕК ПОВЕРХ ФОТО)
+   ЭКРАН 1: HERO (ЧИСТЫЙ ПОРТРЕТ 15:16 И ВОЗДУХ ПО СЕТКЕ 8PX)
    ========================================================================== */
 .ilyakhov-hero-section {
-  padding: 36px 0 52px;
+  padding: 64px 0 80px;
   border-bottom: 1px solid rgba(24, 48, 37, 0.1);
 }
 
 .ilyakhov-hero-grid {
   display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
-  gap: 56px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
   align-items: center;
 }
 
@@ -4581,16 +4600,16 @@ dialog.modal::backdrop {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--terracotta);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .ilyakhov-hero-title {
   font-size: clamp(32px, 3.5vw, 46px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--ink);
-  margin: 0 0 18px;
+  margin: 0 0 24px;
 }
 
 .ilyakhov-hero-title .serif-italic {
@@ -4603,59 +4622,31 @@ dialog.modal::backdrop {
 
 .ilyakhov-hero-sublead {
   font-size: 16.5px;
-  line-height: 1.54;
+  line-height: 1.56;
   color: var(--ink-soft);
-  margin: 0 0 24px;
+  margin: 0 0 32px;
   max-width: 600px;
-}
-
-.ilyakhov-hero-meta-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 18px 0;
-  margin-bottom: 26px;
-  border-top: 1px solid rgba(24, 48, 37, 0.14);
-  border-bottom: 1px solid rgba(24, 48, 37, 0.14);
-}
-
-.hero-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero-meta-item strong {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.hero-meta-item span {
-  font-size: 12.8px;
-  line-height: 1.3;
-  color: var(--ink-soft);
 }
 
 .ilyakhov-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .ilyakhov-primary-btn {
-  min-height: 52px;
-  padding: 14px 28px;
+  min-height: 56px;
+  padding: 16px 32px;
   font-size: 15px;
   font-weight: 600;
   border-radius: 999px;
-  box-shadow: 0 12px 26px rgba(24, 48, 37, 0.16);
+  box-shadow: 0 16px 32px rgba(24, 48, 37, 0.16);
 }
 
 .ilyakhov-secondary-btn {
-  min-height: 52px;
-  padding: 14px 22px;
+  min-height: 56px;
+  padding: 16px 24px;
   font-size: 14.5px;
   font-weight: 600;
   border-radius: 999px;
@@ -4664,6 +4655,7 @@ dialog.modal::backdrop {
 
 .ilyakhov-hero-session-note {
   font-size: 13.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
 }
 
@@ -4675,13 +4667,13 @@ dialog.modal::backdrop {
 /* Точная пропорция оригинала vera-editorial-blazer.jpg (1080x1152 = 15:16) */
 .ilyakhov-portrait-frame {
   margin: 0;
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
   background: #D8D6CF;
   aspect-ratio: 15 / 16;
   max-width: 440px;
   margin-left: auto;
-  box-shadow: 0 22px 48px rgba(20, 38, 29, 0.12);
+  box-shadow: 0 24px 48px rgba(20, 38, 29, 0.12);
 }
 
 .ilyakhov-portrait-img {
@@ -4693,10 +4685,10 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ОБЩИЕ СЕКЦИИ
+   ОБЩИЕ СЕКЦИИ (96PX ВОЗДУХА СВЕРХУ И СНИЗУ НА ДЕСКТОПЕ)
    ========================================================================== */
 .ilyakhov-section {
-  padding: 64px 0;
+  padding: 96px 0;
 }
 
 .ilyakhov-section--warm {
@@ -4706,8 +4698,8 @@ dialog.modal::backdrop {
 }
 
 .ilyakhov-section-head {
-  max-width: 760px;
-  margin-bottom: 34px;
+  max-width: 768px;
+  margin-bottom: 48px;
 }
 
 .ilyakhov-section-kicker {
@@ -4723,7 +4715,7 @@ dialog.modal::backdrop {
 .ilyakhov-section-title {
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.14;
   letter-spacing: -0.024em;
   color: var(--ink);
   margin: 0;
@@ -4738,24 +4730,24 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ЭКРАН 2: ЗАПРОСЫ — ЧИСТЫЕ КАРТОЧКИ БЕЗ БОКОВЫХ РОЖЕК
+   ЭКРАН 2: ЗАПРОСЫ — СЕТКА С ШАГОМ 24PX И КАРТОЧКИ С ПАДДИНГОМ 32PX
    ========================================================================== */
 .ilyakhov-requests-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 24px;
   align-items: stretch;
 }
 
 .ilyakhov-request-card {
   background: #FFFFFF;
   border: 1px solid rgba(24, 48, 37, 0.1);
-  border-radius: 20px;
-  padding: 26px 28px;
+  border-radius: 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 10px 26px rgba(20, 38, 29, 0.04);
+  box-shadow: 0 16px 32px rgba(20, 38, 29, 0.04);
 }
 
 .request-card-label {
@@ -4766,65 +4758,65 @@ dialog.modal::backdrop {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--terracotta);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .ilyakhov-request-card h3 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
-  line-height: 1.24;
+  line-height: 1.25;
   color: var(--ink);
-  margin: 0 0 8px;
+  margin: 0 0 16px;
 }
 
 .request-card-symptom {
-  font-size: 14.8px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.54;
   color: var(--ink-soft);
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   flex-grow: 1;
 }
 
 .request-outcome {
-  font-size: 14.2px;
+  font-size: 14.5px;
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.48;
   color: var(--forest);
-  padding-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid rgba(24, 48, 37, 0.1);
   position: relative;
-  padding-left: 22px;
+  padding-left: 24px;
 }
 
 .request-outcome::before {
   content: "✓";
   position: absolute;
   left: 0;
-  top: 14px;
+  top: 16px;
   font-weight: 700;
   color: var(--forest);
 }
 
 /* ==========================================================================
-   ЭКРАН 3: ПОЧЕМУ СО МНОЙ БЕЗОПАСНО — АСИММЕТРИЧНАЯ МОЗАИКА (BENTO MOSAIC)
+   ЭКРАН 3: ПОЧЕМУ СО МНОЙ БЕЗОПАСНО — АСИММЕТРИЧНАЯ МОЗАИКА (ШАГ 24PX / 32PX)
    ========================================================================== */
 .safety-mosaic-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 18px;
-  margin-bottom: 48px;
+  gap: 24px;
+  margin-bottom: 64px;
 }
 
 .safety-mosaic-tile {
-  border-radius: 22px;
-  padding: 26px 28px;
-  min-height: 186px;
+  border-radius: 24px;
+  padding: 32px;
+  min-height: 224px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   border: 1px solid rgba(24, 48, 37, 0.09);
-  box-shadow: 0 10px 26px rgba(20, 38, 29, 0.04);
+  box-shadow: 0 16px 32px rgba(20, 38, 29, 0.04);
 }
 
 .safety-mosaic-tile:nth-child(1) {
@@ -4857,7 +4849,6 @@ dialog.modal::backdrop {
 }
 
 .safety-mosaic-tile--stone {
-  background: #E4DECFE6;
   background-color: #E5DFD0;
   color: var(--ink);
 }
@@ -4871,14 +4862,14 @@ dialog.modal::backdrop {
   background: var(--forest);
   color: #FFFFFF;
   border-color: transparent;
-  box-shadow: 0 14px 32px rgba(20, 38, 29, 0.14);
+  box-shadow: 0 16px 32px rgba(20, 38, 29, 0.14);
 }
 
 .safety-tile-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .safety-tile-num {
@@ -4895,11 +4886,14 @@ dialog.modal::backdrop {
 }
 
 .safety-tile-step-hint {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 5px 11px;
+  padding: 0 16px;
   border-radius: 999px;
   background: rgba(24, 48, 37, 0.07);
   color: var(--ink-soft);
@@ -4914,15 +4908,15 @@ dialog.modal::backdrop {
 .safety-tile-bottom h3 {
   font-size: clamp(22px, 2.2vw, 27px);
   font-weight: 700;
-  line-height: 1.14;
+  line-height: 1.16;
   letter-spacing: -0.02em;
   color: inherit;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 .safety-tile-bottom p {
   font-size: 15px;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--ink-soft);
   margin: 0;
   max-width: 52ch;
@@ -4934,7 +4928,7 @@ dialog.modal::backdrop {
 
 /* Дипломы */
 .ilyakhov-diplomas-strip-wrap {
-  padding-top: 8px;
+  padding-top: 16px;
   margin-bottom: 0;
 }
 
@@ -4942,20 +4936,20 @@ dialog.modal::backdrop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .diplomas-strip-head h3 {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--ink);
   margin: 0;
 }
 
 .diplomas-open-all-btn {
-  min-height: 40px;
-  padding: 9px 18px;
+  min-height: 48px;
+  padding: 8px 24px;
   font-size: 13.5px;
   border-radius: 999px;
   background: #FFFFFF;
@@ -4965,7 +4959,7 @@ dialog.modal::backdrop {
 .diplomas-preview-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 24px;
 }
 
 .diploma-preview-item {
@@ -4981,7 +4975,7 @@ dialog.modal::backdrop {
 
 .diploma-preview-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(20, 38, 29, 0.08);
+  box-shadow: 0 16px 32px rgba(20, 38, 29, 0.08);
 }
 
 .diploma-preview-img {
@@ -5008,15 +5002,18 @@ dialog.modal::backdrop {
   color: #FFFFFF;
   font-size: 11px;
   font-weight: 600;
-  padding: 3px 9px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
   border-radius: 999px;
 }
 
 .diploma-preview-meta {
-  padding: 13px 15px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .diploma-preview-meta span {
@@ -5029,17 +5026,17 @@ dialog.modal::backdrop {
 
 .diploma-preview-meta strong {
   font-size: 13.5px;
-  line-height: 1.32;
+  line-height: 1.35;
   color: var(--ink);
 }
 
 /* Честный мост на страницу Instagram перед записью */
 .ig-profile-bridge {
-  margin-top: 24px;
+  margin-top: 32px;
   background: #FFFFFF;
   border: 1px solid rgba(24, 48, 37, 0.12);
-  border-radius: 20px;
-  padding: 24px 28px;
+  border-radius: 24px;
+  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -5057,7 +5054,7 @@ dialog.modal::backdrop {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--terracotta);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .ig-profile-bridge-copy h3 {
@@ -5065,19 +5062,19 @@ dialog.modal::backdrop {
   font-weight: 700;
   line-height: 1.25;
   color: var(--ink);
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 .ig-profile-bridge-copy p {
-  font-size: 14.4px;
-  line-height: 1.48;
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
   margin: 0;
 }
 
 .ig-bridge-btn {
-  min-height: 46px;
-  padding: 12px 22px;
+  min-height: 48px;
+  padding: 8px 24px;
   font-size: 14px;
   font-weight: 600;
   border-radius: 999px;
@@ -5086,7 +5083,7 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ЭКРАН 4: ПЕРВАЯ ВСТРЕЧА И УСЛОВИЯ
+   ЭКРАН 4: ПЕРВАЯ ВСТРЕЧА И УСЛОВИЯ (ОТСТУПЫ 32PX / 40PX)
    ========================================================================== */
 .session-steps-row {
   display: grid;
@@ -5094,20 +5091,20 @@ dialog.modal::backdrop {
   gap: 0;
   border-top: 1px solid rgba(24, 48, 37, 0.16);
   border-bottom: 1px solid rgba(24, 48, 37, 0.16);
-  margin-bottom: 28px;
+  margin-bottom: 40px;
 }
 
 .session-step-col {
-  padding: 26px 28px 26px 0;
+  padding: 32px 32px 32px 0;
   border-right: 1px solid rgba(24, 48, 37, 0.14);
 }
 
 .session-step-col:nth-child(2) {
-  padding-left: 28px;
+  padding-left: 32px;
 }
 
 .session-step-col:last-child {
-  padding-left: 28px;
+  padding-left: 32px;
   padding-right: 0;
   border-right: none;
 }
@@ -5125,14 +5122,14 @@ dialog.modal::backdrop {
 .session-step-col h3 {
   font-size: 19px;
   font-weight: 700;
-  line-height: 1.24;
+  line-height: 1.25;
   color: var(--ink);
   margin: 0 0 8px;
 }
 
 .session-step-col p {
-  font-size: 14.6px;
-  line-height: 1.52;
+  font-size: 15px;
+  line-height: 1.54;
   color: var(--ink-soft);
   margin: 0;
 }
@@ -5140,18 +5137,18 @@ dialog.modal::backdrop {
 .session-terms-banner {
   background: var(--forest);
   color: #FFFFFF;
-  border-radius: 20px;
-  padding: 24px 30px;
+  border-radius: 24px;
+  padding: 32px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  box-shadow: 0 16px 38px rgba(20, 38, 29, 0.14);
+  box-shadow: 0 16px 40px rgba(20, 38, 29, 0.14);
 }
 
 .term-banner-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   border-right: 1px solid rgba(255, 255, 255, 0.14);
   padding-right: 16px;
 }
@@ -5172,73 +5169,58 @@ dialog.modal::backdrop {
   font-size: 15px;
   font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.3;
-}
-
-/* Плашка прямого контакта в Telegram */
-.ilyakhov-direct-contact-bar {
-  background: #FFFFFF;
-  border: 1px solid rgba(24, 48, 37, 0.12);
-  border-radius: 18px;
-  padding: 20px 24px;
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.direct-contact-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.direct-contact-copy strong {
-  font-size: 16.5px;
-  color: var(--ink);
-}
-
-.direct-contact-copy span {
-  font-size: 14px;
-  color: var(--ink-soft);
-}
-
-.direct-contact-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-shrink: 0;
-}
-
-.direct-tg-btn {
-  min-height: 44px;
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.direct-phone-link {
-  font-size: 14.5px;
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: none;
-  white-space: nowrap;
+  line-height: 1.35;
 }
 
 /* ==========================================================================
-   МОБИЛЬНАЯ ВЕРСИЯ (<= 860px)
+   ЭКРАН 5: БЛОК ОНЛАЙН-ЗАПИСИ И ПОДВАЛ (8PX СЕТКА)
+   ========================================================================== */
+.ilyakhov-editorial-page .booking-section {
+  padding: 96px 0;
+}
+
+.ilyakhov-editorial-page .booking-card {
+  padding: 40px;
+  border-radius: 24px;
+}
+
+.ilyakhov-editorial-page .yasno-widget-header {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.ilyakhov-editorial-page .cal-booking-layout {
+  gap: 24px;
+}
+
+.ilyakhov-editorial-page .site-footer {
+  padding: 48px 0 64px;
+}
+
+/* ==========================================================================
+   МОБИЛЬНАЯ ВЕРСИЯ (<= 860px) — СТРОГАЯ СЕТКА 8PX И ВОЗДУШНЫЕ ОТСТУПЫ
    ========================================================================== */
 @media (max-width: 860px) {
+  .ilyakhov-editorial-page .site-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ilyakhov-editorial-page .header-inner {
+    min-height: 56px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 16px;
+  }
+
   .ilyakhov-hero-section {
-    padding: 12px 0 22px !important;
+    padding: 24px 0 48px !important;
   }
 
   .ilyakhov-hero-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 24px;
   }
 
   /* Чистый портрет на 1 экране без налепленных плашек */
@@ -5249,7 +5231,7 @@ dialog.modal::backdrop {
   .ilyakhov-portrait-frame {
     max-width: 100%;
     aspect-ratio: 4 / 3.4;
-    border-radius: 18px;
+    border-radius: 24px;
   }
 
   .ilyakhov-portrait-img {
@@ -5258,123 +5240,111 @@ dialog.modal::backdrop {
 
   .ilyakhov-kicker {
     font-size: 10px;
-    margin-bottom: 5px;
-  }
-
-  .ilyakhov-hero-title {
-    font-size: 22.5px;
-    line-height: 1.14;
     margin-bottom: 8px;
   }
 
+  .ilyakhov-hero-title {
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
   .ilyakhov-hero-sublead {
-    font-size: 13.5px;
-    line-height: 1.42;
-    margin-bottom: 12px;
-  }
-
-  .ilyakhov-hero-meta-strip {
-    gap: 8px;
-    padding: 10px 0;
-    margin-bottom: 12px;
-  }
-
-  .hero-meta-item strong {
-    font-size: 12px;
-    white-space: nowrap;
-  }
-
-  .hero-meta-item span {
-    font-size: 10.6px;
-    line-height: 1.2;
+    font-size: 14px;
+    line-height: 1.48;
+    margin-bottom: 24px;
   }
 
   .ilyakhov-hero-actions {
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 16px;
+    margin-bottom: 16px;
   }
 
   .ilyakhov-primary-btn,
   .ilyakhov-secondary-btn {
     width: 100%;
     justify-content: center;
-    min-height: 44px;
-    padding: 10px 18px;
-    font-size: 14px;
+    min-height: 48px;
+    padding: 8px 24px;
+    font-size: 14.5px;
   }
 
   .ilyakhov-hero-session-note {
-    font-size: 11.8px;
+    font-size: 12px;
     text-align: center;
+    line-height: 1.5;
   }
 
+  /* Увеличенный воздух между секциями на телефоне (56px = 8x7) */
   .ilyakhov-section {
-    padding: 34px 0 !important;
+    padding: 56px 0 !important;
   }
 
   .ilyakhov-section-head {
-    margin-bottom: 18px;
+    margin-bottom: 32px;
   }
 
   .ilyakhov-section-title {
-    font-size: 24px;
-    line-height: 1.15;
+    font-size: 25px;
+    line-height: 1.16;
   }
 
-  /* Карточки запросов на телефоне */
+  /* Карточки запросов на телефоне: gap 16px, padding 24px */
   .ilyakhov-requests-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
   }
 
   .ilyakhov-request-card {
-    padding: 16px 16px;
+    padding: 24px;
     border-radius: 16px;
   }
 
   .request-card-label {
     font-size: 10px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .ilyakhov-request-card h3 {
-    font-size: 17px;
-    margin-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 8px;
   }
 
   .request-card-symptom {
-    font-size: 13.5px;
-    line-height: 1.44;
-    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.48;
+    margin-bottom: 16px;
   }
 
   .request-outcome {
-    font-size: 13.2px;
-    padding-top: 10px;
+    font-size: 13.5px;
+    padding-top: 16px;
+    padding-left: 24px;
   }
 
   .request-outcome::before {
-    top: 10px;
+    top: 16px;
   }
 
-  /* Асимметричная мозаика «Почему со мной безопасно» на телефоне (2-колоночный Bento) */
+  /* Асимметричная мозаика «Почему со мной безопасно» на телефоне (2-колоночный Bento, шаг 16px) */
   .safety-mosaic-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 26px;
+    gap: 16px;
+    margin-bottom: 40px;
   }
 
   .safety-mosaic-tile {
-    padding: 15px 15px;
-    min-height: 136px;
-    border-radius: 18px;
-    gap: 12px;
+    padding: 16px;
+    min-height: 144px;
+    border-radius: 16px;
+    gap: 16px;
   }
 
   .safety-mosaic-tile:nth-child(1) {
     grid-column: span 2;
-    min-height: 112px;
+    padding: 24px;
+    min-height: 128px;
   }
 
   .safety-mosaic-tile:nth-child(2) {
@@ -5387,7 +5357,8 @@ dialog.modal::backdrop {
 
   .safety-mosaic-tile:nth-child(4) {
     grid-column: span 2;
-    min-height: 112px;
+    padding: 24px;
+    min-height: 128px;
   }
 
   .safety-mosaic-tile:nth-child(5) {
@@ -5398,101 +5369,111 @@ dialog.modal::backdrop {
     grid-column: span 1;
   }
 
+  .safety-tile-top {
+    gap: 8px;
+  }
+
   .safety-tile-num {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .safety-tile-step-hint {
-    font-size: 9.2px;
-    padding: 3px 8px;
+    font-size: 9.5px;
+    min-height: 24px;
+    padding: 0 8px;
   }
 
   .safety-tile-bottom h3 {
     font-size: 16.5px;
-    line-height: 1.18;
-    margin-bottom: 4px;
+    line-height: 1.2;
+    margin-bottom: 8px;
   }
 
   .safety-mosaic-tile:nth-child(1) .safety-tile-bottom h3,
   .safety-mosaic-tile:nth-child(4) .safety-tile-bottom h3 {
-    font-size: 18.5px;
+    font-size: 19px;
   }
 
   .safety-tile-bottom p {
-    font-size: 12.6px;
-    line-height: 1.36;
+    font-size: 13px;
+    line-height: 1.42;
   }
 
-  /* Дипломы на телефоне */
+  /* Дипломы на телефоне (шаг 16px) */
   .ilyakhov-diplomas-strip-wrap {
+    padding-top: 8px;
     margin-bottom: 0;
   }
 
   .diplomas-strip-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 16px;
+    margin-bottom: 16px;
   }
 
   .diplomas-strip-head h3 {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .diplomas-open-all-btn {
     width: 100%;
     justify-content: center;
+    min-height: 48px;
+    padding: 8px 24px;
   }
 
   .diplomas-preview-strip {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 16px;
   }
 
   .diploma-preview-meta {
-    padding: 10px 12px;
+    padding: 16px;
+    gap: 8px;
   }
 
   .diploma-preview-meta strong {
-    font-size: 12.2px;
+    font-size: 12.5px;
   }
 
-  /* Мост на страницу Instagram перед записью на телефоне */
+  /* Мост на страницу Instagram перед записью на телефоне (шаг 24px / 16px) */
   .ig-profile-bridge {
-    margin-top: 16px;
-    padding: 16px;
+    margin-top: 24px;
+    padding: 24px;
     border-radius: 16px;
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 16px;
   }
 
   .ig-profile-bridge-copy h3 {
-    font-size: 16.5px;
-    margin-bottom: 4px;
+    font-size: 17px;
+    margin-bottom: 8px;
   }
 
   .ig-profile-bridge-copy p {
-    font-size: 13.2px;
-    line-height: 1.42;
+    font-size: 13.5px;
+    line-height: 1.46;
   }
 
   .ig-bridge-btn {
     width: 100%;
     justify-content: center;
-    min-height: 44px;
+    min-height: 48px;
+    padding: 8px 24px;
   }
 
-  /* Первая встреча на телефоне */
+  /* Первая встреча на телефоне (шаг 24px) */
   .session-steps-row {
     grid-template-columns: 1fr;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
 
   .session-step-col,
   .session-step-col:nth-child(2),
   .session-step-col:last-child {
-    padding: 14px 0;
+    padding: 24px 0;
     border-right: none;
     border-bottom: 1px solid rgba(24, 48, 37, 0.14);
   }
@@ -5502,47 +5483,58 @@ dialog.modal::backdrop {
   }
 
   .session-step-col h3 {
-    font-size: 17px;
-    margin-bottom: 4px;
+    font-size: 18px;
+    margin-bottom: 8px;
   }
 
   .session-step-col p {
-    font-size: 13.6px;
+    font-size: 14px;
+    line-height: 1.48;
   }
 
   .session-terms-banner {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    padding: 18px 16px;
-    border-radius: 18px;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 16px;
   }
 
   .term-banner-item {
     border-right: none;
     padding-right: 0;
+    gap: 8px;
   }
 
   .term-banner-item strong {
     font-size: 13.5px;
   }
 
-  /* Липкая нижняя панель на телефоне */
+  .ilyakhov-editorial-page .booking-section {
+    padding: 56px 0 96px !important;
+  }
+
+  .ilyakhov-editorial-page .booking-card {
+    padding: 24px 16px !important;
+    border-radius: 16px;
+  }
+
+  /* Липкая нижняя панель на телефоне (строго 8px / 16px) */
   .ilyakhov-editorial-page .mobile-sticky-cta-bar {
     display: flex;
     position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
     z-index: 90;
     background: rgba(252, 250, 246, 0.96);
     backdrop-filter: blur(12px);
     border: 1px solid var(--line-strong);
     border-radius: 16px;
-    padding: 10px 14px;
-    box-shadow: 0 12px 32px rgba(20, 38, 29, 0.18);
+    padding: 8px 16px;
+    box-shadow: 0 16px 32px rgba(20, 38, 29, 0.18);
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
     transition: transform 0.25s ease, opacity 0.25s ease;
   }
 
