@@ -4806,78 +4806,136 @@ dialog.modal::backdrop {
 }
 
 /* ==========================================================================
-   ЭКРАН 3: О ВЕРЕ — ТРИПТИХ С НЕОБРЕЗАННЫМИ КАДРАМИ 2:3 (800x1200)
+   ЭКРАН 3: ПОЧЕМУ СО МНОЙ БЕЗОПАСНО — АСИММЕТРИЧНАЯ МОЗАИКА (BENTO MOSAIC)
    ========================================================================== */
-.ilyakhov-triptych-grid {
+.safety-mosaic-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  align-items: stretch;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
   margin-bottom: 48px;
 }
 
-.triptych-card {
+.safety-mosaic-tile {
+  border-radius: 22px;
+  padding: 26px 28px;
+  min-height: 186px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(24, 48, 37, 0.09);
+  box-shadow: 0 10px 26px rgba(20, 38, 29, 0.04);
+}
+
+.safety-mosaic-tile:nth-child(1) {
+  grid-column: span 7;
+}
+
+.safety-mosaic-tile:nth-child(2) {
+  grid-column: span 5;
+}
+
+.safety-mosaic-tile:nth-child(3) {
+  grid-column: span 5;
+}
+
+.safety-mosaic-tile:nth-child(4) {
+  grid-column: span 7;
+}
+
+.safety-mosaic-tile:nth-child(5) {
+  grid-column: span 6;
+}
+
+.safety-mosaic-tile:nth-child(6) {
+  grid-column: span 6;
+}
+
+.safety-mosaic-tile--white {
   background: #FFFFFF;
-  border: 1px solid rgba(24, 48, 37, 0.1);
-  border-radius: 20px;
-  overflow: hidden;
+  color: var(--ink);
+}
+
+.safety-mosaic-tile--stone {
+  background: #E4DECFE6;
+  background-color: #E5DFD0;
+  color: var(--ink);
+}
+
+.safety-mosaic-tile--sage {
+  background: #DCE6E0;
+  color: var(--ink);
+}
+
+.safety-mosaic-tile--forest {
+  background: var(--forest);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 14px 32px rgba(20, 38, 29, 0.14);
+}
+
+.safety-tile-top {
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 12px 30px rgba(20, 38, 29, 0.05);
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* Точная пропорция 2:3 для 800x1200 — ни один пиксель не обрезается */
-.triptych-photo {
-  margin: 0;
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  background: #D8D6CF;
-  overflow: hidden;
+.safety-tile-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--terracotta);
 }
 
-.triptych-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
+.safety-mosaic-tile--forest .safety-tile-num {
+  color: #E7B89E;
 }
 
-.triptych-body {
-  padding: 22px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.triptych-num {
+.safety-tile-step-hint {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(24, 48, 37, 0.07);
+  color: var(--ink-soft);
+  white-space: nowrap;
 }
 
-.triptych-body h3 {
-  font-size: 19px;
+.safety-mosaic-tile--forest .safety-tile-step-hint {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.safety-tile-bottom h3 {
+  font-size: clamp(22px, 2.2vw, 27px);
   font-weight: 700;
-  line-height: 1.24;
-  color: var(--ink);
-  margin: 0 0 8px;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: inherit;
+  margin: 0 0 6px;
 }
 
-.triptych-body p {
-  font-size: 14.4px;
-  line-height: 1.54;
+.safety-tile-bottom p {
+  font-size: 15px;
+  line-height: 1.45;
   color: var(--ink-soft);
   margin: 0;
+  max-width: 52ch;
+}
+
+.safety-mosaic-tile--forest .safety-tile-bottom p {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 /* Дипломы */
 .ilyakhov-diplomas-strip-wrap {
   padding-top: 8px;
-  margin-bottom: 44px;
+  margin-bottom: 0;
 }
 
 .diplomas-strip-head {
@@ -4975,83 +5033,55 @@ dialog.modal::backdrop {
   color: var(--ink);
 }
 
-/* Короткие видео — чистые карточки без дублирования фотографий */
-.ilyakhov-video-strip {
-  padding-top: 8px;
-}
-
-.video-ig-profile-link {
-  font-size: 13.8px;
-  font-weight: 700;
-  color: var(--forest);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.video-clean-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.video-clean-card {
+/* Честный мост на страницу Instagram перед записью */
+.ig-profile-bridge {
+  margin-top: 24px;
   background: #FFFFFF;
   border: 1px solid rgba(24, 48, 37, 0.12);
-  border-radius: 16px;
-  padding: 18px 20px;
+  border-radius: 20px;
+  padding: 24px 28px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.video-clean-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--forest);
-  box-shadow: 0 10px 24px rgba(20, 38, 29, 0.08);
+.ig-profile-bridge-copy {
+  max-width: 640px;
 }
 
-.video-clean-play {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--forest);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  padding-left: 3px;
-  flex-shrink: 0;
-}
-
-.video-clean-body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex-grow: 1;
-}
-
-.video-clean-meta {
+.ig-bridge-kicker {
+  display: inline-block;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--terracotta);
+  margin-bottom: 6px;
 }
 
-.video-clean-body strong {
-  font-size: 14.5px;
-  line-height: 1.32;
-  color: var(--ink);
-}
-
-.video-clean-arrow {
-  font-size: 16px;
+.ig-profile-bridge-copy h3 {
+  font-size: 19px;
   font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.ig-profile-bridge-copy p {
+  font-size: 14.4px;
+  line-height: 1.48;
   color: var(--ink-soft);
+  margin: 0;
+}
+
+.ig-bridge-btn {
+  min-height: 46px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
@@ -5328,51 +5358,74 @@ dialog.modal::backdrop {
     top: 10px;
   }
 
-  /* Триптих «Обо мне» на телефоне:
-     Каждая карточка — горизонтальный разворот: слева полный кадр 2:3 (118x177px без единого обрезанного пикселя!), справа текст */
-  .ilyakhov-triptych-grid {
-    grid-template-columns: 1fr;
+  /* Асимметричная мозаика «Почему со мной безопасно» на телефоне (2-колоночный Bento) */
+  .safety-mosaic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .safety-mosaic-tile {
+    padding: 15px 15px;
+    min-height: 136px;
+    border-radius: 18px;
     gap: 12px;
-    margin-bottom: 28px;
   }
 
-  .triptych-card {
-    display: grid;
-    grid-template-columns: 116px 1fr;
-    align-items: stretch;
-    border-radius: 16px;
+  .safety-mosaic-tile:nth-child(1) {
+    grid-column: span 2;
+    min-height: 112px;
   }
 
-  .triptych-photo {
-    width: 116px;
-    height: 100%;
-    min-height: 174px;
-    aspect-ratio: 2 / 3;
+  .safety-mosaic-tile:nth-child(2) {
+    grid-column: span 1;
   }
 
-  .triptych-body {
-    padding: 12px 14px;
-    justify-content: center;
+  .safety-mosaic-tile:nth-child(3) {
+    grid-column: span 1;
   }
 
-  .triptych-num {
-    font-size: 9.8px;
-    margin-bottom: 3px;
+  .safety-mosaic-tile:nth-child(4) {
+    grid-column: span 2;
+    min-height: 112px;
   }
 
-  .triptych-body h3 {
-    font-size: 15.5px;
+  .safety-mosaic-tile:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .safety-mosaic-tile:nth-child(6) {
+    grid-column: span 1;
+  }
+
+  .safety-tile-num {
+    font-size: 26px;
+  }
+
+  .safety-tile-step-hint {
+    font-size: 9.2px;
+    padding: 3px 8px;
+  }
+
+  .safety-tile-bottom h3 {
+    font-size: 16.5px;
+    line-height: 1.18;
     margin-bottom: 4px;
   }
 
-  .triptych-body p {
+  .safety-mosaic-tile:nth-child(1) .safety-tile-bottom h3,
+  .safety-mosaic-tile:nth-child(4) .safety-tile-bottom h3 {
+    font-size: 18.5px;
+  }
+
+  .safety-tile-bottom p {
     font-size: 12.6px;
-    line-height: 1.4;
+    line-height: 1.36;
   }
 
   /* Дипломы на телефоне */
   .ilyakhov-diplomas-strip-wrap {
-    margin-bottom: 28px;
+    margin-bottom: 0;
   }
 
   .diplomas-strip-head {
@@ -5404,24 +5457,30 @@ dialog.modal::backdrop {
     font-size: 12.2px;
   }
 
-  /* Короткие видео на телефоне */
-  .video-clean-cards {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  /* Мост на страницу Instagram перед записью на телефоне */
+  .ig-profile-bridge {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
-  .video-clean-card {
-    padding: 14px 16px;
+  .ig-profile-bridge-copy h3 {
+    font-size: 16.5px;
+    margin-bottom: 4px;
   }
 
-  .video-clean-play {
-    width: 38px;
-    height: 38px;
-    font-size: 12px;
+  .ig-profile-bridge-copy p {
+    font-size: 13.2px;
+    line-height: 1.42;
   }
 
-  .video-clean-body strong {
-    font-size: 13.8px;
+  .ig-bridge-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
   }
 
   /* Первая встреча на телефоне */
@@ -5465,28 +5524,6 @@ dialog.modal::backdrop {
 
   .term-banner-item strong {
     font-size: 13.5px;
-  }
-
-  .ilyakhov-direct-contact-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .direct-contact-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .direct-tg-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .direct-phone-link {
-    text-align: center;
   }
 
   /* Липкая нижняя панель на телефоне */
